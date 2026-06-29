@@ -297,8 +297,8 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 .modal-links{display:flex;gap:.75rem;padding-top:1.5rem;border-top:1px solid var(--border);margin-top:1.5rem}
 
 /* SCROLL REVEAL */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal{transition:opacity .6s ease,transform .6s ease}.reveal.js-hide{opacity:0;transform:translateY(28px)}
+.reveal.visible{opacity:1;transform:translateY(0)}.reveal.js-hide.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:.1s}
 .reveal-delay-2{transition-delay:.2s}
 .reveal-delay-3{transition-delay:.3s}
@@ -771,20 +771,20 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
       <div class="project-card">
         <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+  <linearGradient id="T0bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
     <stop offset="100%" stop-color="#7B2FBE"/>
   </linearGradient>
-  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+  <filter id="T0sh" x="-8%" y="-8%" width="116%" height="116%">
     <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
   </filter>
 </defs>
-<rect width="480" height="270" fill="url(#bg)"/>
+<rect width="480" height="270" fill="url(#T0bg)"/>
 <!-- decorative circles -->
 <circle cx="400" cy="270" r="120" fill="rgba(255,255,255,0.05)"/>
 <circle cx="60"  cy="20"  r="80"  fill="rgba(255,255,255,0.04)"/>
 <!-- main card -->
-<rect x="24" y="14" width="280" height="160" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="24" y="14" width="280" height="160" rx="10" fill="white" opacity="0.93" filter="url(#T0sh)"/>
 <text x="40" y="36" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">CHURN RATE BY CONTRACT TYPE</text>
 <!-- bars -->
 <rect x="52"  y="140" width="48" height="78" rx="4" fill="#E63946"  opacity="0.0"/>
@@ -802,24 +802,24 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <text x="146" y="164" text-anchor="middle" fill="#aaa" font-size="6.5" font-family="Inter,sans-serif">One Year</text>
 <text x="216" y="164" text-anchor="middle" fill="#aaa" font-size="6.5" font-family="Inter,sans-serif">Two Year</text>
 <!-- AUC card -->
-<rect x="26" y="182" width="130" height="74" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="26" y="182" width="130" height="74" rx="10" fill="white" opacity="0.93" filter="url(#T0sh)"/>
 <text x="42" y="200" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">MODEL ACCURACY</text>
 <text x="42" y="224" fill="#4361EE" font-size="24" font-weight="700" font-family="Inter,sans-serif">81%</text>
 <text x="42" y="240" fill="#aaa" font-size="8" font-family="Inter,sans-serif">AUC-ROC 0.847</text>
 <!-- ROC mini card -->
-<rect x="168" y="182" width="136" height="74" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="168" y="182" width="136" height="74" rx="10" fill="white" opacity="0.93" filter="url(#T0sh)"/>
 <text x="184" y="200" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">ROC CURVE</text>
 <polyline points="178,248 192,235 208,224 224,214 240,208 258,204 288,200 296,199" stroke="#4361EE" stroke-width="2" fill="none" stroke-linecap="round"/>
 <polyline points="178,248 296,248" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
 <!-- right stat card -->
-<rect x="316" y="14" width="148" height="100" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="316" y="14" width="148" height="100" rx="10" fill="white" opacity="0.93" filter="url(#T0sh)"/>
 <text x="332" y="34" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">ANNUAL GROWTH</text>
 <text x="332" y="62" fill="#7B2FBE" font-size="22" font-weight="700" font-family="Inter,sans-serif">1,800%</text>
 <text x="332" y="78" fill="#bbb" font-size="8" font-family="Inter,sans-serif">from last month</text>
 <rect x="332" y="88" width="50" height="14" rx="7" fill="#2DC653"/>
 <text x="357" y="98" text-anchor="middle" fill="white" font-size="7.5" font-weight="600" font-family="Inter,sans-serif">▲ Active</text>
 <!-- right insight card -->
-<rect x="316" y="124" width="148" height="132" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="316" y="124" width="148" height="132" rx="10" fill="white" opacity="0.93" filter="url(#T0sh)"/>
 <text x="332" y="143" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">KEY INSIGHT</text>
 <text x="332" y="163" fill="#333" font-size="9" font-weight="600" font-family="Inter,sans-serif">Contract type is the</text>
 <text x="332" y="176" fill="#333" font-size="9" font-weight="600" font-family="Inter,sans-serif">strongest predictor</text>
@@ -845,32 +845,32 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
       <div class="project-card">
         <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+  <linearGradient id="T1bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
     <stop offset="100%" stop-color="#7B2FBE"/>
   </linearGradient>
-  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+  <filter id="T1sh" x="-8%" y="-8%" width="116%" height="116%">
     <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
   </filter>
 </defs>
-<rect width="480" height="270" fill="url(#bg)"/>
+<rect width="480" height="270" fill="url(#T1bg)"/>
 <circle cx="440" cy="260" r="110" fill="rgba(255,255,255,0.05)"/>
 <circle cx="30"  cy="10"  r="70"  fill="rgba(255,255,255,0.04)"/>
 <!-- KPI row -->
-<rect x="16" y="12" width="102" height="52" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="16" y="12" width="102" height="52" rx="10" fill="white" opacity="0.93" filter="url(#T1sh)"/>
 <text x="28" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">REVENUE</text>
 <text x="28" y="49" fill="#4361EE" font-size="16" font-weight="700" font-family="Inter,sans-serif">$2.3M</text>
-<rect x="126" y="12" width="102" height="52" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="126" y="12" width="102" height="52" rx="10" fill="white" opacity="0.93" filter="url(#T1sh)"/>
 <text x="138" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">PROFIT</text>
 <text x="138" y="49" fill="#2DC653" font-size="16" font-weight="700" font-family="Inter,sans-serif">$286K</text>
-<rect x="236" y="12" width="102" height="52" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="236" y="12" width="102" height="52" rx="10" fill="white" opacity="0.93" filter="url(#T1sh)"/>
 <text x="248" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">ORDERS</text>
 <text x="248" y="49" fill="#333" font-size="16" font-weight="700" font-family="Inter,sans-serif">9,994</text>
-<rect x="346" y="12" width="118" height="52" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="346" y="12" width="118" height="52" rx="10" fill="white" opacity="0.93" filter="url(#T1sh)"/>
 <text x="358" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">AVG ORDER</text>
 <text x="358" y="49" fill="#F4A261" font-size="16" font-weight="700" font-family="Inter,sans-serif">$230</text>
 <!-- trend chart card -->
-<rect x="16" y="74" width="270" height="184" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="16" y="74" width="270" height="184" rx="10" fill="white" opacity="0.93" filter="url(#T1sh)"/>
 <text x="30" y="92" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">REVENUE TREND</text>
 <path d="M30,240 L65,224 L100,215 L135,204 L170,192 L205,178 L240,160 L265,148 L274,145 L274,248 Z" fill="rgba(67,97,238,0.08)"/>
 <polyline points="30,240 65,224 100,215 135,204 170,192 205,178 240,160 265,148 274,145" stroke="#4361EE" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -881,7 +881,7 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <text x="200" y="260" fill="#bbb" font-size="6.5" font-family="Inter,sans-serif">2016</text>
 <text x="258" y="260" fill="#bbb" font-size="6.5" font-family="Inter,sans-serif">2017</text>
 <!-- donut card -->
-<rect x="298" y="74" width="166" height="100" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="298" y="74" width="166" height="100" rx="10" fill="white" opacity="0.93" filter="url(#T1sh)"/>
 <text x="314" y="92" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">BY CATEGORY</text>
 <circle cx="362" cy="148" r="32" fill="none" stroke="#f0f0f0" stroke-width="10"/>
 <path d="M362,116 A32,32 0 0,1 394,148" stroke="#4361EE" stroke-width="10" fill="none"/>
@@ -892,7 +892,7 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <text x="410" y="132" fill="#F4A261"  font-size="7" font-weight="600" font-family="Inter,sans-serif">● Furn</text>
 <text x="410" y="146" fill="#2DC653"  font-size="7" font-weight="600" font-family="Inter,sans-serif">● Office</text>
 <!-- region bar card -->
-<rect x="298" y="184" width="166" height="74" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="298" y="184" width="166" height="74" rx="10" fill="white" opacity="0.93" filter="url(#T1sh)"/>
 <text x="314" y="202" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">TOP REGIONS</text>
 <rect x="314" y="210" width="100" height="9" rx="4" fill="#4361EE" opacity="0.85"/>
 <text x="420" y="218" fill="#aaa" font-size="7" font-family="Inter,sans-serif">West</text>
@@ -921,18 +921,18 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
       <div class="project-card">
         <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+  <linearGradient id="T2bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
     <stop offset="100%" stop-color="#7B2FBE"/>
   </linearGradient>
-  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+  <filter id="T2sh" x="-8%" y="-8%" width="116%" height="116%">
     <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
   </filter>
 </defs>
-<rect width="480" height="270" fill="url(#bg)"/>
+<rect width="480" height="270" fill="url(#T2bg)"/>
 <circle cx="420" cy="260" r="130" fill="rgba(255,255,255,0.05)"/>
 <!-- main network card -->
-<rect x="16" y="14" width="296" height="242" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="16" y="14" width="296" height="242" rx="10" fill="white" opacity="0.93" filter="url(#T2sh)"/>
 <text x="32" y="34" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">TRANSACTION NETWORK</text>
 <!-- central hub -->
 <circle cx="160" cy="140" r="22" fill="#4361EE" opacity="0.15"/>
@@ -962,13 +962,13 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <circle cx="108" cy="58"  r="11" fill="rgba(230,57,70,0.1)" stroke="#E63946" stroke-width="2"/>
 <text x="108" y="62"  text-anchor="middle" fill="#E63946" font-size="10" font-family="Inter,sans-serif">✕</text>
 <!-- right stat cards -->
-<rect x="324" y="14" width="140" height="56" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="324" y="14" width="140" height="56" rx="10" fill="white" opacity="0.93" filter="url(#T2sh)"/>
 <text x="340" y="32" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">ACCURACY</text>
 <text x="340" y="56" fill="#2DC653" font-size="22" font-weight="700" font-family="Inter,sans-serif">98.2%</text>
-<rect x="324" y="80" width="140" height="56" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="324" y="80" width="140" height="56" rx="10" fill="white" opacity="0.93" filter="url(#T2sh)"/>
 <text x="340" y="98" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">BLOCKED TODAY</text>
 <text x="340" y="122" fill="#E63946" font-size="22" font-weight="700" font-family="Inter,sans-serif">14</text>
-<rect x="324" y="146" width="140" height="110" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="324" y="146" width="140" height="110" rx="10" fill="white" opacity="0.93" filter="url(#T2sh)"/>
 <text x="340" y="164" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">RECENT ALERTS</text>
 <circle cx="338" cy="180" r="3.5" fill="#E63946"/>
 <text x="348" y="184" fill="#555" font-size="7.5" font-family="Inter,sans-serif">Velocity anomaly</text>
@@ -992,18 +992,18 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
       <div class="project-card">
         <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+  <linearGradient id="T3bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
     <stop offset="100%" stop-color="#7B2FBE"/>
   </linearGradient>
-  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+  <filter id="T3sh" x="-8%" y="-8%" width="116%" height="116%">
     <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
   </filter>
 </defs>
-<rect width="480" height="270" fill="url(#bg)"/>
+<rect width="480" height="270" fill="url(#T3bg)"/>
 <circle cx="430" cy="260" r="110" fill="rgba(255,255,255,0.05)"/>
 <!-- terminal card -->
-<rect x="20" y="16" width="440" height="240" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="20" y="16" width="440" height="240" rx="10" fill="white" opacity="0.93" filter="url(#T3sh)"/>
 <!-- title bar -->
 <rect x="20" y="16" width="440" height="28" rx="10" fill="#1e1e2e"/>
 <rect x="20" y="32" width="440" height="12" fill="#1e1e2e"/>
@@ -1048,28 +1048,28 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
       <div class="project-card">
         <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+  <linearGradient id="T4bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
     <stop offset="100%" stop-color="#7B2FBE"/>
   </linearGradient>
-  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+  <filter id="T4sh" x="-8%" y="-8%" width="116%" height="116%">
     <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
   </filter>
 </defs>
-<rect width="480" height="270" fill="url(#bg)"/>
+<rect width="480" height="270" fill="url(#T4bg)"/>
 <circle cx="420" cy="20" r="100" fill="rgba(255,255,255,0.04)"/>
 <!-- stat cards -->
-<rect x="16" y="12" width="138" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="16" y="12" width="138" height="50" rx="10" fill="white" opacity="0.93" filter="url(#T4sh)"/>
 <text x="30" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">TESTS PASSED</text>
 <text x="30" y="50" fill="#2DC653" font-size="18" font-weight="700" font-family="Inter,sans-serif">118 / 120</text>
-<rect x="164" y="12" width="138" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="164" y="12" width="138" height="50" rx="10" fill="white" opacity="0.93" filter="url(#T4sh)"/>
 <text x="178" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">DURATION</text>
 <text x="178" y="50" fill="#333" font-size="18" font-weight="700" font-family="Inter,sans-serif">4.2s</text>
-<rect x="312" y="12" width="152" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="312" y="12" width="152" height="50" rx="10" fill="white" opacity="0.93" filter="url(#T4sh)"/>
 <text x="326" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">COVERAGE</text>
 <text x="326" y="50" fill="#4361EE" font-size="18" font-weight="700" font-family="Inter,sans-serif">98.3%</text>
 <!-- results list card -->
-<rect x="16" y="72" width="448" height="186" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="16" y="72" width="448" height="186" rx="10" fill="white" opacity="0.93" filter="url(#T4sh)"/>
 <text x="30" y="90" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">TEST SUITE RESULTS</text>
 <line x1="30" y1="96" x2="450" y2="96" stroke="#f0f0f0" stroke-width="1"/>
 <!-- rows -->
@@ -1121,70 +1121,70 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
       <div class="project-card">
         <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+  <linearGradient id="T5bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
     <stop offset="100%" stop-color="#7B2FBE"/>
   </linearGradient>
-  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+  <filter id="T5sh" x="-8%" y="-8%" width="116%" height="116%">
     <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
   </filter>
 </defs>
-<rect width="480" height="270" fill="url(#bg)"/>
+<rect width="480" height="270" fill="url(#T5bg)"/>
 <circle cx="30" cy="270" r="100" fill="rgba(255,255,255,0.04)"/>
 <!-- source cards -->
-<rect x="14" y="90" width="86" height="34" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="14" y="90" width="86" height="34" rx="10" fill="white" opacity="0.93" filter="url(#T5sh)"/>
 <text x="57" y="102" text-anchor="middle" fill="#4361EE" font-size="7" font-weight="700" font-family="Inter,sans-serif">SOURCE A</text>
 <text x="57" y="114" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">PostgreSQL</text>
-<rect x="14" y="133" width="86" height="34" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="14" y="133" width="86" height="34" rx="10" fill="white" opacity="0.93" filter="url(#T5sh)"/>
 <text x="57" y="145" text-anchor="middle" fill="#4361EE" font-size="7" font-weight="700" font-family="Inter,sans-serif">SOURCE B</text>
 <text x="57" y="157" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">REST API</text>
-<rect x="14" y="176" width="86" height="34" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="14" y="176" width="86" height="34" rx="10" fill="white" opacity="0.93" filter="url(#T5sh)"/>
 <text x="57" y="188" text-anchor="middle" fill="#4361EE" font-size="7" font-weight="700" font-family="Inter,sans-serif">SOURCE C</text>
 <text x="57" y="200" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">CSV Upload</text>
 <!-- arrows -->
-<path d="M100,107 Q128,107 128,148" stroke="#4361EE" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#a1)"/>
-<line x1="100" y1="150" x2="128" y2="150" stroke="#4361EE" stroke-width="1.5" opacity="0.5" marker-end="url(#a1)"/>
-<path d="M100,193 Q128,193 128,163" stroke="#4361EE" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#a1)"/>
+<path d="M100,107 Q128,107 128,148" stroke="#4361EE" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#T5a1)"/>
+<line x1="100" y1="150" x2="128" y2="150" stroke="#4361EE" stroke-width="1.5" opacity="0.5" marker-end="url(#T5a1)"/>
+<path d="M100,193 Q128,193 128,163" stroke="#4361EE" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#T5a1)"/>
 <!-- EXTRACT -->
-<rect x="132" y="118" width="80" height="64" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="132" y="118" width="80" height="64" rx="10" fill="white" opacity="0.93" filter="url(#T5sh)"/>
 <text x="172" y="140" text-anchor="middle" fill="#4361EE" font-size="9" font-weight="700" font-family="Inter,sans-serif">EXTRACT</text>
 <text x="172" y="152" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">Fetch + Ingest</text>
 <text x="172" y="165" text-anchor="middle" fill="#2DC653"  font-size="7"   font-family="Inter,sans-serif">47,203 rows</text>
 <!-- arrow E→T -->
-<line x1="212" y1="150" x2="242" y2="150" stroke="#ccc" stroke-width="1.5" marker-end="url(#a2)"/>
+<line x1="212" y1="150" x2="242" y2="150" stroke="#ccc" stroke-width="1.5" marker-end="url(#T5a2)"/>
 <!-- TRANSFORM -->
-<rect x="246" y="118" width="80" height="64" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="246" y="118" width="80" height="64" rx="10" fill="white" opacity="0.93" filter="url(#T5sh)"/>
 <text x="286" y="136" text-anchor="middle" fill="#F4A261"  font-size="9" font-weight="700" font-family="Inter,sans-serif">TRANSFORM</text>
 <text x="286" y="148" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">Clean · Enrich</text>
 <text x="286" y="160" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">Deduplicate</text>
 <text x="286" y="173" text-anchor="middle" fill="#2DC653"  font-size="7"   font-family="Inter,sans-serif">46,891 valid</text>
 <!-- arrow T→L -->
-<line x1="326" y1="150" x2="356" y2="150" stroke="#ccc" stroke-width="1.5" marker-end="url(#a2)"/>
+<line x1="326" y1="150" x2="356" y2="150" stroke="#ccc" stroke-width="1.5" marker-end="url(#T5a2)"/>
 <!-- LOAD -->
-<rect x="360" y="118" width="76" height="64" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="360" y="118" width="76" height="64" rx="10" fill="white" opacity="0.93" filter="url(#T5sh)"/>
 <text x="398" y="140" text-anchor="middle" fill="#2DC653"  font-size="9" font-weight="700" font-family="Inter,sans-serif">LOAD</text>
 <text x="398" y="152" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">Warehouse</text>
 <text x="398" y="165" text-anchor="middle" fill="#2DC653"  font-size="7"   font-family="Inter,sans-serif">Done ✓</text>
 <!-- schedule card top -->
-<rect x="14" y="14" width="220" height="64" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="14" y="14" width="220" height="64" rx="10" fill="white" opacity="0.93" filter="url(#T5sh)"/>
 <text x="28" y="32" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">PIPELINE SCHEDULE</text>
 <circle cx="28" cy="50" r="4" fill="#2DC653"/>
 <text x="38" y="54" fill="#555" font-size="8" font-family="Inter,sans-serif">Runs daily at 02:00 UTC</text>
 <text x="28" y="68" fill="#aaa" font-size="7" font-family="Inter,sans-serif">Last run completed in 4m 12s · 0 errors</text>
 <!-- quality card top right -->
-<rect x="246" y="14" width="230" height="64" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="246" y="14" width="230" height="64" rx="10" fill="white" opacity="0.93" filter="url(#T5sh)"/>
 <text x="260" y="32" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">QUALITY CHECKS</text>
 <text x="260" y="50" fill="#2DC653" font-size="8" font-family="Inter,sans-serif">✓  Null rate below 0.5%</text>
 <text x="260" y="64" fill="#2DC653" font-size="8" font-family="Inter,sans-serif">✓  Schema validated · 0 type errors</text>
 <!-- saved hours card bottom -->
-<rect x="14" y="208" width="462" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="14" y="208" width="462" height="50" rx="10" fill="white" opacity="0.93" filter="url(#T5sh)"/>
 <text x="30" y="226" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">BUSINESS IMPACT</text>
 <text x="30" y="246" fill="#333" font-size="9" font-family="Inter,sans-serif">Eliminated 6 hours of weekly manual data preparation · Automated alerting on data quality failures</text>
 <defs>
-  <marker id="a1" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+  <marker id="T5a1" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto">
     <path d="M0,0 L8,4 L0,8 Z" fill="rgba(67,97,238,0.5)"/>
   </marker>
-  <marker id="a2" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+  <marker id="T5a2" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto">
     <path d="M0,0 L8,4 L0,8 Z" fill="#ccc"/>
   </marker>
 </defs>
@@ -1201,35 +1201,35 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
       <div class="project-card">
         <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+  <linearGradient id="T6bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
     <stop offset="100%" stop-color="#7B2FBE"/>
   </linearGradient>
-  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+  <filter id="T6sh" x="-8%" y="-8%" width="116%" height="116%">
     <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
   </filter>
 </defs>
-<rect width="480" height="270" fill="url(#bg)"/>
+<rect width="480" height="270" fill="url(#T6bg)"/>
 <circle cx="440" cy="30" r="90" fill="rgba(255,255,255,0.04)"/>
 <!-- header -->
-<rect x="16" y="12" width="448" height="30" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="16" y="12" width="448" height="30" rx="10" fill="white" opacity="0.93" filter="url(#T6sh)"/>
 <text x="30" y="31" fill="#444" font-size="9" font-weight="700" font-family="Inter,sans-serif">OWASP TOP 10 · SECURITY AUDIT REPORT</text>
 <text x="396" y="31" fill="#aaa" font-size="8" font-family="Inter,sans-serif">8 findings</text>
 <!-- severity cards -->
-<rect x="16" y="52" width="96" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="16" y="52" width="96" height="50" rx="10" fill="white" opacity="0.93" filter="url(#T6sh)"/>
 <text x="64" y="70" text-anchor="middle" fill="#E63946" font-size="20" font-weight="700" font-family="Inter,sans-serif">1</text>
 <text x="64" y="86" text-anchor="middle" fill="#aaa"  font-size="7"   font-family="Inter,sans-serif">CRITICAL</text>
-<rect x="122" y="52" width="96" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="122" y="52" width="96" height="50" rx="10" fill="white" opacity="0.93" filter="url(#T6sh)"/>
 <text x="170" y="70" text-anchor="middle" fill="#E63946" font-size="20" font-weight="700" font-family="Inter,sans-serif">2</text>
 <text x="170" y="86" text-anchor="middle" fill="#aaa"  font-size="7"   font-family="Inter,sans-serif">HIGH</text>
-<rect x="228" y="52" width="96" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="228" y="52" width="96" height="50" rx="10" fill="white" opacity="0.93" filter="url(#T6sh)"/>
 <text x="276" y="70" text-anchor="middle" fill="#F4A261" font-size="20" font-weight="700" font-family="Inter,sans-serif">4</text>
 <text x="276" y="86" text-anchor="middle" fill="#aaa"  font-size="7"   font-family="Inter,sans-serif">MEDIUM</text>
-<rect x="334" y="52" width="96" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="334" y="52" width="96" height="50" rx="10" fill="white" opacity="0.93" filter="url(#T6sh)"/>
 <text x="382" y="70" text-anchor="middle" fill="#2DC653" font-size="20" font-weight="700" font-family="Inter,sans-serif">1</text>
 <text x="382" y="86" text-anchor="middle" fill="#aaa"  font-size="7"   font-family="Inter,sans-serif">LOW</text>
 <!-- findings table card -->
-<rect x="16" y="112" width="448" height="146" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="16" y="112" width="448" height="146" rx="10" fill="white" opacity="0.93" filter="url(#T6sh)"/>
 <text x="30" y="130" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">FINDING</text>
 <text x="296" y="130" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">CVSS</text>
 <text x="340" y="130" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">SEVERITY</text>
@@ -1281,18 +1281,18 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
       <div class="project-card">
         <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+  <linearGradient id="T7bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
     <stop offset="100%" stop-color="#7B2FBE"/>
   </linearGradient>
-  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+  <filter id="T7sh" x="-8%" y="-8%" width="116%" height="116%">
     <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
   </filter>
 </defs>
-<rect width="480" height="270" fill="url(#bg)"/>
+<rect width="480" height="270" fill="url(#T7bg)"/>
 <circle cx="440" cy="260" r="100" fill="rgba(255,255,255,0.04)"/>
 <!-- channel bar top -->
-<rect x="16" y="12" width="448" height="22" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="16" y="12" width="448" height="22" rx="10" fill="white" opacity="0.93" filter="url(#T7sh)"/>
 <rect x="18" y="14" width="120" height="18" rx="3" fill="#4361EE"  opacity="0.85"/>
 <rect x="138" y="14" width="88"  height="18" rx="0" fill="#7B2FBE"  opacity="0.85"/>
 <rect x="226" y="14" width="66"  height="18" rx="0" fill="#2DC653"  opacity="0.75"/>
@@ -1304,7 +1304,7 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <text x="317" y="26" text-anchor="middle" fill="white" font-size="7"   font-family="Inter,sans-serif">Social</text>
 <text x="402" y="26" text-anchor="middle" fill="white" font-size="7.5" font-weight="600" font-family="Inter,sans-serif">Referral 18%</text>
 <!-- funnel card -->
-<rect x="16" y="44" width="260" height="214" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="16" y="44" width="260" height="214" rx="10" fill="white" opacity="0.93" filter="url(#T7sh)"/>
 <text x="30" y="62" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">CONVERSION FUNNEL</text>
 <polygon points="32,76 256,76 224,116 64,116"    fill="#4361EE"  opacity="0.18"/>
 <polygon points="64,120 224,120 200,160 88,160"   fill="#4361EE"  opacity="0.14"/>
@@ -1319,15 +1319,15 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <text x="144" y="224" text-anchor="middle" fill="#2DC653"  font-size="11" font-weight="700" font-family="Inter,sans-serif">887</text>
 <text x="144" y="236" text-anchor="middle" fill="#aaa"   font-size="7"   font-family="Inter,sans-serif">CONVERTED  28.6%</text>
 <!-- stat cards right -->
-<rect x="288" y="44" width="176" height="66" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="288" y="44" width="176" height="66" rx="10" fill="white" opacity="0.93" filter="url(#T7sh)"/>
 <text x="302" y="62" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">TOTAL SPEND SAVED</text>
 <text x="302" y="88" fill="#4361EE" font-size="22" font-weight="700" font-family="Inter,sans-serif">30%</text>
 <text x="302" y="102" fill="#aaa" font-size="7.5" font-family="Inter,sans-serif">reallocated to higher-ROI channels</text>
-<rect x="288" y="120" width="176" height="66" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="288" y="120" width="176" height="66" rx="10" fill="white" opacity="0.93" filter="url(#T7sh)"/>
 <text x="302" y="138" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">DATA CLEANED</text>
 <text x="302" y="164" fill="#7B2FBE" font-size="22" font-weight="700" font-family="Inter,sans-serif">18 mo.</text>
 <text x="302" y="178" fill="#aaa" font-size="7.5" font-family="Inter,sans-serif">campaign attribution rebuilt</text>
-<rect x="288" y="196" width="176" height="62" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="288" y="196" width="176" height="62" rx="10" fill="white" opacity="0.93" filter="url(#T7sh)"/>
 <text x="302" y="214" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">TOP CHANNEL</text>
 <text x="302" y="238" fill="#2DC653" font-size="15" font-weight="700" font-family="Inter,sans-serif">Paid Search</text>
 <text x="302" y="252" fill="#aaa" font-size="7.5" font-family="Inter,sans-serif">3.2x ROI vs organic</text>
@@ -1818,8 +1818,12 @@ document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click
 .modal-links{display:flex;gap:.75rem;padding-top:1.5rem;border-top:1px solid var(--border);margin-top:1.5rem}
 
 /* SCROLL REVEAL */
-const ro = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.1, rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal,.timeline-item,.skill-category,.project-card,.cert-card,.exp-card').forEach(el => ro.observe(el));
+const ro = new IntersectionObserver(entries => entries.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('visible'); e.target.classList.remove('js-hide'); }
+}), {threshold:.08, rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal,.timeline-item,.skill-category,.project-card,.cert-card,.exp-card').forEach(el => {
+  el.classList.add('js-hide'); ro.observe(el);
+});
 
 /* SKILL BARS */
 const so = new IntersectionObserver(entries => entries.forEach(e => {
@@ -1845,25 +1849,30 @@ document.querySelectorAll('.portfolio-tab').forEach(tab => {
 
 
 function openModal(id){
-  const tmpl = document.getElementById(id);
-  if(!tmpl) return;
-  const box = document.getElementById('modal-box');
-  box.innerHTML = '<button class="modal-close" onclick="document.getElementById(\'modal-backdrop\').classList.remove(\'open\')">✕</button>' + tmpl.innerHTML;
-  document.getElementById('modal-backdrop').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  try {
+    const tmpl = document.getElementById(id);
+    if(!tmpl) return;
+    const box  = document.getElementById('modal-box');
+    const btn  = document.createElement('button');
+    btn.className = 'modal-close';
+    btn.textContent = '✕';
+    btn.addEventListener('click', closeAllModals);
+    box.innerHTML = '';
+    box.appendChild(btn);
+    const clone = tmpl.content ? tmpl.content.cloneNode(true) : tmpl.cloneNode(true);
+    box.appendChild(clone);
+    document.getElementById('modal-backdrop').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  } catch(e){ console.error('Modal error:', e); }
+}
+function closeAllModals(){
+  document.getElementById('modal-backdrop').classList.remove('open');
+  document.body.style.overflow = '';
 }
 function closeModal(e){
-  if(e.target === document.getElementById('modal-backdrop')){
-    document.getElementById('modal-backdrop').classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  if(e.target === document.getElementById('modal-backdrop')) closeAllModals();
 }
-document.addEventListener('keydown', e => {
-  if(e.key === 'Escape'){
-    document.getElementById('modal-backdrop').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-});
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeAllModals(); });
 
 /* HERO CANVAS */
 (function(){
