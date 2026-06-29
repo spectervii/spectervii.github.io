@@ -148,7 +148,7 @@ ul{list-style:none}
 .skill-name{font-size:.8125rem;font-weight:500;color:var(--text-primary)}
 .skill-level{font-size:.6875rem;color:var(--text-muted);font-weight:500}
 .skill-bar{height:3px;background:var(--border);border-radius:100px;overflow:hidden}
-.skill-fill{height:100%;border-radius:100px;width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
+@keyframes barFill{from{transform:scaleX(0)}to{transform:scaleX(var(--p,0))}}.skill-fill{height:100%;width:100%;border-radius:100px;transform-origin:left center;animation:barFill 1.3s cubic-bezier(.4,0,.2,1) both;animation-delay:var(--bd,0.4s)}
 .skill-fill.data{background:var(--green)}
 .skill-fill.qa{background:var(--amber)}
 .skill-fill.security{background:var(--purple)}
@@ -726,14 +726,14 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
           <span class="skill-cat-title">Data and Analytics</span>
         </div>
         <div class="skill-items">
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">SQL</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill data" data-width="88"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Python (Pandas, NumPy)</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill data" data-width="74"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Power BI</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill data" data-width="83"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Excel and Google Sheets</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill data" data-width="90"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Tableau</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill data" data-width="63"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Data Visualisation</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill data" data-width="85"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Statistical Analysis</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill data" data-width="71"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Machine Learning (Learning)</span><span class="skill-level">Developing</span></div><div class="skill-bar"><div class="skill-fill data" data-width="40"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">SQL</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill data" style="--p:0.88"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Python (Pandas, NumPy)</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill data" style="--p:0.74"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Power BI</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill data" style="--p:0.83"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Excel and Google Sheets</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill data" style="--p:0.9"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Tableau</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill data" style="--p:0.63"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Data Visualisation</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill data" style="--p:0.85"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Statistical Analysis</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill data" style="--p:0.71"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Machine Learning (Learning)</span><span class="skill-level">Developing</span></div><div class="skill-bar"><div class="skill-fill data" style="--p:0.4"></div></div></div>
         </div>
       </div>
       <div class="skill-category">
@@ -742,13 +742,13 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
           <span class="skill-cat-title">Quality Assurance</span>
         </div>
         <div class="skill-items">
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Manual Testing</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill qa" data-width="90"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">API Testing (Postman)</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill qa" data-width="84"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Test Case Design</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill qa" data-width="87"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Regression Testing</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill qa" data-width="85"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Bug Reporting</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill qa" data-width="92"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">JIRA and Agile Workflows</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill qa" data-width="78"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Automation Testing (Learning)</span><span class="skill-level">Developing</span></div><div class="skill-bar"><div class="skill-fill qa" data-width="37"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Manual Testing</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill qa" style="--p:0.9"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">API Testing (Postman)</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill qa" style="--p:0.84"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Test Case Design</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill qa" style="--p:0.87"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Regression Testing</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill qa" style="--p:0.85"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Bug Reporting</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill qa" style="--p:0.92"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">JIRA and Agile Workflows</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill qa" style="--p:0.78"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Automation Testing (Learning)</span><span class="skill-level">Developing</span></div><div class="skill-bar"><div class="skill-fill qa" style="--p:0.37"></div></div></div>
         </div>
       </div>
       <div class="skill-category">
@@ -757,13 +757,13 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
           <span class="skill-cat-title">Cybersecurity</span>
         </div>
         <div class="skill-items">
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Network Security</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill security" data-width="65"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">OWASP Top 10</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill security" data-width="72"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Vulnerability Assessment</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill security" data-width="60"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Linux Security</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill security" data-width="58"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Risk Assessment</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill security" data-width="68"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Threat Modelling</span><span class="skill-level">Developing</span></div><div class="skill-bar"><div class="skill-fill security" data-width="45"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Anti-Fraud Systems</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill security" data-width="67"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Network Security</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill security" style="--p:0.65"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">OWASP Top 10</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill security" style="--p:0.72"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Vulnerability Assessment</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill security" style="--p:0.6"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Linux Security</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill security" style="--p:0.58"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Risk Assessment</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill security" style="--p:0.68"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Threat Modelling</span><span class="skill-level">Developing</span></div><div class="skill-bar"><div class="skill-fill security" style="--p:0.45"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Anti-Fraud Systems</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill security" style="--p:0.67"></div></div></div>
         </div>
       </div>
       <div class="skill-category">
@@ -772,13 +772,13 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
           <span class="skill-cat-title">Tools and Platforms</span>
         </div>
         <div class="skill-items">
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Git and GitHub</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill tools" data-width="75"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Jupyter Notebooks</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill tools" data-width="78"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Google Analytics</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill tools" data-width="70"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">VS Code</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill tools" data-width="80"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Sandbox VM Environments</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill tools" data-width="68"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Docker (Learning)</span><span class="skill-level">Developing</span></div><div class="skill-bar"><div class="skill-fill tools" data-width="32"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Cloud Platforms (Learning)</span><span class="skill-level">Developing</span></div><div class="skill-bar"><div class="skill-fill tools" data-width="28"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Git and GitHub</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill tools" style="--p:0.75"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Jupyter Notebooks</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill tools" style="--p:0.78"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Google Analytics</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill tools" style="--p:0.7"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">VS Code</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill tools" style="--p:0.8"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Sandbox VM Environments</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill tools" style="--p:0.68"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Docker (Learning)</span><span class="skill-level">Developing</span></div><div class="skill-bar"><div class="skill-fill tools" style="--p:0.32"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Cloud Platforms (Learning)</span><span class="skill-level">Developing</span></div><div class="skill-bar"><div class="skill-fill tools" style="--p:0.28"></div></div></div>
         </div>
       </div>
     </div>
@@ -1790,43 +1790,7 @@ setTimeout(() => {
   });
 }, 700);
 
-/* SKILL BARS — dedicated observer on each skill-category */
-(function() {
-  function animateBarsIn(cat) {
-    if (cat.dataset.barsAnimated) return;
-    cat.dataset.barsAnimated = '1';
-    cat.querySelectorAll('.skill-fill').forEach(f => {
-      f.style.width = (f.dataset.width || '0') + '%';
-    });
-  }
-  const skillCats = document.querySelectorAll('.skill-category');
-  if ('IntersectionObserver' in window) {
-    const sio = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { animateBarsIn(e.target); sio.unobserve(e.target); } });
-    }, {threshold: 0.01});
-    skillCats.forEach(c => sio.observe(c));
-  }
-  // Fallback 1: scroll event
-  function onScroll() {
-    skillCats.forEach(cat => {
-      if (cat.dataset.barsAnimated) return;
-      const r = cat.getBoundingClientRect();
-      if (r.top < window.innerHeight && r.bottom > 0) animateBarsIn(cat);
-    });
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  // Fallback 2: timeout
-  setTimeout(() => { skillCats.forEach(animateBarsIn); }, 1200);
-  // Fallback 3: on window load, animate anything already on screen
-  window.addEventListener('load', () => {
-    skillCats.forEach(cat => {
-      const r = cat.getBoundingClientRect();
-      if (r.top < window.innerHeight) animateBarsIn(cat);
-    });
-    // And re-animate after a short delay in case of slow render
-    setTimeout(() => { skillCats.forEach(animateBarsIn); }, 300);
-  });
-})();
+/* SKILL BARS — animated via CSS @keyframes barFill, no JS needed */
 
 /* PORTFOLIO TABS */
 document.querySelectorAll('.portfolio-tab').forEach(tab => {
