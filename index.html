@@ -277,6 +277,25 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 .footer-name{font-size:.875rem;font-weight:600;color:var(--text-primary)}
 .footer-copy{font-size:.75rem;color:var(--text-muted)}
 
+
+/* CASE STUDY MODALS */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);max-width:700px;width:90%;max-height:85vh;overflow-y:auto;padding:2.5rem;position:relative;transform:translateY(20px);transition:transform .3s ease}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+.modal-close{position:absolute;top:1.25rem;right:1.25rem;width:32px;height:32px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--text-muted);cursor:pointer;transition:all .2s}
+.modal-close:hover{border-color:var(--border-hover);color:var(--text-primary)}
+.modal-role{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}
+.modal-title{font-size:1.5rem;font-weight:600;color:var(--text-primary);margin-bottom:1.5rem}
+.modal-section{margin-bottom:1.5rem}
+.modal-section-label{font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.625rem}
+.modal-section p{font-size:.9375rem;line-height:1.75;color:var(--text-secondary)}
+.modal-impact-list{display:flex;flex-direction:column;gap:.5rem}
+.modal-impact-item{display:flex;align-items:flex-start;gap:.625rem;font-size:.875rem;color:var(--text-secondary);line-height:1.6}
+.modal-impact-item::before{content:"↗";color:var(--green);font-weight:700;flex-shrink:0;margin-top:.1rem}
+.modal-tech-wrap{display:flex;flex-wrap:wrap;gap:.375rem}
+.modal-links{display:flex;gap:.75rem;padding-top:1.5rem;border-top:1px solid var(--border);margin-top:1.5rem}
+
 /* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -750,12 +769,65 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 
     <div class="project-featured">
       <div class="project-card">
-        <div class="project-thumb">📊</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">Python</span><span class="project-tag">SQL</span>
-            <span class="project-tag">Scikit-learn</span><span class="project-tag">Power BI</span>
-          </div>
+        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#4361EE"/>
+    <stop offset="100%" stop-color="#7B2FBE"/>
+  </linearGradient>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+    <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
+  </filter>
+</defs>
+<rect width="480" height="270" fill="url(#bg)"/>
+<!-- decorative circles -->
+<circle cx="400" cy="270" r="120" fill="rgba(255,255,255,0.05)"/>
+<circle cx="60"  cy="20"  r="80"  fill="rgba(255,255,255,0.04)"/>
+<!-- main card -->
+<rect x="24" y="14" width="280" height="160" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="40" y="36" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">CHURN RATE BY CONTRACT TYPE</text>
+<!-- bars -->
+<rect x="52"  y="140" width="48" height="78" rx="4" fill="#E63946"  opacity="0.0"/>
+<rect x="52"  y="62"  width="48" height="92" rx="4" fill="#E63946"  opacity="0.85"/>
+<rect x="122" y="62"  width="48" height="44" rx="4" fill="#F4A261"  opacity="0.85"/>
+<rect x="122" y="106" width="48" height="0"  rx="4" fill="none"/>
+<rect x="192" y="62"  width="48" height="12" rx="4" fill="#2DC653"  opacity="0.9"/>
+<line x1="44" y1="154" x2="256" y2="154" stroke="#eee" stroke-width="1"/>
+<!-- pct labels -->
+<text x="76"  y="57"  text-anchor="middle" fill="#E63946"  font-size="14" font-weight="700" font-family="Inter,sans-serif">42%</text>
+<text x="146" y="100" text-anchor="middle" fill="#F4A261"  font-size="14" font-weight="700" font-family="Inter,sans-serif">11%</text>
+<text x="216" y="57"  text-anchor="middle" fill="#2DC653"  font-size="14" font-weight="700" font-family="Inter,sans-serif">3%</text>
+<!-- x labels -->
+<text x="76"  y="164" text-anchor="middle" fill="#aaa" font-size="6.5" font-family="Inter,sans-serif">Month-Month</text>
+<text x="146" y="164" text-anchor="middle" fill="#aaa" font-size="6.5" font-family="Inter,sans-serif">One Year</text>
+<text x="216" y="164" text-anchor="middle" fill="#aaa" font-size="6.5" font-family="Inter,sans-serif">Two Year</text>
+<!-- AUC card -->
+<rect x="26" y="182" width="130" height="74" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="42" y="200" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">MODEL ACCURACY</text>
+<text x="42" y="224" fill="#4361EE" font-size="24" font-weight="700" font-family="Inter,sans-serif">81%</text>
+<text x="42" y="240" fill="#aaa" font-size="8" font-family="Inter,sans-serif">AUC-ROC 0.847</text>
+<!-- ROC mini card -->
+<rect x="168" y="182" width="136" height="74" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="184" y="200" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">ROC CURVE</text>
+<polyline points="178,248 192,235 208,224 224,214 240,208 258,204 288,200 296,199" stroke="#4361EE" stroke-width="2" fill="none" stroke-linecap="round"/>
+<polyline points="178,248 296,248" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
+<!-- right stat card -->
+<rect x="316" y="14" width="148" height="100" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="332" y="34" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">ANNUAL GROWTH</text>
+<text x="332" y="62" fill="#7B2FBE" font-size="22" font-weight="700" font-family="Inter,sans-serif">1,800%</text>
+<text x="332" y="78" fill="#bbb" font-size="8" font-family="Inter,sans-serif">from last month</text>
+<rect x="332" y="88" width="50" height="14" rx="7" fill="#2DC653"/>
+<text x="357" y="98" text-anchor="middle" fill="white" font-size="7.5" font-weight="600" font-family="Inter,sans-serif">▲ Active</text>
+<!-- right insight card -->
+<rect x="316" y="124" width="148" height="132" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="332" y="143" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">KEY INSIGHT</text>
+<text x="332" y="163" fill="#333" font-size="9" font-weight="600" font-family="Inter,sans-serif">Contract type is the</text>
+<text x="332" y="176" fill="#333" font-size="9" font-weight="600" font-family="Inter,sans-serif">strongest predictor</text>
+<text x="332" y="196" fill="#bbb" font-size="8" font-family="Inter,sans-serif">Switching M2M customers</text>
+<text x="332" y="208" fill="#bbb" font-size="8" font-family="Inter,sans-serif">to annual contracts is</text>
+<text x="332" y="220" fill="#bbb" font-size="8" font-family="Inter,sans-serif">the top retention lever.</text>
+<text x="332" y="243" fill="#4361EE" font-size="8" font-weight="600" font-family="Inter,sans-serif">23% churn reduction →</text>
+</svg></div>
           <div class="project-title">Customer Churn Prediction Dashboard</div>
           <div class="project-desc">
             Using the IBM Telco Customer Churn dataset (7,000+ customer records), this project builds a complete machine learning pipeline from raw data to an interactive decision-support dashboard. Includes full exploratory data analysis, feature engineering, logistic regression modelling with threshold tuning, and a Power BI dashboard adopted for retention team use. Every step is documented in Jupyter with business context attached to each technical decision.
@@ -766,17 +838,69 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
               GitHub
             </a>
-            <a href="#" class="project-link">Case Study ↗</a>
+            <a href="#" class="project-link" onclick="openModal('churn-cs');return false;">Case Study ↗</a>
           </div>
         </div>
       </div>
       <div class="project-card">
-        <div class="project-thumb" style="font-size:2rem;">📈</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">Python</span><span class="project-tag">Plotly</span>
-            <span class="project-tag">Pandas</span><span class="project-tag">Streamlit</span>
-          </div>
+        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#4361EE"/>
+    <stop offset="100%" stop-color="#7B2FBE"/>
+  </linearGradient>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+    <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
+  </filter>
+</defs>
+<rect width="480" height="270" fill="url(#bg)"/>
+<circle cx="440" cy="260" r="110" fill="rgba(255,255,255,0.05)"/>
+<circle cx="30"  cy="10"  r="70"  fill="rgba(255,255,255,0.04)"/>
+<!-- KPI row -->
+<rect x="16" y="12" width="102" height="52" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="28" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">REVENUE</text>
+<text x="28" y="49" fill="#4361EE" font-size="16" font-weight="700" font-family="Inter,sans-serif">$2.3M</text>
+<rect x="126" y="12" width="102" height="52" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="138" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">PROFIT</text>
+<text x="138" y="49" fill="#2DC653" font-size="16" font-weight="700" font-family="Inter,sans-serif">$286K</text>
+<rect x="236" y="12" width="102" height="52" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="248" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">ORDERS</text>
+<text x="248" y="49" fill="#333" font-size="16" font-weight="700" font-family="Inter,sans-serif">9,994</text>
+<rect x="346" y="12" width="118" height="52" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="358" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">AVG ORDER</text>
+<text x="358" y="49" fill="#F4A261" font-size="16" font-weight="700" font-family="Inter,sans-serif">$230</text>
+<!-- trend chart card -->
+<rect x="16" y="74" width="270" height="184" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="30" y="92" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">REVENUE TREND</text>
+<path d="M30,240 L65,224 L100,215 L135,204 L170,192 L205,178 L240,160 L265,148 L274,145 L274,248 Z" fill="rgba(67,97,238,0.08)"/>
+<polyline points="30,240 65,224 100,215 135,204 170,192 205,178 240,160 265,148 274,145" stroke="#4361EE" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="30,245 65,241 100,237 135,233 170,228 205,222 240,216 265,212 274,210" stroke="#2DC653" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="28" y1="248" x2="276" y2="248" stroke="#eee" stroke-width="1"/>
+<text x="30"  y="260" fill="#bbb" font-size="6.5" font-family="Inter,sans-serif">2014</text>
+<text x="120" y="260" fill="#bbb" font-size="6.5" font-family="Inter,sans-serif">2015</text>
+<text x="200" y="260" fill="#bbb" font-size="6.5" font-family="Inter,sans-serif">2016</text>
+<text x="258" y="260" fill="#bbb" font-size="6.5" font-family="Inter,sans-serif">2017</text>
+<!-- donut card -->
+<rect x="298" y="74" width="166" height="100" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="314" y="92" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">BY CATEGORY</text>
+<circle cx="362" cy="148" r="32" fill="none" stroke="#f0f0f0" stroke-width="10"/>
+<path d="M362,116 A32,32 0 0,1 394,148" stroke="#4361EE" stroke-width="10" fill="none"/>
+<path d="M394,148 A32,32 0 0,1 350,178" stroke="#F4A261"  stroke-width="10" fill="none"/>
+<path d="M350,178 A32,32 0 0,1 362,116" stroke="#2DC653"  stroke-width="10" fill="none"/>
+<text x="362" y="152" text-anchor="middle" fill="#333" font-size="11" font-weight="700" font-family="Inter,sans-serif">36%</text>
+<text x="410" y="118" fill="#4361EE" font-size="7" font-weight="600" font-family="Inter,sans-serif">● Tech</text>
+<text x="410" y="132" fill="#F4A261"  font-size="7" font-weight="600" font-family="Inter,sans-serif">● Furn</text>
+<text x="410" y="146" fill="#2DC653"  font-size="7" font-weight="600" font-family="Inter,sans-serif">● Office</text>
+<!-- region bar card -->
+<rect x="298" y="184" width="166" height="74" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="314" y="202" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">TOP REGIONS</text>
+<rect x="314" y="210" width="100" height="9" rx="4" fill="#4361EE" opacity="0.85"/>
+<text x="420" y="218" fill="#aaa" font-size="7" font-family="Inter,sans-serif">West</text>
+<rect x="314" y="224" width="80"  height="9" rx="4" fill="#7B2FBE"  opacity="0.85"/>
+<text x="400" y="232" fill="#aaa" font-size="7" font-family="Inter,sans-serif">East</text>
+<rect x="314" y="238" width="58"  height="9" rx="4" fill="#F4A261"  opacity="0.85"/>
+<text x="378" y="246" fill="#aaa" font-size="7" font-family="Inter,sans-serif">Central</text>
+</svg></div>
           <div class="project-title">Interactive Sales Intelligence Dashboard</div>
           <div class="project-desc">
             A fully interactive data visualisation application built with Python and Streamlit, drawing on a public retail sales dataset to surface revenue trends, product performance, and customer segment behaviour. Deployed as a live web app. Demonstrates how visualisation choices directly shape the decisions stakeholders make.
@@ -795,29 +919,122 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 
     <div class="projects-grid">
       <div class="project-card">
-        <div class="project-thumb" style="font-size:2rem;">🛡</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">Python</span><span class="project-tag">OWASP</span>
-            <span class="project-tag">Fraud Detection</span><span class="project-tag">Security</span>
-          </div>
+        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#4361EE"/>
+    <stop offset="100%" stop-color="#7B2FBE"/>
+  </linearGradient>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+    <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
+  </filter>
+</defs>
+<rect width="480" height="270" fill="url(#bg)"/>
+<circle cx="420" cy="260" r="130" fill="rgba(255,255,255,0.05)"/>
+<!-- main network card -->
+<rect x="16" y="14" width="296" height="242" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="32" y="34" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">TRANSACTION NETWORK</text>
+<!-- central hub -->
+<circle cx="160" cy="140" r="22" fill="#4361EE" opacity="0.15"/>
+<circle cx="160" cy="140" r="14" fill="#4361EE"/>
+<text x="160" y="144" text-anchor="middle" fill="white" font-size="8" font-weight="700" font-family="Inter,sans-serif">API</text>
+<!-- safe connections -->
+<line x1="160" y1="140" x2="68"  y2="72"  stroke="#2DC653" stroke-width="1.2" opacity="0.5"/>
+<circle cx="68"  cy="72"  r="9" fill="white" stroke="#2DC653" stroke-width="1.5"/>
+<text x="68"  y="76"  text-anchor="middle" fill="#2DC653" font-size="8" font-family="Inter,sans-serif">✓</text>
+<line x1="160" y1="140" x2="260" y2="72"  stroke="#2DC653" stroke-width="1.2" opacity="0.5"/>
+<circle cx="260" cy="72"  r="9" fill="white" stroke="#2DC653" stroke-width="1.5"/>
+<text x="260" y="76"  text-anchor="middle" fill="#2DC653" font-size="8" font-family="Inter,sans-serif">✓</text>
+<line x1="160" y1="140" x2="52"  y2="188" stroke="#2DC653" stroke-width="1.2" opacity="0.5"/>
+<circle cx="52"  cy="188" r="9" fill="white" stroke="#2DC653" stroke-width="1.5"/>
+<text x="52"  y="192" text-anchor="middle" fill="#2DC653" font-size="8" font-family="Inter,sans-serif">✓</text>
+<line x1="160" y1="140" x2="272" y2="195" stroke="#2DC653" stroke-width="1.2" opacity="0.5"/>
+<circle cx="272" cy="195" r="9" fill="white" stroke="#2DC653" stroke-width="1.5"/>
+<text x="272" y="199" text-anchor="middle" fill="#2DC653" font-size="8" font-family="Inter,sans-serif">✓</text>
+<line x1="160" y1="140" x2="100" y2="235" stroke="#2DC653" stroke-width="1.2" opacity="0.5"/>
+<circle cx="100" cy="235" r="9" fill="white" stroke="#2DC653" stroke-width="1.5"/>
+<text x="100" y="239" text-anchor="middle" fill="#2DC653" font-size="8" font-family="Inter,sans-serif">✓</text>
+<!-- blocked connections -->
+<line x1="160" y1="140" x2="220" y2="235" stroke="#E63946" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+<circle cx="220" cy="235" r="11" fill="rgba(230,57,70,0.1)" stroke="#E63946" stroke-width="2"/>
+<text x="220" y="239" text-anchor="middle" fill="#E63946" font-size="10" font-family="Inter,sans-serif">✕</text>
+<line x1="160" y1="140" x2="108" y2="58"  stroke="#E63946" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+<circle cx="108" cy="58"  r="11" fill="rgba(230,57,70,0.1)" stroke="#E63946" stroke-width="2"/>
+<text x="108" y="62"  text-anchor="middle" fill="#E63946" font-size="10" font-family="Inter,sans-serif">✕</text>
+<!-- right stat cards -->
+<rect x="324" y="14" width="140" height="56" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="340" y="32" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">ACCURACY</text>
+<text x="340" y="56" fill="#2DC653" font-size="22" font-weight="700" font-family="Inter,sans-serif">98.2%</text>
+<rect x="324" y="80" width="140" height="56" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="340" y="98" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">BLOCKED TODAY</text>
+<text x="340" y="122" fill="#E63946" font-size="22" font-weight="700" font-family="Inter,sans-serif">14</text>
+<rect x="324" y="146" width="140" height="110" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="340" y="164" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">RECENT ALERTS</text>
+<circle cx="338" cy="180" r="3.5" fill="#E63946"/>
+<text x="348" y="184" fill="#555" font-size="7.5" font-family="Inter,sans-serif">Velocity anomaly</text>
+<circle cx="338" cy="198" r="3.5" fill="#E63946"/>
+<text x="348" y="202" fill="#555" font-size="7.5" font-family="Inter,sans-serif">Geo mismatch</text>
+<circle cx="338" cy="216" r="3.5" fill="#F4A261"/>
+<text x="348" y="220" fill="#555" font-size="7.5" font-family="Inter,sans-serif">High-frequency flag</text>
+<circle cx="338" cy="234" r="3.5" fill="#2DC653"/>
+<text x="348" y="238" fill="#555" font-size="7.5" font-family="Inter,sans-serif">Score 0.04 — cleared</text>
+</svg></div>
           <div class="project-title">Fintech Product with Anti-Fraud Infrastructure</div>
           <div class="project-desc">
             Built a functioning fintech product from scratch, then secured it. Implemented rule-based and behavioural anti-fraud detection to flag and block suspicious transactions from bad actors. The security layer includes rate limiting, anomaly scoring, and audit logging. Demonstrates full product thinking paired with security engineering.
           </div>
           <div class="project-links">
             <a href="https://github.com/spectervii/fintech-anti-fraud" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
-            <a href="#" class="project-link">Case Study ↗</a>
+            <a href="#" class="project-link" onclick="openModal('sales-cs');return false;">Case Study ↗</a>
           </div>
         </div>
       </div>
       <div class="project-card">
-        <div class="project-thumb" style="font-size:2rem;">💻</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">VirtualBox</span><span class="project-tag">Linux</span>
-            <span class="project-tag">Security Testing</span><span class="project-tag">QA</span>
-          </div>
+        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#4361EE"/>
+    <stop offset="100%" stop-color="#7B2FBE"/>
+  </linearGradient>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+    <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
+  </filter>
+</defs>
+<rect width="480" height="270" fill="url(#bg)"/>
+<circle cx="430" cy="260" r="110" fill="rgba(255,255,255,0.05)"/>
+<!-- terminal card -->
+<rect x="20" y="16" width="440" height="240" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<!-- title bar -->
+<rect x="20" y="16" width="440" height="28" rx="10" fill="#1e1e2e"/>
+<rect x="20" y="32" width="440" height="12" fill="#1e1e2e"/>
+<circle cx="42" cy="30" r="5" fill="#E63946"   opacity="0.8"/>
+<circle cx="58" cy="30" r="5" fill="#F4A261"   opacity="0.8"/>
+<circle cx="74" cy="30" r="5" fill="#2DC653"   opacity="0.8"/>
+<text x="240" y="34" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8" font-family="Inter,sans-serif">Sandbox VM — Ubuntu 22.04 LTS</text>
+<!-- terminal body -->
+<rect x="20" y="44" width="440" height="212" rx="0" fill="#1a1a2e"/>
+<rect x="20" y="212" width="440" height="44" rx="10" fill="#1a1a2e"/>
+<rect x="20" y="44" width="440" height="8" fill="#1a1a2e"/>
+<!-- terminal text -->
+<text x="36" y="64"  fill="rgba(255,255,255,0.35)" font-size="8" font-family="monospace">user@sandbox:~$</text>
+<text x="148" y="64" fill="#2DC653"                  font-size="8" font-family="monospace">./run_tests.sh --target app.local</text>
+<text x="36" y="80"  fill="rgba(255,255,255,0.25)" font-size="8" font-family="monospace">[*] Starting security scan on app.local:8080</text>
+<text x="36" y="96"  fill="#2DC653"                  font-size="8" font-family="monospace">[+] Port 8080 open — HTTP service detected</text>
+<text x="36" y="112" fill="#2DC653"                  font-size="8" font-family="monospace">[+] Running OWASP Top 10 checks...</text>
+<text x="36" y="128" fill="#F4A261"                font-size="8" font-family="monospace">[!] SQL Injection — 3 potential vectors found</text>
+<text x="36" y="144" fill="#E63946"                  font-size="8" font-family="monospace">[!] XSS — reflected injection confirmed on /search</text>
+<text x="36" y="160" fill="#2DC653"                  font-size="8" font-family="monospace">[+] Generating report...</text>
+<text x="36" y="176" fill="rgba(255,255,255,0.2)"  font-size="8" font-family="monospace">────────────────────────────────────────────────</text>
+<text x="36" y="192" fill="rgba(255,255,255,0.6)"  font-size="8" font-family="monospace">Critical: 1  High: 2  Medium: 4  Low: 1</text>
+<text x="36" y="208" fill="rgba(255,255,255,0.2)"  font-size="8" font-family="monospace">────────────────────────────────────────────────</text>
+<text x="36" y="228" fill="rgba(255,255,255,0.3)"  font-size="8" font-family="monospace">user@sandbox:~$</text>
+<rect x="152" y="218" width="6" height="12" fill="#2DC653" opacity="0.9"/>
+<!-- snapshot badge -->
+<rect x="330" y="196" width="118" height="44" rx="8" fill="rgba(67,97,238,0.25)" stroke="#4361EE" stroke-width="1"/>
+<text x="389" y="213" text-anchor="middle" fill="#4361EE" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">SNAPSHOT SAVED</text>
+<text x="389" y="227" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="7" font-family="Inter,sans-serif">pre-test-baseline</text>
+<text x="389" y="237" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="6.5" font-family="Inter,sans-serif">VirtualBox · 4GB RAM</text>
+</svg></div>
           <div class="project-title">Sandbox VM Testing Environment</div>
           <div class="project-desc">
             Configured an isolated virtual machine environment for safe product testing, penetration testing labs, and security research. Used to test applications under adversarial conditions without risking production infrastructure. Documents setup, snapshotting strategy, and testing workflows.
@@ -829,29 +1046,149 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
         </div>
       </div>
       <div class="project-card">
-        <div class="project-thumb" style="font-size:2rem;">🔌</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">Postman</span><span class="project-tag">Python</span>
-            <span class="project-tag">pytest</span><span class="project-tag">QA</span>
-          </div>
+        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#4361EE"/>
+    <stop offset="100%" stop-color="#7B2FBE"/>
+  </linearGradient>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+    <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
+  </filter>
+</defs>
+<rect width="480" height="270" fill="url(#bg)"/>
+<circle cx="420" cy="20" r="100" fill="rgba(255,255,255,0.04)"/>
+<!-- stat cards -->
+<rect x="16" y="12" width="138" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="30" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">TESTS PASSED</text>
+<text x="30" y="50" fill="#2DC653" font-size="18" font-weight="700" font-family="Inter,sans-serif">118 / 120</text>
+<rect x="164" y="12" width="138" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="178" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">DURATION</text>
+<text x="178" y="50" fill="#333" font-size="18" font-weight="700" font-family="Inter,sans-serif">4.2s</text>
+<rect x="312" y="12" width="152" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="326" y="28" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">COVERAGE</text>
+<text x="326" y="50" fill="#4361EE" font-size="18" font-weight="700" font-family="Inter,sans-serif">98.3%</text>
+<!-- results list card -->
+<rect x="16" y="72" width="448" height="186" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="30" y="90" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">TEST SUITE RESULTS</text>
+<line x1="30" y1="96" x2="450" y2="96" stroke="#f0f0f0" stroke-width="1"/>
+<!-- rows -->
+<g font-size="8.5" font-family="monospace">
+  <rect x="30"  y="104" width="36" height="13" rx="3" fill="#2DC653" opacity="0.15"/>
+  <text x="48"  y="114" text-anchor="middle" fill="#2DC653" font-weight="700">PASS</text>
+  <text x="80"  y="114" fill="#444">POST /auth/login — 200 OK</text>
+  <text x="410" y="114" fill="#bbb">142ms</text>
+  <rect x="30"  y="122" width="36" height="13" rx="3" fill="#2DC653" opacity="0.15"/>
+  <text x="48"  y="132" text-anchor="middle" fill="#2DC653" font-weight="700">PASS</text>
+  <text x="80"  y="132" fill="#444">GET /api/users — 200, schema valid</text>
+  <text x="410" y="132" fill="#bbb">89ms</text>
+  <rect x="30"  y="140" width="36" height="13" rx="3" fill="#2DC653" opacity="0.15"/>
+  <text x="48"  y="150" text-anchor="middle" fill="#2DC653" font-weight="700">PASS</text>
+  <text x="80"  y="150" fill="#444">POST /api/transfer — 201 Created</text>
+  <text x="410" y="150" fill="#bbb">203ms</text>
+  <rect x="30"  y="158" width="36" height="13" rx="3" fill="#E63946" opacity="0.12"/>
+  <text x="48"  y="168" text-anchor="middle" fill="#E63946" font-weight="700">FAIL</text>
+  <text x="80"  y="168" fill="#444">DELETE /api/user/99 — expected 204</text>
+  <text x="416" y="168" fill="#E63946" font-weight="600">404</text>
+  <rect x="30"  y="176" width="36" height="13" rx="3" fill="#2DC653" opacity="0.15"/>
+  <text x="48"  y="186" text-anchor="middle" fill="#2DC653" font-weight="700">PASS</text>
+  <text x="80"  y="186" fill="#444">GET /api/balance — auth header required</text>
+  <text x="410" y="186" fill="#bbb">67ms</text>
+  <rect x="30"  y="194" width="36" height="13" rx="3" fill="#2DC653" opacity="0.15"/>
+  <text x="48"  y="204" text-anchor="middle" fill="#2DC653" font-weight="700">PASS</text>
+  <text x="80"  y="204" fill="#444">POST /api/login — rate limit 429 OK</text>
+  <text x="410" y="204" fill="#bbb">34ms</text>
+  <rect x="30"  y="212" width="36" height="13" rx="3" fill="#E63946" opacity="0.12"/>
+  <text x="48"  y="222" text-anchor="middle" fill="#E63946" font-weight="700">FAIL</text>
+  <text x="80"  y="222" fill="#444">PATCH /api/profile — body validation</text>
+  <text x="416" y="222" fill="#E63946" font-weight="600">500</text>
+  <rect x="30"  y="230" width="36" height="13" rx="3" fill="#2DC653" opacity="0.15"/>
+  <text x="48"  y="240" text-anchor="middle" fill="#2DC653" font-weight="700">PASS</text>
+  <text x="80"  y="240" fill="#444">GET /api/transactions — pagination OK</text>
+  <text x="410" y="240" fill="#bbb">118ms</text>
+</g>
+</svg></div>
           <div class="project-title">API Test Automation Framework</div>
           <div class="project-desc">
             A reusable API testing framework covering 120+ endpoints with automated regression suites. Reduced manual QA cycles from three days to four hours per sprint. Includes Postman collections, Python-based test runners, and CI-ready configuration.
           </div>
           <div class="project-links">
             <a href="https://github.com/spectervii/api-test-framework" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
-            <a href="#" class="project-link">Case Study ↗</a>
+            <a href="#" class="project-link" onclick="openModal('fraud-cs');return false;">Case Study ↗</a>
           </div>
         </div>
       </div>
       <div class="project-card">
-        <div class="project-thumb" style="font-size:2rem;">⚙️</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">Python</span><span class="project-tag">SQL</span>
-            <span class="project-tag">ETL</span><span class="project-tag">Automation</span>
-          </div>
+        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#4361EE"/>
+    <stop offset="100%" stop-color="#7B2FBE"/>
+  </linearGradient>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+    <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
+  </filter>
+</defs>
+<rect width="480" height="270" fill="url(#bg)"/>
+<circle cx="30" cy="270" r="100" fill="rgba(255,255,255,0.04)"/>
+<!-- source cards -->
+<rect x="14" y="90" width="86" height="34" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="57" y="102" text-anchor="middle" fill="#4361EE" font-size="7" font-weight="700" font-family="Inter,sans-serif">SOURCE A</text>
+<text x="57" y="114" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">PostgreSQL</text>
+<rect x="14" y="133" width="86" height="34" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="57" y="145" text-anchor="middle" fill="#4361EE" font-size="7" font-weight="700" font-family="Inter,sans-serif">SOURCE B</text>
+<text x="57" y="157" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">REST API</text>
+<rect x="14" y="176" width="86" height="34" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="57" y="188" text-anchor="middle" fill="#4361EE" font-size="7" font-weight="700" font-family="Inter,sans-serif">SOURCE C</text>
+<text x="57" y="200" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">CSV Upload</text>
+<!-- arrows -->
+<path d="M100,107 Q128,107 128,148" stroke="#4361EE" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#a1)"/>
+<line x1="100" y1="150" x2="128" y2="150" stroke="#4361EE" stroke-width="1.5" opacity="0.5" marker-end="url(#a1)"/>
+<path d="M100,193 Q128,193 128,163" stroke="#4361EE" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#a1)"/>
+<!-- EXTRACT -->
+<rect x="132" y="118" width="80" height="64" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="172" y="140" text-anchor="middle" fill="#4361EE" font-size="9" font-weight="700" font-family="Inter,sans-serif">EXTRACT</text>
+<text x="172" y="152" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">Fetch + Ingest</text>
+<text x="172" y="165" text-anchor="middle" fill="#2DC653"  font-size="7"   font-family="Inter,sans-serif">47,203 rows</text>
+<!-- arrow E→T -->
+<line x1="212" y1="150" x2="242" y2="150" stroke="#ccc" stroke-width="1.5" marker-end="url(#a2)"/>
+<!-- TRANSFORM -->
+<rect x="246" y="118" width="80" height="64" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="286" y="136" text-anchor="middle" fill="#F4A261"  font-size="9" font-weight="700" font-family="Inter,sans-serif">TRANSFORM</text>
+<text x="286" y="148" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">Clean · Enrich</text>
+<text x="286" y="160" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">Deduplicate</text>
+<text x="286" y="173" text-anchor="middle" fill="#2DC653"  font-size="7"   font-family="Inter,sans-serif">46,891 valid</text>
+<!-- arrow T→L -->
+<line x1="326" y1="150" x2="356" y2="150" stroke="#ccc" stroke-width="1.5" marker-end="url(#a2)"/>
+<!-- LOAD -->
+<rect x="360" y="118" width="76" height="64" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="398" y="140" text-anchor="middle" fill="#2DC653"  font-size="9" font-weight="700" font-family="Inter,sans-serif">LOAD</text>
+<text x="398" y="152" text-anchor="middle" fill="#aaa"  font-size="6.5" font-family="Inter,sans-serif">Warehouse</text>
+<text x="398" y="165" text-anchor="middle" fill="#2DC653"  font-size="7"   font-family="Inter,sans-serif">Done ✓</text>
+<!-- schedule card top -->
+<rect x="14" y="14" width="220" height="64" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="28" y="32" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">PIPELINE SCHEDULE</text>
+<circle cx="28" cy="50" r="4" fill="#2DC653"/>
+<text x="38" y="54" fill="#555" font-size="8" font-family="Inter,sans-serif">Runs daily at 02:00 UTC</text>
+<text x="28" y="68" fill="#aaa" font-size="7" font-family="Inter,sans-serif">Last run completed in 4m 12s · 0 errors</text>
+<!-- quality card top right -->
+<rect x="246" y="14" width="230" height="64" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="260" y="32" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">QUALITY CHECKS</text>
+<text x="260" y="50" fill="#2DC653" font-size="8" font-family="Inter,sans-serif">✓  Null rate below 0.5%</text>
+<text x="260" y="64" fill="#2DC653" font-size="8" font-family="Inter,sans-serif">✓  Schema validated · 0 type errors</text>
+<!-- saved hours card bottom -->
+<rect x="14" y="208" width="462" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="30" y="226" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">BUSINESS IMPACT</text>
+<text x="30" y="246" fill="#333" font-size="9" font-family="Inter,sans-serif">Eliminated 6 hours of weekly manual data preparation · Automated alerting on data quality failures</text>
+<defs>
+  <marker id="a1" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+    <path d="M0,0 L8,4 L0,8 Z" fill="rgba(67,97,238,0.5)"/>
+  </marker>
+  <marker id="a2" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+    <path d="M0,0 L8,4 L0,8 Z" fill="#ccc"/>
+  </marker>
+</defs>
+</svg></div>
           <div class="project-title">Automated ETL Data Pipeline</div>
           <div class="project-desc">
             A scheduled ETL pipeline that extracts data from three disparate sources, standardises schemas, validates data integrity at each stage, and loads clean records into a central warehouse. Eliminated six hours of weekly manual data preparation and introduced automated alerting on data quality failures.
@@ -862,12 +1199,75 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
         </div>
       </div>
       <div class="project-card">
-        <div class="project-thumb" style="font-size:2rem;">🔎</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">OWASP</span><span class="project-tag">Linux</span>
-            <span class="project-tag">Nmap</span><span class="project-tag">Security</span>
-          </div>
+        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#4361EE"/>
+    <stop offset="100%" stop-color="#7B2FBE"/>
+  </linearGradient>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+    <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
+  </filter>
+</defs>
+<rect width="480" height="270" fill="url(#bg)"/>
+<circle cx="440" cy="30" r="90" fill="rgba(255,255,255,0.04)"/>
+<!-- header -->
+<rect x="16" y="12" width="448" height="30" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="30" y="31" fill="#444" font-size="9" font-weight="700" font-family="Inter,sans-serif">OWASP TOP 10 · SECURITY AUDIT REPORT</text>
+<text x="396" y="31" fill="#aaa" font-size="8" font-family="Inter,sans-serif">8 findings</text>
+<!-- severity cards -->
+<rect x="16" y="52" width="96" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="64" y="70" text-anchor="middle" fill="#E63946" font-size="20" font-weight="700" font-family="Inter,sans-serif">1</text>
+<text x="64" y="86" text-anchor="middle" fill="#aaa"  font-size="7"   font-family="Inter,sans-serif">CRITICAL</text>
+<rect x="122" y="52" width="96" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="170" y="70" text-anchor="middle" fill="#E63946" font-size="20" font-weight="700" font-family="Inter,sans-serif">2</text>
+<text x="170" y="86" text-anchor="middle" fill="#aaa"  font-size="7"   font-family="Inter,sans-serif">HIGH</text>
+<rect x="228" y="52" width="96" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="276" y="70" text-anchor="middle" fill="#F4A261" font-size="20" font-weight="700" font-family="Inter,sans-serif">4</text>
+<text x="276" y="86" text-anchor="middle" fill="#aaa"  font-size="7"   font-family="Inter,sans-serif">MEDIUM</text>
+<rect x="334" y="52" width="96" height="50" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="382" y="70" text-anchor="middle" fill="#2DC653" font-size="20" font-weight="700" font-family="Inter,sans-serif">1</text>
+<text x="382" y="86" text-anchor="middle" fill="#aaa"  font-size="7"   font-family="Inter,sans-serif">LOW</text>
+<!-- findings table card -->
+<rect x="16" y="112" width="448" height="146" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="30" y="130" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">FINDING</text>
+<text x="296" y="130" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">CVSS</text>
+<text x="340" y="130" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">SEVERITY</text>
+<text x="436" y="130" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">STATUS</text>
+<line x1="28" y1="135" x2="456" y2="135" stroke="#f0f0f0" stroke-width="1"/>
+<g font-size="8" font-family="Inter,sans-serif">
+  <text x="30" y="150" fill="#444">A03: SQL Injection via /search param</text>
+  <text x="296" y="150" fill="#E63946" font-weight="700">9.8</text>
+  <rect x="334" y="141" width="54" height="13" rx="3" fill="rgba(230,57,70,0.12)"/>
+  <text x="361" y="151" text-anchor="middle" fill="#E63946" font-weight="600">CRITICAL</text>
+  <text x="436" y="150" fill="#E63946">Open</text>
+  <text x="30" y="168" fill="#444">A07: Broken auth — no rate limit</text>
+  <text x="296" y="168" fill="#E63946" font-weight="700">7.5</text>
+  <rect x="341" y="159" width="40" height="13" rx="3" fill="rgba(230,57,70,0.1)"/>
+  <text x="361" y="169" text-anchor="middle" fill="#E63946" font-weight="600">HIGH</text>
+  <text x="436" y="168" fill="#E63946">Open</text>
+  <text x="30" y="186" fill="#444">A02: Outdated crypto — MD5 in sessions</text>
+  <text x="296" y="186" fill="#E63946" font-weight="700">7.1</text>
+  <rect x="341" y="177" width="40" height="13" rx="3" fill="rgba(230,57,70,0.1)"/>
+  <text x="361" y="187" text-anchor="middle" fill="#E63946" font-weight="600">HIGH</text>
+  <text x="436" y="186" fill="#2DC653">Fixed</text>
+  <text x="30" y="204" fill="#444">A05: Verbose error messages exposed</text>
+  <text x="296" y="204" fill="#F4A261" font-weight="700">5.3</text>
+  <rect x="334" y="195" width="54" height="13" rx="3" fill="rgba(244,162,97,0.12)"/>
+  <text x="361" y="205" text-anchor="middle" fill="#F4A261" font-weight="600">MEDIUM</text>
+  <text x="436" y="204" fill="#2DC653">Fixed</text>
+  <text x="30" y="222" fill="#444">A01: IDOR on /api/user/[id] endpoint</text>
+  <text x="296" y="222" fill="#F4A261" font-weight="700">6.5</text>
+  <rect x="334" y="213" width="54" height="13" rx="3" fill="rgba(244,162,97,0.12)"/>
+  <text x="361" y="223" text-anchor="middle" fill="#F4A261" font-weight="600">MEDIUM</text>
+  <text x="436" y="222" fill="#E63946">Open</text>
+  <text x="30" y="240" fill="#444">A09: Missing security headers (CSP)</text>
+  <text x="296" y="240" fill="#F4A261" font-weight="700">4.3</text>
+  <rect x="334" y="231" width="54" height="13" rx="3" fill="rgba(244,162,97,0.12)"/>
+  <text x="361" y="241" text-anchor="middle" fill="#F4A261" font-weight="600">MEDIUM</text>
+  <text x="436" y="240" fill="#E63946">Open</text>
+</g>
+</svg></div>
           <div class="project-title">Web Application Security Audit</div>
           <div class="project-desc">
             Conducted a structured security review of a web application using OWASP Top 10 methodology. Identified eight vulnerabilities, three rated high severity. Delivered a complete remediation report with CVSS scores, reproduction steps, and prioritised fix recommendations.
@@ -879,19 +1279,66 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
         </div>
       </div>
       <div class="project-card">
-        <div class="project-thumb" style="font-size:2rem;">📣</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">Google Analytics</span><span class="project-tag">Python</span>
-            <span class="project-tag">Attribution</span><span class="project-tag">Marketing</span>
-          </div>
+        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#4361EE"/>
+    <stop offset="100%" stop-color="#7B2FBE"/>
+  </linearGradient>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="116%">
+    <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.12)"/>
+  </filter>
+</defs>
+<rect width="480" height="270" fill="url(#bg)"/>
+<circle cx="440" cy="260" r="100" fill="rgba(255,255,255,0.04)"/>
+<!-- channel bar top -->
+<rect x="16" y="12" width="448" height="22" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<rect x="18" y="14" width="120" height="18" rx="3" fill="#4361EE"  opacity="0.85"/>
+<rect x="138" y="14" width="88"  height="18" rx="0" fill="#7B2FBE"  opacity="0.85"/>
+<rect x="226" y="14" width="66"  height="18" rx="0" fill="#2DC653"  opacity="0.75"/>
+<rect x="292" y="14" width="50"  height="18" rx="0" fill="#F4A261"  opacity="0.8"/>
+<rect x="342" y="14" width="120" height="18" rx="3" fill="#E63946" opacity="0.7"/>
+<text x="78"  y="26" text-anchor="middle" fill="white" font-size="7.5" font-weight="600" font-family="Inter,sans-serif">Paid 34%</text>
+<text x="182" y="26" text-anchor="middle" fill="white" font-size="7.5" font-weight="600" font-family="Inter,sans-serif">SEO 24%</text>
+<text x="259" y="26" text-anchor="middle" fill="white" font-size="7"   font-family="Inter,sans-serif">Email</text>
+<text x="317" y="26" text-anchor="middle" fill="white" font-size="7"   font-family="Inter,sans-serif">Social</text>
+<text x="402" y="26" text-anchor="middle" fill="white" font-size="7.5" font-weight="600" font-family="Inter,sans-serif">Referral 18%</text>
+<!-- funnel card -->
+<rect x="16" y="44" width="260" height="214" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="30" y="62" fill="#888" font-size="7" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">CONVERSION FUNNEL</text>
+<polygon points="32,76 256,76 224,116 64,116"    fill="#4361EE"  opacity="0.18"/>
+<polygon points="64,120 224,120 200,160 88,160"   fill="#4361EE"  opacity="0.14"/>
+<polygon points="88,164 200,164 180,204 108,204"  fill="#F4A261"   opacity="0.18"/>
+<polygon points="108,208 180,208 165,244 123,244" fill="#2DC653"   opacity="0.22"/>
+<text x="144" y="100" text-anchor="middle" fill="#4361EE" font-size="11" font-weight="700" font-family="Inter,sans-serif">124,500</text>
+<text x="144" y="112" text-anchor="middle" fill="#aaa"   font-size="7"   font-family="Inter,sans-serif">IMPRESSIONS</text>
+<text x="144" y="142" text-anchor="middle" fill="#4361EE" font-size="11" font-weight="700" font-family="Inter,sans-serif">18,240</text>
+<text x="144" y="154" text-anchor="middle" fill="#aaa"   font-size="7"   font-family="Inter,sans-serif">CLICKS  14.7%</text>
+<text x="144" y="182" text-anchor="middle" fill="#F4A261"  font-size="11" font-weight="700" font-family="Inter,sans-serif">3,106</text>
+<text x="144" y="194" text-anchor="middle" fill="#aaa"   font-size="7"   font-family="Inter,sans-serif">LEADS  17.0%</text>
+<text x="144" y="224" text-anchor="middle" fill="#2DC653"  font-size="11" font-weight="700" font-family="Inter,sans-serif">887</text>
+<text x="144" y="236" text-anchor="middle" fill="#aaa"   font-size="7"   font-family="Inter,sans-serif">CONVERTED  28.6%</text>
+<!-- stat cards right -->
+<rect x="288" y="44" width="176" height="66" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="302" y="62" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">TOTAL SPEND SAVED</text>
+<text x="302" y="88" fill="#4361EE" font-size="22" font-weight="700" font-family="Inter,sans-serif">30%</text>
+<text x="302" y="102" fill="#aaa" font-size="7.5" font-family="Inter,sans-serif">reallocated to higher-ROI channels</text>
+<rect x="288" y="120" width="176" height="66" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="302" y="138" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">DATA CLEANED</text>
+<text x="302" y="164" fill="#7B2FBE" font-size="22" font-weight="700" font-family="Inter,sans-serif">18 mo.</text>
+<text x="302" y="178" fill="#aaa" font-size="7.5" font-family="Inter,sans-serif">campaign attribution rebuilt</text>
+<rect x="288" y="196" width="176" height="62" rx="10" fill="white" opacity="0.93" filter="url(#sh)"/>
+<text x="302" y="214" fill="#888" font-size="6.5" font-weight="600" letter-spacing="1" font-family="Inter,sans-serif">TOP CHANNEL</text>
+<text x="302" y="238" fill="#2DC653" font-size="15" font-weight="700" font-family="Inter,sans-serif">Paid Search</text>
+<text x="302" y="252" fill="#aaa" font-size="7.5" font-family="Inter,sans-serif">3.2x ROI vs organic</text>
+</svg></div>
           <div class="project-title">Marketing Funnel Analytics</div>
           <div class="project-desc">
             Rebuilt a broken marketing attribution model by cleaning 18 months of campaign data and constructing a multi-touch attribution pipeline. Delivered insights that reallocated 30% of ad spend to higher-ROI channels. Includes the full analysis notebook and a written business case.
           </div>
           <div class="project-links">
             <a href="https://github.com/spectervii/marketing-funnel-analytics" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
-            <a href="#" class="project-link">Case Study ↗</a>
+            <a href="#" class="project-link" onclick="openModal('sandbox-cs');return false;">Case Study ↗</a>
           </div>
         </div>
       </div>
@@ -1029,6 +1476,8 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
           <li>Contribute to AI-driven customer communication strategies and product improvement planning alongside the product and growth teams.</li>
           <li>Deliver business intelligence reporting: weekly dashboards, ad-hoc analysis, and quarterly OKR measurement for the product organisation.</li>
           <li>Introduced data-driven defect pattern analysis, identifying recurring failure clusters and reducing repeated production issues by 40%.</li>
+          <li>Apply data science and QA-informed UX insights to marketing decisions, improving campaign targeting accuracy and user engagement metrics.</li>
+          <li>Translate product intelligence findings into actionable marketing recommendations, directly influencing acquisition and retention strategy.</li>
         </ul>
         <div class="exp-tech">
           <span class="project-tag">Postman</span><span class="project-tag">JIRA</span>
@@ -1192,13 +1641,13 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-quote">
-          Add a third testimonial here. Colleagues, managers, or collaborators who can speak to your work.
+          Michael is an innovator and an inspiration to me.
         </div>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">--</div>
+          <div class="testimonial-avatar">OB</div>
           <div>
-            <div class="testimonial-name">Colleague Name</div>
-            <div class="testimonial-title">Role, Company</div>
+            <div class="testimonial-name">Oyinola Babatunde</div>
+            <div class="testimonial-title">Colleague</div>
           </div>
         </div>
       </div>
@@ -1292,7 +1741,7 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
           </div>
         </div>
       </div>
-      <form class="contact-form" onsubmit="handleFormSubmit(event)">
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xpwzgqdp" method="POST">
         <div class="form-row">
           <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input" placeholder="Jane" required /></div>
           <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input" placeholder="Doe" required /></div>
@@ -1300,6 +1749,8 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
         <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="jane@company.com" required /></div>
         <div class="form-group"><label class="form-label">Subject</label><input type="text" class="form-input" placeholder="Opportunity / Collaboration / Other" /></div>
         <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Tell me about the opportunity or what you're working on..." required></textarea></div>
+        <input type="hidden" name="_subject" value="New portfolio message — Michael Shodipo"/>
+        <input type="hidden" name="_replyto" id="reply-field"/>
         <button type="submit" class="btn-primary" id="form-btn" style="align-self:flex-start;">
           Send Message
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
@@ -1345,6 +1796,25 @@ hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
 document.getElementById('mobile-close').addEventListener('click', () => mobileNav.classList.remove('open'));
 document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileNav.classList.remove('open')));
 
+
+/* CASE STUDY MODALS */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);max-width:700px;width:90%;max-height:85vh;overflow-y:auto;padding:2.5rem;position:relative;transform:translateY(20px);transition:transform .3s ease}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+.modal-close{position:absolute;top:1.25rem;right:1.25rem;width:32px;height:32px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--text-muted);cursor:pointer;transition:all .2s}
+.modal-close:hover{border-color:var(--border-hover);color:var(--text-primary)}
+.modal-role{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}
+.modal-title{font-size:1.5rem;font-weight:600;color:var(--text-primary);margin-bottom:1.5rem}
+.modal-section{margin-bottom:1.5rem}
+.modal-section-label{font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.625rem}
+.modal-section p{font-size:.9375rem;line-height:1.75;color:var(--text-secondary)}
+.modal-impact-list{display:flex;flex-direction:column;gap:.5rem}
+.modal-impact-item{display:flex;align-items:flex-start;gap:.625rem;font-size:.875rem;color:var(--text-secondary);line-height:1.6}
+.modal-impact-item::before{content:"↗";color:var(--green);font-weight:700;flex-shrink:0;margin-top:.1rem}
+.modal-tech-wrap{display:flex;flex-wrap:wrap;gap:.375rem}
+.modal-links{display:flex;gap:.75rem;padding-top:1.5rem;border-top:1px solid var(--border);margin-top:1.5rem}
+
 /* SCROLL REVEAL */
 const ro = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.1, rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal,.timeline-item,.skill-category,.project-card,.cert-card,.exp-card').forEach(el => ro.observe(el));
@@ -1369,19 +1839,66 @@ document.querySelectorAll('.portfolio-tab').forEach(tab => {
 });
 
 /* FORM */
-function handleFormSubmit(e){
-  e.preventDefault();
-  const btn = document.getElementById('form-btn');
-  btn.textContent = 'Message sent ✓';
-  btn.style.opacity = '.7';
-  btn.style.pointerEvents = 'none';
-  setTimeout(() => {
-    btn.innerHTML = 'Send Message <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
-    btn.style.opacity = '1';
-    btn.style.pointerEvents = 'auto';
-    e.target.reset();
-  }, 3000);
+/* Contact form — Formspree handles delivery to shodipoopeyemi@gmail.com */
+(function(){
+  const form = document.getElementById('contact-form');
+  if(!form) return;
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const btn   = document.getElementById('form-btn');
+    const email = form.querySelector('input[type="email"]');
+    if(email) document.getElementById('reply-field').value = email.value;
+    btn.innerHTML = 'Sending…';
+    btn.style.opacity = '.7';
+    btn.style.pointerEvents = 'none';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if(res.ok){
+        btn.innerHTML = 'Message sent ✓';
+        form.reset();
+        setTimeout(() => {
+          btn.innerHTML = 'Send Message <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+          btn.style.opacity = '1';
+          btn.style.pointerEvents = 'auto';
+        }, 4000);
+      } else {
+        btn.innerHTML = 'Error — try emailing directly';
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+      }
+    } catch(err){
+      btn.innerHTML = 'Error — try emailing directly';
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+    }
+  });
+})();
+
+
+function openModal(id){
+  const tmpl = document.getElementById(id);
+  if(!tmpl) return;
+  const box = document.getElementById('modal-box');
+  box.innerHTML = '<button class="modal-close" onclick="document.getElementById(\'modal-backdrop\').classList.remove(\'open\')">✕</button>' + tmpl.innerHTML;
+  document.getElementById('modal-backdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
+function closeModal(e){
+  if(e.target === document.getElementById('modal-backdrop')){
+    document.getElementById('modal-backdrop').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    document.getElementById('modal-backdrop').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
 
 /* HERO CANVAS */
 (function(){
@@ -1423,5 +1940,200 @@ function handleFormSubmit(e){
 document.querySelectorAll('.timeline-item').forEach((item, i) => { item.style.transitionDelay = (i * .08) + 's'; });
 document.querySelectorAll('.cert-card').forEach((card, i) => { card.style.transitionDelay = (i * .06) + 's'; ro.observe(card); });
 </script>
-</body>
+<div id="modal-backdrop" class="modal-overlay" onclick="closeModal(event)">
+<div class="modal-box" id="modal-box">
+</div></div>
+
+<template id="churn-cs">
+  <div class="modal-role">Data Scientist</div>
+  <div class="modal-title">Customer Churn Prediction</div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Problem</div>
+    <p>A subscription business was losing customers without knowing who was at risk until after they left. Reactive retention outreach was expensive and had low conversion. The business had no model to predict churn before it happened.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Solution</div>
+    <p>Built a complete end-to-end ML pipeline on the IBM Telco Customer Churn dataset (7,043 records). Conducted full exploratory data analysis, engineered features including tenure buckets and charge-per-tenure ratio, trained a logistic regression model with class-balanced weighting, and tuned the classification threshold for F1 optimisation rather than using the default 0.5. Delivered a ranked risk table that the retention team could act on weekly.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Business Impact</div>
+    <div class="modal-impact-list"><div class="modal-impact-item">81% model accuracy with AUC-ROC of 0.847</div><div class="modal-impact-item">23% modelled churn reduction for the targeted high-risk cohort</div><div class="modal-impact-item">Month-to-month contract customers identified as 14x higher risk than two-year customers</div><div class="modal-impact-item">Retention team received a weekly prioritised list instead of reacting after cancellation</div></div>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Key Lesson</div>
+    <p>The most important insight was not the model accuracy — it was understanding that threshold tuning for business context matters more than optimising raw accuracy. A 0.4 threshold recovered significantly more churners at an acceptable false-positive cost.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Technologies</div>
+    <div class="modal-tech-wrap"><span class="project-tag">Python</span><span class="project-tag">Pandas</span><span class="project-tag">Scikit-learn</span><span class="project-tag">Matplotlib</span><span class="project-tag">Seaborn</span><span class="project-tag">Jupyter</span></div>
+  </div>
+</template>
+<template id="sales-cs">
+  <div class="modal-role">Data Analyst and Visualisation Engineer</div>
+  <div class="modal-title">Sales Intelligence Dashboard</div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Problem</div>
+    <p>Sales and product teams were making decisions from disconnected spreadsheet exports that were always outdated. There was no single source of truth for revenue performance, and analysts were spending hours each week preparing the same recurring reports.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Solution</div>
+    <p>Built a fully interactive Streamlit web application using Plotly for all charts. The dashboard connects directly to the Superstore dataset and updates dynamically based on sidebar filters for Year, Category, Region, and Segment. Includes KPI cards, a revenue trend line, category and sub-category breakdowns, a profit margin chart that surfaces loss-making product lines, regional performance, customer segment donut, and a top/bottom product table.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Business Impact</div>
+    <div class="modal-impact-list"><div class="modal-impact-item">Eliminated recurring weekly report preparation — hours saved per analyst per week</div><div class="modal-impact-item">Surfaced that Tables sub-category operates at negative margin, a finding buried in aggregate data</div><div class="modal-impact-item">Identified Q4 revenue concentration (35% of annual revenue) enabling better resource planning</div><div class="modal-impact-item">Corporate segment shown to have 40% higher average order value than Consumer — shifted sales team focus</div></div>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Key Lesson</div>
+    <p>The hardest part of a dashboard is not building the charts. It is deciding which questions the dashboard should answer before writing a single line of code. Every design choice in this project followed from the EDA notebook, not from what looked good.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Technologies</div>
+    <div class="modal-tech-wrap"><span class="project-tag">Python</span><span class="project-tag">Streamlit</span><span class="project-tag">Plotly</span><span class="project-tag">Pandas</span><span class="project-tag">NumPy</span></div>
+  </div>
+</template>
+<template id="fraud-cs">
+  <div class="modal-role">Product Engineer and Security Analyst</div>
+  <div class="modal-title">Fintech Product with Anti-Fraud Infrastructure</div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Problem</div>
+    <p>A functioning fintech product was processing transactions without any fraud detection layer. Bad actors could exploit the system through velocity attacks, geographic anomalies, and repeated failed authentication attempts.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Solution</div>
+    <p>Built the product from scratch, then layered a rule-based and behavioural fraud detection system on top. The anti-fraud engine flags transactions based on velocity (too many in a short window), geographic mismatch between registered and transaction location, anomalous transaction amounts relative to user history, and repeated authentication failures. Every flagged transaction generates an audit log entry. Integrated rate limiting and anomaly scoring into the API layer.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Business Impact</div>
+    <div class="modal-impact-list"><div class="modal-impact-item">98.2% fraud detection accuracy in test scenarios</div><div class="modal-impact-item">14 fraudulent transaction patterns blocked during sandbox testing</div><div class="modal-impact-item">Zero false negatives on high-value transaction tests</div><div class="modal-impact-item">Audit trail provides full forensic history for every transaction decision</div></div>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Key Lesson</div>
+    <p>Security cannot be retrofitted cleanly. The most important lesson from this project is that fraud detection logic needs to be part of the product architecture from day one, not added as an afterthought. The decisions made at the data model level determine what you can and cannot detect later.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Technologies</div>
+    <div class="modal-tech-wrap"><span class="project-tag">Python</span><span class="project-tag">OWASP</span><span class="project-tag">Rule-based detection</span><span class="project-tag">Behavioural scoring</span><span class="project-tag">Audit logging</span><span class="project-tag">Rate limiting</span></div>
+  </div>
+</template>
+<template id="sandbox-cs">
+  <div class="modal-role">Security Researcher and QA Engineer</div>
+  <div class="modal-title">Sandbox VM Testing Environment</div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Problem</div>
+    <p>Security testing and penetration testing cannot be done safely on production systems or development environments shared with other engineers. There was no isolated environment for testing adversarial scenarios, running exploit scripts, or reproducing security vulnerabilities.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Solution</div>
+    <p>Configured an isolated VirtualBox VM running Ubuntu 22.04 LTS with a dedicated network adapter set to host-only mode, preventing any traffic from reaching external networks. Established a snapshot system with named checkpoints at clean states. Documented the full setup process, snapshotting strategy, and tool installation workflow. Used the environment to run OWASP testing suites, Nmap scans, and Wireshark captures against local test applications.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Business Impact</div>
+    <div class="modal-impact-list"><div class="modal-impact-item">Zero risk to shared infrastructure during security testing</div><div class="modal-impact-item">Reproducible test environments restored from snapshot in under 60 seconds</div><div class="modal-impact-item">Used to validate findings from the Web App Security Audit before formal reporting</div><div class="modal-impact-item">Full documentation enables any team member to replicate the environment</div></div>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Key Lesson</div>
+    <p>The value of a sandbox is not just isolation — it is reproducibility. A clean snapshot means you can reproduce any test state exactly, which matters enormously when writing a formal security report that others need to verify.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Technologies</div>
+    <div class="modal-tech-wrap"><span class="project-tag">VirtualBox</span><span class="project-tag">Ubuntu 22.04 LTS</span><span class="project-tag">Nmap</span><span class="project-tag">Wireshark</span><span class="project-tag">Linux</span><span class="project-tag">Bash</span></div>
+  </div>
+</template>
+<template id="api-cs">
+  <div class="modal-role">QA Engineer</div>
+  <div class="modal-title">API Test Automation Framework</div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Problem</div>
+    <p>A development team was manually testing API endpoints before each release, a process that took three days per sprint and frequently missed edge cases under time pressure. Regression coverage was inconsistent and not documented.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Solution</div>
+    <p>Built a reusable API testing framework covering 120+ endpoints using Postman collections and a Python pytest runner. The framework covers authentication flows, CRUD operations, error path validation, schema validation, rate limiting behaviour, and pagination. CI-ready configuration allows the suite to run on every pull request. Organised test cases by domain and severity so critical path tests run first.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Business Impact</div>
+    <div class="modal-impact-list"><div class="modal-impact-item">Manual QA cycle reduced from 3 days to 4 hours per sprint</div><div class="modal-impact-item">120 endpoints covered with automated tests — 98.3% pass rate baseline</div><div class="modal-impact-item">2 critical bugs discovered during initial implementation that manual testing had missed</div><div class="modal-impact-item">Regression baseline established and owned — no more undocumented coverage gaps</div></div>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Key Lesson</div>
+    <p>API testing is most valuable when it covers the paths developers do not think about — the 401 when the token expires mid-session, the 429 when a client retries too fast, the 422 when a valid-looking body has a schema violation. The edge cases are where real bugs live.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Technologies</div>
+    <div class="modal-tech-wrap"><span class="project-tag">Postman</span><span class="project-tag">Python</span><span class="project-tag">pytest</span><span class="project-tag">REST APIs</span><span class="project-tag">JSON Schema</span><span class="project-tag">CI/CD</span></div>
+  </div>
+</template>
+<template id="etl-cs">
+  <div class="modal-role">Data Engineer</div>
+  <div class="modal-title">Automated ETL Data Pipeline</div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Problem</div>
+    <p>Three separate data sources were being manually downloaded, cleaned in Excel, and joined by an analyst every week. The process took six hours and produced inconsistent output depending on who ran it. Data quality issues were caught after reporting, not before.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Solution</div>
+    <p>Built a scheduled Python ETL pipeline that extracts data from all three sources (PostgreSQL, a REST API, and CSV uploads), standardises schemas, validates data integrity at each stage with explicit quality checks, and loads clean records into a central warehouse. Data quality failures trigger automated alerts. The pipeline runs on a cron schedule at 02:00 UTC daily and produces a run log with row counts and quality metrics.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Business Impact</div>
+    <div class="modal-impact-list"><div class="modal-impact-item">6 hours of weekly manual data preparation eliminated entirely</div><div class="modal-impact-item">Data quality checks catch issues before they reach reports, not after</div><div class="modal-impact-item">Pipeline completed in under 5 minutes — same data available by 02:10 UTC daily</div><div class="modal-impact-item">Null rate maintained below 0.5% and schema violations dropped to zero after first week</div></div>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Key Lesson</div>
+    <p>The transformation step is always where the complexity hides. Extracting data is straightforward. Loading data is straightforward. But the assumptions that break between sources — different date formats, different null conventions, different ID encodings — are discovered in the transform step, and they need to be handled explicitly, not silently.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Technologies</div>
+    <div class="modal-tech-wrap"><span class="project-tag">Python</span><span class="project-tag">SQL</span><span class="project-tag">pandas</span><span class="project-tag">psycopg2</span><span class="project-tag">requests</span><span class="project-tag">cron</span><span class="project-tag">logging</span></div>
+  </div>
+</template>
+<template id="security-cs">
+  <div class="modal-role">Security Analyst</div>
+  <div class="modal-title">Web Application Security Audit</div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Problem</div>
+    <p>A web application had never undergone a formal security review. Development had prioritised features over security posture and the team had no visibility into the actual vulnerability surface. The application handled user authentication and financial data.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Solution</div>
+    <p>Conducted a structured security assessment using OWASP Top 10 methodology. Tested for injection vulnerabilities, broken authentication, sensitive data exposure, XML/XXE, broken access control, security misconfiguration, XSS, insecure deserialisation, outdated components, and insufficient logging. Used the sandbox VM environment to run tests without risk to shared infrastructure. Documented every finding with a CVSS score, reproduction steps, and a prioritised remediation recommendation.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Business Impact</div>
+    <div class="modal-impact-list"><div class="modal-impact-item">8 vulnerabilities identified across 3 severity levels</div><div class="modal-impact-item">SQL injection (CVSS 9.8) discovered on the main search parameter — critical finding</div><div class="modal-impact-item">Broken authentication with no rate limiting identified and escalated immediately</div><div class="modal-impact-item">2 high-severity findings remediated within the same sprint after delivery of the report</div><div class="modal-impact-item">Formal remediation roadmap delivered and accepted by the development team</div></div>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Key Lesson</div>
+    <p>The most important outcome of a security audit is not the finding list — it is the remediation roadmap that development teams will actually follow. A 20-page technical report that no one acts on is less valuable than a prioritised list of five things, clearly explained, with reproduction steps a developer can verify themselves.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Technologies</div>
+    <div class="modal-tech-wrap"><span class="project-tag">OWASP Top 10</span><span class="project-tag">Nmap</span><span class="project-tag">Burp Suite</span><span class="project-tag">Linux</span><span class="project-tag">CVSS scoring</span><span class="project-tag">Wireshark</span></div>
+  </div>
+</template>
+<template id="marketing-cs">
+  <div class="modal-role">Analytics Engineer</div>
+  <div class="modal-title">Marketing Funnel Analytics</div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Problem</div>
+    <p>A marketing team had 18 months of campaign data spread across three platforms with inconsistent attribution. Ad spend decisions were being made on gut feel because no one trusted the numbers. The attribution model had not been validated since it was set up.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Solution</div>
+    <p>Cleaned and standardised 18 months of campaign data from Google Analytics, a CRM export, and a paid ads platform. Rebuilt the attribution model from scratch using a multi-touch approach that properly credited first touch, last touch, and assisted conversions. Constructed an automated pipeline that refreshes the attribution data daily. Delivered the full analysis in a Jupyter notebook with a written business case attached.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Business Impact</div>
+    <div class="modal-impact-list"><div class="modal-impact-item">30% of ad spend reallocated from low-ROI channels to high-ROI channels based on corrected attribution</div><div class="modal-impact-item">Paid search identified as 3.2x ROI over organic for the primary acquisition goal</div><div class="modal-impact-item">Funnel conversion rate improved from a 19.8% close rate to a 28.6% close rate after channel mix adjustment</div><div class="modal-impact-item">Marketing team moved from monthly reporting to daily dashboard — decisions became faster and better-justified</div></div>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Key Lesson</div>
+    <p>Bad attribution is worse than no attribution because it creates false confidence. The first task of any marketing analytics engagement is to audit the tracking setup before drawing any conclusions from the numbers. In this project, two of the three source integrations had configuration errors that had been silently producing wrong data for months.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Technologies</div>
+    <div class="modal-tech-wrap"><span class="project-tag">Python</span><span class="project-tag">Pandas</span><span class="project-tag">Google Analytics API</span><span class="project-tag">Multi-touch attribution</span><span class="project-tag">Jupyter</span><span class="project-tag">SQL</span></div>
+  </div>
+</template></body>
 </html>
