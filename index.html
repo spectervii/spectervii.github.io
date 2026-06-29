@@ -172,13 +172,13 @@ ul{list-style:none}
 .cert-verify:hover{opacity:.7}
 
 /* PROJECTS */
-.project-featured{display:grid;grid-template-columns:1.1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+
 .project-card{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-card);display:flex;flex-direction:column;transition:opacity .5s ease,transform .5s ease,border-color .2s,box-shadow .2s}
 .project-card.visible{opacity:1;transform:translateY(0)}
 .project-card:hover{border-color:var(--border-hover);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
 .project-thumb{aspect-ratio:16/9;background:linear-gradient(135deg,var(--bg-secondary) 0%,var(--bg-card) 100%);display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative;overflow:hidden}
 .project-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg-card),transparent 60%)}
-.project-body{padding:1.5rem;flex:1;display:flex;flex-direction:column;gap:.75rem}
+.project-body{padding:1.25rem 1.5rem;flex:1;display:flex;flex-direction:column;gap:.625rem}
 .project-tags{display:flex;flex-wrap:wrap;gap:.375rem}
 .project-tag{padding:.2rem .625rem;border-radius:100px;font-size:.6875rem;font-weight:500;background:var(--accent-dim);color:var(--text-muted);border:1px solid var(--border)}
 .project-title{font-size:1.0625rem;font-weight:600;color:var(--text-primary)}
@@ -187,7 +187,7 @@ ul{list-style:none}
 .project-links{display:flex;align-items:center;gap:.75rem;padding-top:.75rem;border-top:1px solid var(--border)}
 .project-link{display:inline-flex;align-items:center;gap:.375rem;font-size:.75rem;font-weight:500;color:var(--text-secondary);transition:color var(--t)}
 .project-link:hover{color:var(--text-primary)}
-.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
 
 /* PORTFOLIO TABS */
 .portfolio-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:3rem}
@@ -337,7 +337,7 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
   .about-sticky{position:static}
   .about-image-wrap{aspect-ratio:3/2}
   .contact-grid{grid-template-columns:1fr;gap:3rem}
-  .project-featured{grid-template-columns:1fr}
+  
   .projects-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
@@ -766,8 +766,7 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
       <h2 class="display-lg">Projects</h2>
       <p class="body-lg">Selected projects demonstrating cross-disciplinary thinking, from data engineering to quality, visualisation, and security.</p>
     </div>
-
-    <div class="project-featured">
+    <div class="projects-grid">
       <div class="project-card">
         <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
@@ -828,18 +827,12 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <text x="332" y="220" fill="#bbb" font-size="8" font-family="Inter,sans-serif">the top retention lever.</text>
 <text x="332" y="243" fill="#4361EE" font-size="8" font-weight="600" font-family="Inter,sans-serif">23% churn reduction →</text>
 </svg></div>
-          <div class="project-title">Customer Churn Prediction Dashboard</div>
-          <div class="project-desc">
-            Using the IBM Telco Customer Churn dataset (7,000+ customer records), this project builds a complete machine learning pipeline from raw data to an interactive decision-support dashboard. Includes full exploratory data analysis, feature engineering, logistic regression modelling with threshold tuning, and a Power BI dashboard adopted for retention team use. Every step is documented in Jupyter with business context attached to each technical decision.
-          </div>
-          <div class="project-impact">23% modelled reduction in churn rate for targeted cohort</div>
-          <div class="project-links">
-            <a href="https://github.com/spectervii/churn-prediction" target="_blank" rel="noopener" class="project-link">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-              GitHub
-            </a>
-            <a href="#" class="project-link" onclick="openModal('churn-cs');return false;">Case Study ↗</a>
-          </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">Data Science</span><span class="project-tag">ML</span></div>
+          <div class="project-title">Customer Churn Prediction</div>
+          <div class="project-desc">End-to-end ML pipeline on 7,000+ telecom customer records — EDA, feature engineering, logistic regression with threshold tuning, and a Power BI dashboard for the retention team.</div>
+          <div class="project-impact">23% modelled reduction in churn for targeted cohort</div>
+          <div class="project-links"><a href="https://github.com/spectervii/churn-prediction" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link" onclick="openModal('churn-cs');return false;">Case Study ↗</a></div>
         </div>
       </div>
       <div class="project-card">
@@ -901,23 +894,14 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <rect x="314" y="238" width="58"  height="9" rx="4" fill="#F4A261"  opacity="0.85"/>
 <text x="378" y="246" fill="#aaa" font-size="7" font-family="Inter,sans-serif">Central</text>
 </svg></div>
-          <div class="project-title">Interactive Sales Intelligence Dashboard</div>
-          <div class="project-desc">
-            A fully interactive data visualisation application built with Python and Streamlit, drawing on a public retail sales dataset to surface revenue trends, product performance, and customer segment behaviour. Deployed as a live web app. Demonstrates how visualisation choices directly shape the decisions stakeholders make.
-          </div>
-          <div class="project-impact">Live web app with filters, drill-downs, and exportable views</div>
-          <div class="project-links">
-            <a href="https://github.com/spectervii/sales-intelligence-dashboard" target="_blank" rel="noopener" class="project-link">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-              GitHub
-            </a>
-            <a href="#" class="project-link">Live Demo ↗</a>
-          </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">Data Viz</span><span class="project-tag">Python</span></div>
+          <div class="project-title">Sales Intelligence Dashboard</div>
+          <div class="project-desc">Interactive Streamlit web app built on public retail data, surfacing revenue trends, product performance, and segment behaviour through eight Plotly charts with live filters.</div>
+          <div class="project-impact">Live app with drill-downs, segment filters, and exportable views</div>
+          <div class="project-links"><a href="https://github.com/spectervii/sales-intelligence-dashboard" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link">Live Demo ↗</a></div>
         </div>
       </div>
-    </div>
-
-    <div class="projects-grid">
       <div class="project-card">
         <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
@@ -979,14 +963,12 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <circle cx="338" cy="234" r="3.5" fill="#2DC653"/>
 <text x="348" y="238" fill="#555" font-size="7.5" font-family="Inter,sans-serif">Score 0.04 — cleared</text>
 </svg></div>
-          <div class="project-title">Fintech Product with Anti-Fraud Infrastructure</div>
-          <div class="project-desc">
-            Built a functioning fintech product from scratch, then secured it. Implemented rule-based and behavioural anti-fraud detection to flag and block suspicious transactions from bad actors. The security layer includes rate limiting, anomaly scoring, and audit logging. Demonstrates full product thinking paired with security engineering.
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/spectervii/fintech-anti-fraud" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
-            <a href="#" class="project-link" onclick="openModal('sales-cs');return false;">Case Study ↗</a>
-          </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">Security</span><span class="project-tag">Engineering</span></div>
+          <div class="project-title">Fintech Anti-Fraud Infrastructure</div>
+          <div class="project-desc">Fintech product built from scratch then hardened with rule-based and behavioural fraud detection: rate limiting, anomaly scoring, and full audit logging for suspicious transactions.</div>
+          <div class="project-impact">Real-time flagging of fraudulent transactions before settlement</div>
+          <div class="project-links"><a href="https://github.com/spectervii/fintech-anti-fraud" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link" onclick="openModal('fraud-cs');return false;">Case Study ↗</a></div>
         </div>
       </div>
       <div class="project-card">
@@ -1035,14 +1017,12 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <text x="389" y="227" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="7" font-family="Inter,sans-serif">pre-test-baseline</text>
 <text x="389" y="237" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="6.5" font-family="Inter,sans-serif">VirtualBox · 4GB RAM</text>
 </svg></div>
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">Security</span><span class="project-tag">DevOps</span></div>
           <div class="project-title">Sandbox VM Testing Environment</div>
-          <div class="project-desc">
-            Configured an isolated virtual machine environment for safe product testing, penetration testing labs, and security research. Used to test applications under adversarial conditions without risking production infrastructure. Documents setup, snapshotting strategy, and testing workflows.
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/spectervii/sandbox-vm-setup" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
-            <a href="#" class="project-link">Documentation ↗</a>
-          </div>
+          <div class="project-desc">Isolated VM environment configured for safe application testing, penetration testing labs, and security research — with snapshotting strategy and adversarial testing workflows documented.</div>
+          <div class="project-impact">Zero production exposure during all security testing work</div>
+          <div class="project-links"><a href="https://github.com/spectervii/sandbox-vm-setup" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link">Docs ↗</a></div>
         </div>
       </div>
       <div class="project-card">
@@ -1108,14 +1088,12 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
   <text x="410" y="240" fill="#bbb">118ms</text>
 </g>
 </svg></div>
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">QA</span><span class="project-tag">Automation</span></div>
           <div class="project-title">API Test Automation Framework</div>
-          <div class="project-desc">
-            A reusable API testing framework covering 120+ endpoints with automated regression suites. Reduced manual QA cycles from three days to four hours per sprint. Includes Postman collections, Python-based test runners, and CI-ready configuration.
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/spectervii/api-test-framework" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
-            <a href="#" class="project-link" onclick="openModal('fraud-cs');return false;">Case Study ↗</a>
-          </div>
+          <div class="project-desc">Reusable test framework covering 120+ API endpoints with automated regression suites, Python test runners, and CI-ready configuration via Postman and pytest.</div>
+          <div class="project-impact">Manual QA cycles cut from 3 days to 4 hours per sprint</div>
+          <div class="project-links"><a href="https://github.com/spectervii/api-test-framework" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link" onclick="openModal('sales-cs');return false;">Case Study ↗</a></div>
         </div>
       </div>
       <div class="project-card">
@@ -1189,13 +1167,12 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
   </marker>
 </defs>
 </svg></div>
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">Data Engineering</span><span class="project-tag">Python</span></div>
           <div class="project-title">Automated ETL Data Pipeline</div>
-          <div class="project-desc">
-            A scheduled ETL pipeline that extracts data from three disparate sources, standardises schemas, validates data integrity at each stage, and loads clean records into a central warehouse. Eliminated six hours of weekly manual data preparation and introduced automated alerting on data quality failures.
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/spectervii/etl-pipeline" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
-          </div>
+          <div class="project-desc">Scheduled ETL pipeline extracting from three disparate sources, standardising schemas, validating data integrity at each stage, and loading clean records into a central warehouse.</div>
+          <div class="project-impact">6 hours of weekly manual data prep eliminated; auto-alerts on failures</div>
+          <div class="project-links"><a href="https://github.com/spectervii/etl-pipeline" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a></div>
         </div>
       </div>
       <div class="project-card">
@@ -1268,14 +1245,12 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
   <text x="436" y="240" fill="#E63946">Open</text>
 </g>
 </svg></div>
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">Security</span><span class="project-tag">OWASP</span></div>
           <div class="project-title">Web Application Security Audit</div>
-          <div class="project-desc">
-            Conducted a structured security review of a web application using OWASP Top 10 methodology. Identified eight vulnerabilities, three rated high severity. Delivered a complete remediation report with CVSS scores, reproduction steps, and prioritised fix recommendations.
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/spectervii/security-audit" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
-            <a href="#" class="project-link">Report ↗</a>
-          </div>
+          <div class="project-desc">Structured security review using OWASP Top 10 methodology — eight vulnerabilities identified (three high severity), with CVSS scores, reproduction steps, and prioritised remediation report.</div>
+          <div class="project-impact">3 high-severity vulnerabilities documented with full remediation paths</div>
+          <div class="project-links"><a href="https://github.com/spectervii/security-audit" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link">Report ↗</a></div>
         </div>
       </div>
       <div class="project-card">
@@ -1332,127 +1307,18 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <text x="302" y="238" fill="#2DC653" font-size="15" font-weight="700" font-family="Inter,sans-serif">Paid Search</text>
 <text x="302" y="252" fill="#aaa" font-size="7.5" font-family="Inter,sans-serif">3.2x ROI vs organic</text>
 </svg></div>
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">Data</span><span class="project-tag">Marketing</span></div>
           <div class="project-title">Marketing Funnel Analytics</div>
-          <div class="project-desc">
-            Rebuilt a broken marketing attribution model by cleaning 18 months of campaign data and constructing a multi-touch attribution pipeline. Delivered insights that reallocated 30% of ad spend to higher-ROI channels. Includes the full analysis notebook and a written business case.
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/spectervii/marketing-funnel-analytics" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
-            <a href="#" class="project-link" onclick="openModal('sandbox-cs');return false;">Case Study ↗</a>
-          </div>
+          <div class="project-desc">Rebuilt a broken attribution model by cleaning 18 months of campaign data and constructing a multi-touch attribution pipeline — analysis notebook and written business case included.</div>
+          <div class="project-impact">30% ad spend reallocated to higher-ROI channels</div>
+          <div class="project-links"><a href="https://github.com/spectervii/marketing-funnel-analytics" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link" onclick="openModal('sandbox-cs');return false;">Case Study ↗</a></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PORTFOLIO TABS -->
-<section id="portfolio" class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="label">Deep Work</div>
-      <h2 class="display-lg">Portfolio</h2>
-      <p class="body-lg">Artefacts, deliverables, and documentation from real-world work across disciplines.</p>
-    </div>
-    <div class="portfolio-tabs">
-      <button class="portfolio-tab active" data-tab="qa">QA Portfolio</button>
-      <button class="portfolio-tab" data-tab="data">Data Science</button>
-      <button class="portfolio-tab" data-tab="security">Cybersecurity</button>
-    </div>
-    <div class="portfolio-panel active" id="tab-qa">
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">📋</div>
-        <div class="portfolio-item-title">Test Plan: E-Commerce Checkout</div>
-        <div class="portfolio-item-desc">Comprehensive test plan covering scope, approach, risk assessment, and exit criteria for a high-traffic checkout redesign.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">Test Planning</span><span class="project-tag">Risk Analysis</span></div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">🐛</div>
-        <div class="portfolio-item-title">Bug Report Samples</div>
-        <div class="portfolio-item-desc">A curated collection of clear, reproducible bug reports demonstrating precise severity classification and developer-friendly documentation.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">JIRA</span><span class="project-tag">Documentation</span></div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">🔌</div>
-        <div class="portfolio-item-title">API Testing Collection</div>
-        <div class="portfolio-item-desc">Postman collections covering authentication, CRUD operations, error handling, and edge cases across REST APIs.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">Postman</span><span class="project-tag">REST API</span></div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">🔄</div>
-        <div class="portfolio-item-title">Regression Test Suite</div>
-        <div class="portfolio-item-desc">Structured regression test suite for a SaaS platform covering 200+ test cases with clear expected versus actual results.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">Regression</span><span class="project-tag">Test Cases</span></div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">📊</div>
-        <div class="portfolio-item-title">JIRA Workflow Documentation</div>
-        <div class="portfolio-item-desc">Documented Agile QA workflow integrating with development sprints, release cycles, and defect lifecycle management.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">JIRA</span><span class="project-tag">Agile</span></div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">🤖</div>
-        <div class="portfolio-item-title">Automation Samples</div>
-        <div class="portfolio-item-desc">Early automation scripts written in Python using pytest. Work in progress as this capability expands.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">Python</span><span class="project-tag">pytest</span><span class="project-tag">Learning</span></div>
-      </div>
-    </div>
-    <div class="portfolio-panel" id="tab-data">
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">📊</div>
-        <div class="portfolio-item-title">Power BI Executive Dashboard</div>
-        <div class="portfolio-item-desc">Multi-page interactive dashboard covering revenue, customer acquisition, and product performance KPIs used weekly by decision-makers.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">Power BI</span><span class="project-tag">DAX</span></div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">🤖</div>
-        <div class="portfolio-item-title">Churn Prediction Model</div>
-        <div class="portfolio-item-desc">Logistic regression model with feature engineering and threshold optimisation. Fully documented in Jupyter with EDA, model evaluation, and business interpretation.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">Python</span><span class="project-tag">Scikit-learn</span></div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">🗄</div>
-        <div class="portfolio-item-title">SQL Query Portfolio</div>
-        <div class="portfolio-item-desc">Collection of advanced SQL: window functions, CTEs, recursive queries, performance optimisation, and business analytics patterns.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">SQL</span><span class="project-tag">PostgreSQL</span></div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">🧹</div>
-        <div class="portfolio-item-title">Data Cleaning Case Study</div>
-        <div class="portfolio-item-desc">Step-by-step documentation of cleaning an 18-month marketing dataset, handling nulls, deduplication, outlier treatment, and schema normalisation.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">Python</span><span class="project-tag">Pandas</span><span class="project-tag">EDA</span></div>
-      </div>
-    </div>
-    <div class="portfolio-panel" id="tab-security">
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">🏴</div>
-        <div class="portfolio-item-title">CTF Write-ups</div>
-        <div class="portfolio-item-desc">Solutions and methodology write-ups from TryHackMe challenges covering web exploitation, privilege escalation, and cryptography.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">TryHackMe</span><span class="project-tag">CTF</span><span class="project-tag">Linux</span></div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">🔎</div>
-        <div class="portfolio-item-title">OWASP Audit Report</div>
-        <div class="portfolio-item-desc">Structured security assessment using OWASP Top 10, with documented findings, CVSS scores, and remediation guidance.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">OWASP</span><span class="project-tag">Risk Assessment</span></div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">🚨</div>
-        <div class="portfolio-item-title">Anti-Fraud System Design</div>
-        <div class="portfolio-item-desc">Architecture and implementation notes for the rule-based and behavioural fraud detection layer built into a live fintech product.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">Fraud Detection</span><span class="project-tag">Python</span></div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-icon">🌐</div>
-        <div class="portfolio-item-title">Network Diagram and Analysis</div>
-        <div class="portfolio-item-desc">Network topology mapping and traffic analysis using Wireshark and Nmap. Documents protocol behaviour, open ports, and identified services.</div>
-        <div class="portfolio-item-tags"><span class="project-tag">Networking</span><span class="project-tag">Wireshark</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
 <section id="experience" class="section">
   <div class="container">
     <div class="section-header reveal">
