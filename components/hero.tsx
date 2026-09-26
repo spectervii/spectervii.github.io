@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { site } from "@/data/site";
+import { HeroScene } from "@/components/hero-scene";
 
 export function Hero() {
   const [copied, setCopied] = useState(false);
@@ -23,7 +24,19 @@ export function Hero() {
   };
 
   return (
-    <section id="top" className="mx-auto max-w-6xl px-4 pt-20 pb-16 sm:px-6 sm:pt-28 sm:pb-24">
+    <>
+    <section
+      id="top"
+      className="night relative isolate overflow-hidden border-b border-border bg-[#05070a] text-fg"
+    >
+      <HeroScene />
+      {/* Keeps text at AA contrast over the moving scene. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,oklch(0.1_0.005_250/0.85)_0%,oklch(0.1_0.005_250/0.55)_55%,transparent_100%),linear-gradient(0deg,oklch(0.1_0.005_250/0.7)_0%,transparent_45%)]"
+      />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] bg-[oklch(0.1_0.005_250/0.35)] sm:hidden" />
+      <div className="pointer-events-none relative z-[2] mx-auto flex min-h-[calc(100svh-3.5rem)] max-w-6xl flex-col justify-center px-4 py-20 sm:px-6 sm:py-28 [&_a]:pointer-events-auto [&_button]:pointer-events-auto">
       <h1 className="flex flex-col gap-1">
         <span className="text-base font-medium tracking-tight">{site.name}</span>
         <span className="font-mono text-xs tracking-wide text-muted uppercase">{site.role}</span>
@@ -55,6 +68,8 @@ export function Hero() {
           View CV
         </a>
       </div>
+      </div>
+    </section>
 
       <div
         role="status"
@@ -70,6 +85,6 @@ export function Hero() {
           </>
         ) : null}
       </div>
-    </section>
+    </>
   );
 }

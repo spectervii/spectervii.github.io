@@ -9,6 +9,7 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@designcodeio/threeui": "^1.2.0",
     "cmdk": "^1.1.1",
     "d3-scale": "^4.0.2",
     "d3-shape": "^3.2.0",
@@ -16,7 +17,8 @@
     "motion": "^13.4.4",
     "next": "^16.3.6",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.0",
+    "three": "^0.149.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
