@@ -120,12 +120,65 @@ body {
   display: none;
 }
 
+/* Growth motion. Pure CSS, so it adds no JavaScript. */
+@property --num {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+.count-up {
+  counter-reset: num var(--num);
+  animation: count-up 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.5s both;
+}
+.count-up::after {
+  content: counter(num) "%";
+}
+@keyframes count-up {
+  from {
+    --num: 0;
+  }
+  to {
+    --num: 304;
+  }
+}
+
+.draw-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw-line 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+}
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.pop-dot {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pop-dot 0.4s ease-out 1.7s forwards;
+}
+@keyframes pop-dot {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }

@@ -30,14 +30,17 @@ export function HeroScene() {
     if (!shouldLoadScene()) return;
     let cancel = () => {};
     const start = () => {
-      // Safari has no requestIdleCallback, so fall back to a short delay.
-      if (typeof window.requestIdleCallback === "function") {
-        const id = window.requestIdleCallback(() => setShow(true), { timeout: 3000 });
-        cancel = () => window.cancelIdleCallback(id);
-      } else {
-        const id = setTimeout(() => setShow(true), 1500);
-        cancel = () => clearTimeout(id);
-      }
+      // Wait for the hero count-up and line draw to finish, so the scene's
+      // shader compile does not stall them. Then wait for an idle moment.
+      const delay = setTimeout(() => {
+        if (typeof window.requestIdleCallback === "function") {
+          const id = window.requestIdleCallback(() => setShow(true), { timeout: 3000 });
+          cancel = () => window.cancelIdleCallback(id);
+        } else {
+          setShow(true);
+        }
+      }, 2500);
+      cancel = () => clearTimeout(delay);
     };
     if (document.readyState === "complete") start();
     else window.addEventListener("load", start, { once: true });
