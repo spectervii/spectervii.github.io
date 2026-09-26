@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+/*
+  Theme tokens. Light is the default.
+  Dark applies when the system asks for it and the user has not picked light,
+  or when the user picks dark with the toggle.
+  Accent ratio: mustard 40, burnt orange 30, sage 20.
+  Each accent is tuned per theme for WCAG AA text contrast on --bg.
+*/
+:root {
+  --bg: oklch(0.975 0.006 85);
+  --surface: oklch(0.955 0.007 85);
+  --fg: oklch(0.21 0.01 85);
+  --muted: oklch(0.46 0.012 85);
+  --border: oklch(0.87 0.008 85);
+
+  --mustard: oklch(0.53 0.11 85);
+  --orange: oklch(0.54 0.16 42);
+  --sage: oklch(0.5 0.06 145);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: oklch(0.155 0.004 85);
+    --surface: oklch(0.19 0.005 85);
+    --fg: oklch(0.95 0.006 85);
+    --muted: oklch(0.72 0.01 85);
+    --border: oklch(0.29 0.006 85);
+
+    --mustard: oklch(0.84 0.14 88);
+    --orange: oklch(0.72 0.15 48);
+    --sage: oklch(0.79 0.07 145);
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: oklch(0.155 0.004 85);
+  --surface: oklch(0.19 0.005 85);
+  --fg: oklch(0.95 0.006 85);
+  --muted: oklch(0.72 0.01 85);
+  --border: oklch(0.29 0.006 85);
+
+  --mustard: oklch(0.84 0.14 88);
+  --orange: oklch(0.72 0.15 48);
+  --sage: oklch(0.79 0.07 145);
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-mustard: var(--mustard);
+  --color-orange: var(--orange);
+  --color-sage: var(--sage);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 4.5rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-mono {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--mustard);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: color-mix(in oklch, var(--mustard) 35%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
