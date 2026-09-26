@@ -18,6 +18,12 @@
   --orange: oklch(0.54 0.16 42);
   --sage: oklch(0.5 0.06 145);
 
+  /* Heatmap ramp ends. Validated for step gaps and contrast against --surface. */
+  --heat-lo: oklch(0.72 0.08 86);
+  --heat-hi: oklch(0.38 0.08 78);
+  /* Neutral chart bars. Kept clear of --orange in both themes. */
+  --bar: var(--muted);
+
   color-scheme: light;
 }
 
@@ -33,13 +39,15 @@
     --orange: oklch(0.72 0.15 48);
     --sage: oklch(0.79 0.07 145);
 
+    --heat-lo: oklch(0.5 0.07 86);
+    --heat-hi: oklch(0.86 0.14 88);
+    --bar: oklch(0.58 0.006 85);
+
     color-scheme: dark;
   }
 }
 
-/* .night is a dark band that ignores the theme, used behind the hero scene. */
-:root[data-theme="dark"],
-.night {
+:root[data-theme="dark"] {
   --bg: oklch(0.155 0.004 85);
   --surface: oklch(0.19 0.005 85);
   --fg: oklch(0.95 0.006 85);
@@ -50,10 +58,15 @@
   --orange: oklch(0.72 0.15 48);
   --sage: oklch(0.79 0.07 145);
 
+  --heat-lo: oklch(0.5 0.07 86);
+  --heat-hi: oklch(0.86 0.14 88);
+  --bar: oklch(0.58 0.006 85);
+
   color-scheme: dark;
 }
 
 @theme inline {
+  --color-bar: var(--bar);
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-fg: var(--fg);
@@ -128,6 +141,34 @@ body {
   display: none;
 }
 
+/* Hero over the scene. The wash is built from --bg, so it is near-black in dark
+   mode and off-white in light mode. In light mode the night scene also fades back. */
+.hero-wash {
+  background:
+    linear-gradient(90deg, color-mix(in oklch, var(--bg) 88%, transparent) 0%, color-mix(in oklch, var(--bg) 58%, transparent) 55%, transparent 100%),
+    linear-gradient(0deg, color-mix(in oklch, var(--bg) 75%, transparent) 0%, transparent 45%);
+}
+@media (max-width: 639px) {
+  .hero-wash {
+    background-color: color-mix(in oklch, var(--bg) 40%, transparent);
+  }
+}
+.hero-scene {
+  opacity: 0.32;
+  filter: saturate(0.85);
+  transition: opacity 0.3s ease;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero-scene {
+    opacity: 1;
+    filter: none;
+  }
+}
+:root[data-theme="dark"] .hero-scene {
+  opacity: 1;
+  filter: none;
+}
+
 /* Growth motion. Pure CSS, so it adds no JavaScript. */
 @property --num {
   syntax: "<integer>";
@@ -178,6 +219,22 @@ body {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+/* Signal Room motion. Runs once, when the widget scrolls into view. */
+.cell-in {
+  animation: cell-in 0.45s ease-out both;
+}
+@keyframes cell-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+.bar-grow {
+  transition-property: width, background-color;
+  transition-duration: 0.9s, 0.15s;
+  transition-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1), ease;
 }
 
 @media (prefers-reduced-motion: reduce) {

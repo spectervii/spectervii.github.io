@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { TopBar } from "@/components/top-bar";
 import { SignalRoom } from "@/components/signal-room/signal-room";
 import { cards } from "@/data/signal-room";
+import { CohortHeatmap } from "@/components/signal-room/cohort-heatmap";
+import { ActivationFunnel } from "@/components/signal-room/activation-funnel";
 
 export const metadata: Metadata = {
   title: "Showcase",
@@ -18,7 +20,11 @@ function Placeholder({ index }: { index: string }) {
 
 // Dev-only review route. Components are built here before they go on the main page.
 export default function Showcase() {
-  const widgets = Object.fromEntries(cards.map((c) => [c.id, <Placeholder key={c.id} index={c.index} />]));
+  const widgets = {
+    ...Object.fromEntries(cards.map((c) => [c.id, <Placeholder key={c.id} index={c.index} />])),
+    cohorts: <CohortHeatmap />,
+    funnel: <ActivationFunnel />,
+  };
   return (
     <>
       <TopBar />

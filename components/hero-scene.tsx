@@ -53,7 +53,7 @@ export function HeroScene() {
   if (!show) return null;
 
   return (
-    <div aria-hidden="true" className="absolute inset-0">
+    <div aria-hidden="true" className="hero-scene absolute inset-0">
       <Suspense fallback={null}>
         <TempleNightScene variant="temple-night" />
       </Suspense>

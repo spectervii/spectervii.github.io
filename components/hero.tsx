@@ -64,15 +64,11 @@ export function Hero() {
     <>
       <section
         id="top"
-        className="night relative isolate overflow-hidden border-b border-border bg-[#05070a] text-fg"
+        className="relative isolate overflow-hidden border-b border-border bg-bg text-fg"
       >
         <HeroScene />
         {/* Keeps text at AA contrast over the moving scene. */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,oklch(0.1_0.005_250/0.85)_0%,oklch(0.1_0.005_250/0.55)_55%,transparent_100%),linear-gradient(0deg,oklch(0.1_0.005_250/0.7)_0%,transparent_45%)]"
-        />
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] bg-[oklch(0.1_0.005_250/0.4)] sm:hidden" />
+        <div aria-hidden="true" className="hero-wash pointer-events-none absolute inset-0 z-[1]" />
 
         <div className="pointer-events-none relative z-[2] mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl flex-col justify-center px-4 py-16 sm:px-6 sm:py-24 [&_a]:pointer-events-auto [&_button]:pointer-events-auto">
           <div className="flex items-center gap-4">

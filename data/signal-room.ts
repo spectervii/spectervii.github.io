@@ -26,7 +26,7 @@ export const cards: CardMeta[] = [
     question: "Which cohorts stay, and when do they leave?",
     span: 8,
     refreshed: "06:00 WAT",
-    exec: "March signups stay longest. Most users leave in month two.",
+    exec: "March signups stay longest. Most users leave in month one.",
     analyst: {
       logic: ["SELECT signup_month, months_since, COUNT(DISTINCT user_id)", "FROM monthly_active GROUP BY 1, 2"],
       segment: "All signups, January to June",
