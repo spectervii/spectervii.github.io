@@ -69,7 +69,7 @@ ul{list-style:none}
 #theme-toggle:hover{border-color:var(--border-hover);color:var(--text-primary)}
 .nav-cta{padding:.5rem 1.25rem;border-radius:var(--radius-sm);background:var(--text-primary);color:var(--bg);font-size:.8125rem;font-weight:600;transition:opacity var(--t)}
 .nav-cta:hover{opacity:.85}
-.nav-scrolled{background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-scrolled{background:rgba(10,10,10,.85);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 [data-theme="light"] .nav-scrolled{background:rgba(250,250,250,.85)}
 .hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
 .hamburger span{display:block;width:22px;height:1.5px;background:var(--text-primary);transition:all var(--t)}
@@ -103,7 +103,7 @@ ul{list-style:none}
 .about-image-wrap{aspect-ratio:4/5;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);background:var(--bg-card);display:flex;align-items:center;justify-content:center;position:relative}
 .about-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:top}
 .about-image-placeholder{font-size:5rem;opacity:.15;font-weight:700}
-.about-image-caption{position:absolute;bottom:1rem;left:1rem;right:1rem;padding:.75rem 1rem;background:rgba(10,10,10,.7);backdrop-filter:blur(8px);border-radius:var(--radius-sm);font-size:.75rem;color:var(--text-secondary)}
+.about-image-caption{position:absolute;bottom:1rem;left:1rem;right:1rem;padding:.75rem 1rem;background:rgba(10,10,10,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:var(--radius-sm);font-size:.75rem;color:var(--text-secondary)}
 [data-theme="light"] .about-image-caption{background:rgba(255,255,255,.85)}
 .about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
 .about-stat{padding:1rem;border:1px solid var(--border);border-radius:var(--radius-md);text-align:center}
@@ -281,7 +281,7 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 
 
 /* CASE STUDY MODALS */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);max-width:700px;width:90%;max-height:85vh;overflow-y:auto;padding:2.5rem;position:relative;transform:translateY(20px);transition:transform .3s ease}
 .modal-overlay.open .modal-box{transform:translateY(0)}
@@ -797,16 +797,34 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
     </div>
     <div class="cert-grid">
       <div class="cert-card">
+        <div class="cert-header"><div class="cert-logo">🖥</div><span class="cert-status status-complete">Completed</span></div>
+        <div class="cert-name">CCNA: Enterprise Networking, Security, and Automation</div>
+        <div class="cert-issuer">Cisco Networking Academy</div>
+        <div class="cert-meta"><span class="cert-date">Issued Oct 2026</span><a href="assets/certificates/ccna-enterprise-networking-security-automation.pdf" target="_blank" rel="noopener" class="cert-verify">Certificate ↗</a></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-header"><div class="cert-logo">📡</div><span class="cert-status status-complete">Completed</span></div>
+        <div class="cert-name">CCNA: Switching, Routing, and Wireless Essentials</div>
+        <div class="cert-issuer">Cisco Networking Academy</div>
+        <div class="cert-meta"><span class="cert-date">Issued Sep 2026</span><a href="assets/certificates/ccna-switching-routing-wireless-essentials.pdf" target="_blank" rel="noopener" class="cert-verify">Certificate ↗</a></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-header"><div class="cert-logo">🌐</div><span class="cert-status status-complete">Completed</span></div>
+        <div class="cert-name">CCNA: Introduction to Networks</div>
+        <div class="cert-issuer">Cisco Networking Academy</div>
+        <div class="cert-meta"><span class="cert-date">Issued Sep 2026</span><a href="https://www.credly.com/badges/31e76847-b8bf-4fb3-8f46-7b6b89ea390a" target="_blank" rel="noopener" class="cert-verify">Verify ↗</a></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-header"><div class="cert-logo">🎓</div><span class="cert-status status-complete">Completed</span></div>
+        <div class="cert-name">Data Analytics Fellowship</div>
+        <div class="cert-issuer">Institute @ The Bulb</div>
+        <div class="cert-meta"><span class="cert-date">Issued Mar 2024</span><a href="assets/certificates/the-bulb-data-analytics-fellowship.pdf" target="_blank" rel="noopener" class="cert-verify">Certificate ↗</a></div>
+      </div>
+      <div class="cert-card">
         <div class="cert-header"><div class="cert-logo">📊</div><span class="cert-status status-complete">Completed</span></div>
         <div class="cert-name">Google Data Analytics Certificate</div>
         <div class="cert-issuer">Google / Coursera</div>
         <div class="cert-meta"><span class="cert-date">Issued Jan 2023</span><a href="#" class="cert-verify">Verify ↗</a></div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-header"><div class="cert-logo">🎓</div><span class="cert-status status-complete">Completed</span></div>
-        <div class="cert-name">Google Data Analytics Certificate</div>
-        <div class="cert-issuer">The Bulb Africa</div>
-        <div class="cert-meta"><span class="cert-date">Issued Sep 2021</span><a href="#" class="cert-verify">Verify ↗</a></div>
       </div>
       <div class="cert-card">
         <div class="cert-header"><div class="cert-logo">📈</div><span class="cert-status status-complete">Completed</span></div>
@@ -827,8 +845,8 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
         <div class="cert-meta"><span class="cert-date">Issued Sep 2022</span><a href="#" class="cert-verify">Verify ↗</a></div>
       </div>
       <div class="cert-card">
-        <div class="cert-header"><div class="cert-logo">🌐</div><span class="cert-status status-progress">In Progress</span></div>
-        <div class="cert-name">CyberOps Associate and Network Technology</div>
+        <div class="cert-header"><div class="cert-logo">🛰</div><span class="cert-status status-progress">In Progress</span></div>
+        <div class="cert-name">CyberOps Associate</div>
         <div class="cert-issuer">CISCO NetAcad</div>
         <div class="cert-meta"><span class="cert-date">In Progress</span><a href="#" class="cert-verify">Roadmap ↗</a></div>
       </div>
@@ -854,9 +872,73 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
     <div class="section-header reveal">
       <div class="label">Featured Work</div>
       <h2 class="display-lg">Projects</h2>
-      <p class="body-lg">Selected projects demonstrating cross-disciplinary thinking, from data engineering to quality, visualisation, and security.</p>
+      <p class="body-lg">Selected projects demonstrating cross-disciplinary thinking, from product and data engineering to quality, visualisation, and security.</p>
     </div>
     <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+<defs>
+  <linearGradient id="EIQbg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#0A0F24"/>
+    <stop offset="100%" stop-color="#1B1248"/>
+  </linearGradient>
+  <radialGradient id="EIQglow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#A89BFF" stop-opacity="0.55"/>
+    <stop offset="100%" stop-color="#A89BFF" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="480" height="270" fill="url(#EIQbg)"/>
+<!-- orbit field -->
+<g fill="none" stroke="#8B7BFF" stroke-opacity="0.13">
+  <circle cx="244" cy="136" r="54"/>
+  <circle cx="244" cy="136" r="92"/>
+  <circle cx="244" cy="136" r="132"/>
+</g>
+<circle cx="244" cy="136" r="54" fill="url(#EIQglow)"/>
+<g fill="#CFC8FF" fill-opacity="0.75">
+  <circle cx="298" cy="136" r="2"/><circle cx="196" cy="98" r="1.6"/><circle cx="286" cy="76" r="1.8"/>
+  <circle cx="160" cy="176" r="1.7"/><circle cx="330" cy="196" r="1.5"/><circle cx="244" cy="44" r="1.6"/>
+  <circle cx="118" cy="128" r="1.5"/><circle cx="360" cy="110" r="1.6"/><circle cx="214" cy="222" r="1.5"/>
+</g>
+<circle cx="244" cy="136" r="6.5" fill="#fff"/>
+<!-- wordmark + tagline -->
+<text x="28" y="58" fill="#8E86D8" font-size="6.5" font-weight="700" letter-spacing="1.3" font-family="Inter,sans-serif">CUSTOMER ENGAGEMENT, END TO END</text>
+<text x="28" y="100" fill="#ffffff" font-size="31" font-weight="700" letter-spacing="-0.6" font-family="Inter,sans-serif">EngageIQ</text>
+<text x="28" y="124" fill="#ffffff" fill-opacity="0.6" font-size="9.5" font-family="Inter,sans-serif">Email marketing and automation</text>
+<text x="28" y="138" fill="#ffffff" fill-opacity="0.6" font-size="9.5" font-family="Inter,sans-serif">for businesses</text>
+<g font-family="Inter,sans-serif" font-size="7.5" font-weight="600">
+  <rect x="28" y="156" width="42" height="18" rx="9" fill="#6C5CE7" fill-opacity="0.9"/>
+  <text x="49" y="168" text-anchor="middle" fill="#fff">Email</text>
+  <rect x="76" y="156" width="38" height="18" rx="9" fill="#ffffff" fill-opacity="0.1"/>
+  <text x="95" y="168" text-anchor="middle" fill="#CFC8FF">SMS</text>
+  <rect x="120" y="156" width="40" height="18" rx="9" fill="#ffffff" fill-opacity="0.1"/>
+  <text x="140" y="168" text-anchor="middle" fill="#CFC8FF">Push</text>
+</g>
+<!-- feature cards: kept in the upper two-thirds, clear of the thumb's bottom fade -->
+<g font-family="Inter,sans-serif">
+  <rect x="300" y="34" width="156" height="60" rx="9" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.12"/>
+  <text x="316" y="53" fill="#8E86D8" font-size="6" font-weight="700" letter-spacing="1">EVERY INTERACTION</text>
+  <text x="316" y="71" fill="#ffffff" font-size="11" font-weight="700">One profile</text>
+  <text x="316" y="85" fill="#ffffff" fill-opacity="0.5" font-size="7.5">Email · SMS · Push</text>
+
+  <rect x="300" y="104" width="156" height="60" rx="9" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.12"/>
+  <text x="316" y="123" fill="#8E86D8" font-size="6" font-weight="700" letter-spacing="1">YOUR OWN DOMAIN</text>
+  <text x="316" y="141" fill="#ffffff" font-size="10" font-weight="700">DKIM · SPF · DMARC</text>
+  <text x="316" y="155" fill="#ffffff" fill-opacity="0.5" font-size="7.5">Authenticated sending</text>
+
+  <rect x="300" y="174" width="156" height="48" rx="9" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.16"/>
+  <text x="316" y="193" fill="#A79EE8" font-size="6" font-weight="700" letter-spacing="1">JOURNEYS</text>
+  <text x="316" y="211" fill="#ffffff" font-size="9.5" font-weight="700">Triggered on behaviour</text>
+</g>
+</svg></div>
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">SaaS</span><span class="project-tag">Next.js</span><span class="project-tag">PostgreSQL</span></div>
+          <div class="project-title">EngageIQ</div>
+          <div class="project-desc">A customer engagement platform that turns every interaction into one profile, one audience and one journey — visual campaign editor, behaviour-triggered automation, and authenticated sending on the customer's own domain.</div>
+          <div class="project-impact">Live in production at engagecl.com</div>
+          <div class="project-links"><a href="https://engagecl.com" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> Live Site</a><a href="#" class="project-link" onclick="openModal('engageiq-cs');return false;">Case Study ↗</a></div>
+        </div>
+      </div>
       <div class="project-card">
         <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
@@ -1769,23 +1851,7 @@ document.getElementById('mobile-close').addEventListener('click', () => mobileNa
 document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileNav.classList.remove('open')));
 
 
-/* CASE STUDY MODALS */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
-.modal-overlay.open{opacity:1;pointer-events:all}
-.modal-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);max-width:700px;width:90%;max-height:85vh;overflow-y:auto;padding:2.5rem;position:relative;transform:translateY(20px);transition:transform .3s ease}
-.modal-overlay.open .modal-box{transform:translateY(0)}
-.modal-close{position:absolute;top:1.25rem;right:1.25rem;width:32px;height:32px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--text-muted);cursor:pointer;transition:all .2s}
-.modal-close:hover{border-color:var(--border-hover);color:var(--text-primary)}
-.modal-role{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}
-.modal-title{font-size:1.5rem;font-weight:600;color:var(--text-primary);margin-bottom:1.5rem}
-.modal-section{margin-bottom:1.5rem}
-.modal-section-label{font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.625rem}
-.modal-section p{font-size:.9375rem;line-height:1.75;color:var(--text-secondary)}
-.modal-impact-list{display:flex;flex-direction:column;gap:.5rem}
-.modal-impact-item{display:flex;align-items:flex-start;gap:.625rem;font-size:.875rem;color:var(--text-secondary);line-height:1.6}
-.modal-impact-item::before{content:"↗";color:var(--green);font-weight:700;flex-shrink:0;margin-top:.1rem}
-.modal-tech-wrap{display:flex;flex-wrap:wrap;gap:.375rem}
-.modal-links{display:flex;gap:.75rem;padding-top:1.5rem;border-top:1px solid var(--border);margin-top:1.5rem}
+/* CASE STUDY MODALS — styles live in the <style> block above */
 
 /* SCROLL REVEAL */
 const ro = new IntersectionObserver(entries => entries.forEach(e => {
@@ -1892,6 +1958,30 @@ document.querySelectorAll('.cert-card').forEach((card, i) => { card.style.transi
 <div class="modal-box" id="modal-box">
 </div></div>
 
+<template id="engageiq-cs">
+  <div class="modal-role">Founder and Product Engineer</div>
+  <div class="modal-title">EngageIQ</div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Problem</div>
+    <p>A small business that wants to run lifecycle messaging properly has to assemble it from four separate tools — an email sender, a CRM, an automation builder and an analytics layer — then keep customer data in sync across all of them. The data fragments, the journeys drift apart from the audience definitions, and sending reputation suffers because nobody is checking domain authentication.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">The Solution</div>
+    <p>EngageIQ keeps one customer profile and builds everything on top of it. Contacts, segments, campaigns and journeys share the same underlying record, so an audience defined once stays correct everywhere it is used. The platform includes a drag-and-drop visual email editor with a docked media library, campaign scheduling with plan-aware limits enforced at creation rather than at send, and domain setup that verifies DKIM, SPF and DMARC before the first message goes out.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Business Impact</div>
+    <div class="modal-impact-list"><div class="modal-impact-item">Replaces a four-tool stack with a single platform built on one profile</div><div class="modal-impact-item">Authenticated sending on the customer's own domain, checked at setup</div><div class="modal-impact-item">Journeys trigger on real behaviour rather than static list membership</div><div class="modal-impact-item">Shipping in production with a test suite covering the billing and editor paths</div></div>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Key Lesson</div>
+    <p>The hardest problems were not the features but the seams between them. Gating campaigns only at launch let a workspace create far past its plan and hit the wall after doing all the work, so the limit moved to creation. Three separate bugs on the editor's load path each masked the next, and what let them hide was a test harness returning the shape the page wanted instead of the shape the server actually sends.</p>
+  </div>
+  <div class="modal-section">
+    <div class="modal-section-label">Technologies</div>
+    <div class="modal-tech-wrap"><span class="project-tag">Next.js</span><span class="project-tag">TypeScript</span><span class="project-tag">PostgreSQL</span><span class="project-tag">Drizzle ORM</span><span class="project-tag">Vercel</span><span class="project-tag">CI/CD</span></div>
+  </div>
+</template>
 <template id="churn-cs">
   <div class="modal-role">Data Scientist</div>
   <div class="modal-title">Customer Churn Prediction</div>
