@@ -154,6 +154,57 @@ ul{list-style:none}
 .skill-fill.security{background:var(--purple)}
 .skill-fill.tools{background:var(--blue)}
 
+/* PROJECT TIMELINE — port of beui.dev/components/motion/timeline.
+   Without .tl-ready (no JS, or the script failed) it renders as a plain grid. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.tl-track{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.tl-cables,.tl-playhead,.tl-ticks,.tl-veil,.tl-hit,.tl-detail{display:none}
+.tl-card{position:relative;overflow:hidden;border-radius:24px;border:1px solid var(--border);background:var(--bg-card)}
+.tl-head{padding:.8rem .9rem .55rem}
+.tl-label{font-size:.75rem;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-title{font-size:1rem;font-weight:500;letter-spacing:-.01em;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-media{margin:0 .5rem;aspect-ratio:16/9;overflow:hidden;border-radius:16px;border:1px solid var(--border);background:var(--bg)}
+.tl-media svg{display:block;width:100%;height:100%}
+.tl-meta{display:flex;align-items:center;gap:.4rem;padding:.65rem .9rem;font-size:.8125rem;color:var(--text-secondary);white-space:nowrap;overflow:hidden}
+.tl-meta svg{flex-shrink:0;opacity:.8}
+.tl-meta-sep{width:3px;height:3px;border-radius:50%;background:currentColor;opacity:.5;margin:0 .2rem;flex-shrink:0}
+.tl-info{display:flex;flex-direction:column;gap:.75rem;padding:1.1rem .25rem 0}
+
+/* interactive stage, once the script has taken over */
+.tl-ready .tl-stage{position:relative;width:100%;height:560px;cursor:grab;touch-action:pan-y;overscroll-behavior-x:contain;overflow:hidden;clip-path:inset(0);-webkit-user-select:none;user-select:none;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
+.tl-ready .tl-stage.tl-dragging{cursor:grabbing}
+.tl-ready .tl-track{display:block;position:absolute;inset:0}
+.tl-ready .tl-item{position:absolute;left:50%;top:50%;transform-origin:50% 0;will-change:transform}
+.tl-ready .tl-card-wrap{position:relative;transform:translateY(-50%)}
+.tl-ready .tl-info{display:none}
+.tl-ready .tl-veil{display:block;position:absolute;inset:0;background:var(--bg);opacity:0;pointer-events:none}
+.tl-ready .tl-hit{display:block;position:absolute;inset:0;width:100%;border-radius:24px;cursor:inherit;background:none;border:0;padding:0}
+.tl-ready .tl-hit:focus-visible{outline:2px solid var(--text-primary);outline-offset:3px}
+.tl-ready .tl-cables{display:block;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;fill:none;stroke:var(--text-primary);stroke-opacity:.14;stroke-width:1;
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 6%,#000 94%,transparent)}
+.tl-ready .tl-playhead{display:block;position:absolute;top:0;bottom:0;left:50%;width:1px;margin-left:-.5px;pointer-events:none;opacity:.8;
+  background:linear-gradient(to bottom,transparent,var(--text-primary) 6%,var(--text-primary) 94%,transparent)}
+.tl-ready .tl-ticks{display:block;position:absolute;inset:0;pointer-events:none}
+.tl-tickgroup{position:absolute;left:50%;top:50%;display:flex;align-items:center}
+.tl-tickgroup span{display:block;width:1px;border-radius:1px;background:var(--text-primary);opacity:.25}
+.tl-tickgroup span.tl-tick-mid{opacity:.45}
+
+/* focused project detail */
+.tl-ready .tl-detail{display:block;max-width:680px;margin:.5rem auto 0}
+.tl-nav{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
+.tl-step{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);transition:border-color var(--t),color var(--t),opacity var(--t)}
+.tl-step:hover:not(:disabled){border-color:var(--border-hover);color:var(--text-primary)}
+.tl-step:disabled{opacity:.35;cursor:default}
+.tl-count{font-size:.8125rem;font-variant-numeric:tabular-nums;color:var(--text-muted);min-width:4.5ch;text-align:center}
+.tl-count-now{color:var(--text-primary)}
+.tl-hint-visible{margin-left:auto;font-size:.75rem;color:var(--text-muted)}
+.tl-detail-body{display:flex;flex-direction:column;gap:.75rem;transition:opacity .25s ease,transform .25s ease}
+.tl-detail-body.tl-swap{opacity:0;transform:translateY(6px)}
+.tl-detail-body .project-title{font-size:1.375rem}
+@media(max-width:640px){.tl-hint-visible{display:none}}
+@media(prefers-reduced-motion:reduce){.tl-detail-body{transition:none}}
+
 /* CERTIFICATIONS */
 .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem}
 .cert-card{border:1px solid var(--border);border-radius:var(--radius-md);padding:1.5rem;background:var(--bg-card);display:flex;flex-direction:column;gap:.75rem;transition:opacity .4s ease,transform .4s ease,border-color .2s}
@@ -874,9 +925,21 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
       <h2 class="display-lg">Projects</h2>
       <p class="body-lg">Selected projects demonstrating cross-disciplinary thinking, from product and data engineering to quality, visualisation, and security.</p>
     </div>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <div class="tl" id="project-timeline">
+      <section class="tl-stage" aria-roledescription="carousel" aria-label="Projects" aria-describedby="tl-hint">
+        <p id="tl-hint" class="sr-only">Use the left and right arrow keys to move between projects.</p>
+        <svg class="tl-cables" aria-hidden="true"></svg>
+        <div class="tl-playhead" aria-hidden="true"></div>
+        <div class="tl-ticks" aria-hidden="true"></div>
+        <ul class="tl-track">
+        <li class="tl-item" data-id="engageiq">
+          <div class="tl-card-wrap">
+            <div class="tl-card">
+              <div class="tl-head">
+                <p class="tl-label">SaaS · Next.js · PostgreSQL</p>
+                <h3 class="tl-title">EngageIQ</h3>
+              </div>
+              <div class="tl-media"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
   <linearGradient id="EIQbg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#0A0F24"/>
@@ -931,16 +994,27 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
   <text x="316" y="211" fill="#ffffff" font-size="9.5" font-weight="700">Triggered on behaviour</text>
 </g>
 </svg></div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">SaaS</span><span class="project-tag">Next.js</span><span class="project-tag">PostgreSQL</span></div>
-          <div class="project-title">EngageIQ</div>
-          <div class="project-desc">A customer engagement platform that turns every interaction into one profile, one audience and one journey — visual campaign editor, behaviour-triggered automation, and authenticated sending on the customer's own domain.</div>
-          <div class="project-impact">Live in production at engagecl.com</div>
-          <div class="project-links"><a href="https://engagecl.com" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> Live Site</a><a href="#" class="project-link" onclick="openModal('engageiq-cs');return false;">Case Study ↗</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <div class="tl-meta"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span>Live site</span><span class="tl-meta-sep" aria-hidden="true"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg><span>Case study</span></div>
+              <div class="tl-veil" aria-hidden="true"></div>
+            </div>
+            <button type="button" class="tl-hit" tabindex="0" aria-label="EngageIQ, project 1 of 9"></button>
+          </div>
+          <div class="tl-info">
+            <div class="project-tags"><span class="project-tag">SaaS</span><span class="project-tag">Next.js</span><span class="project-tag">PostgreSQL</span></div>
+            <div class="project-title">EngageIQ</div>
+            <div class="project-desc">A customer engagement platform that turns every interaction into one profile, one audience and one journey — visual campaign editor, behaviour-triggered automation, and authenticated sending on the customer's own domain.</div>
+            <div class="project-impact">Live in production at engagecl.com</div>
+            <div class="project-links"><a href="https://engagecl.com" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> Live Site</a><a href="#" class="project-link" onclick="openModal('engageiq-cs');return false;">Case Study ↗</a></div>
+          </div>
+        </li>
+        <li class="tl-item" data-id="customer-churn-prediction">
+          <div class="tl-card-wrap">
+            <div class="tl-card">
+              <div class="tl-head">
+                <p class="tl-label">Data Science · ML</p>
+                <h3 class="tl-title">Customer Churn Prediction</h3>
+              </div>
+              <div class="tl-media"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
   <linearGradient id="T0bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
@@ -999,16 +1073,27 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <text x="332" y="220" fill="#bbb" font-size="8" font-family="Inter,sans-serif">the top retention lever.</text>
 <text x="332" y="243" fill="#4361EE" font-size="8" font-weight="600" font-family="Inter,sans-serif">23% churn reduction →</text>
 </svg></div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">Data Science</span><span class="project-tag">ML</span></div>
-          <div class="project-title">Customer Churn Prediction</div>
-          <div class="project-desc">End-to-end ML pipeline on 7,000+ telecom customer records — EDA, feature engineering, logistic regression with threshold tuning, and a Power BI dashboard for the retention team.</div>
-          <div class="project-impact">23% modelled reduction in churn for targeted cohort</div>
-          <div class="project-links"><a href="https://github.com/spectervii/churn-prediction" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link" onclick="openModal('churn-cs');return false;">Case Study ↗</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <div class="tl-meta"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg><span>GitHub</span><span class="tl-meta-sep" aria-hidden="true"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg><span>Case study</span></div>
+              <div class="tl-veil" aria-hidden="true"></div>
+            </div>
+            <button type="button" class="tl-hit" tabindex="-1" aria-label="Customer Churn Prediction, project 2 of 9"></button>
+          </div>
+          <div class="tl-info">
+            <div class="project-tags"><span class="project-tag">Data Science</span><span class="project-tag">ML</span></div>
+            <div class="project-title">Customer Churn Prediction</div>
+            <div class="project-desc">End-to-end ML pipeline on 7,000+ telecom customer records — EDA, feature engineering, logistic regression with threshold tuning, and a Power BI dashboard for the retention team.</div>
+            <div class="project-impact">23% modelled reduction in churn for targeted cohort</div>
+            <div class="project-links"><a href="https://github.com/spectervii/churn-prediction" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link" onclick="openModal('churn-cs');return false;">Case Study ↗</a></div>
+          </div>
+        </li>
+        <li class="tl-item" data-id="sales-intelligence-dashboard">
+          <div class="tl-card-wrap">
+            <div class="tl-card">
+              <div class="tl-head">
+                <p class="tl-label">Data Viz · Python</p>
+                <h3 class="tl-title">Sales Intelligence Dashboard</h3>
+              </div>
+              <div class="tl-media"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
   <linearGradient id="T1bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
@@ -1066,16 +1151,27 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <rect x="314" y="238" width="58"  height="9" rx="4" fill="#F4A261"  opacity="0.85"/>
 <text x="378" y="246" fill="#aaa" font-size="7" font-family="Inter,sans-serif">Central</text>
 </svg></div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">Data Viz</span><span class="project-tag">Python</span></div>
-          <div class="project-title">Sales Intelligence Dashboard</div>
-          <div class="project-desc">Interactive Streamlit web app built on public retail data, surfacing revenue trends, product performance, and segment behaviour through eight Plotly charts with live filters.</div>
-          <div class="project-impact">Live app with drill-downs, segment filters, and exportable views</div>
-          <div class="project-links"><a href="https://github.com/spectervii/sales-intelligence-dashboard" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link">Live Demo ↗</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <div class="tl-meta"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg><span>GitHub</span><span class="tl-meta-sep" aria-hidden="true"></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg><span>Case study</span></div>
+              <div class="tl-veil" aria-hidden="true"></div>
+            </div>
+            <button type="button" class="tl-hit" tabindex="-1" aria-label="Sales Intelligence Dashboard, project 3 of 9"></button>
+          </div>
+          <div class="tl-info">
+            <div class="project-tags"><span class="project-tag">Data Viz</span><span class="project-tag">Python</span></div>
+            <div class="project-title">Sales Intelligence Dashboard</div>
+            <div class="project-desc">Interactive Streamlit web app built on public retail data, surfacing revenue trends, product performance, and segment behaviour through eight Plotly charts with live filters.</div>
+            <div class="project-impact">Live app with drill-downs, segment filters, and exportable views</div>
+            <div class="project-links"><a href="https://github.com/spectervii/sales-intelligence-dashboard" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link" onclick="openModal('sales-cs');return false;">Case Study ↗</a></div>
+          </div>
+        </li>
+        <li class="tl-item" data-id="fintech-anti-fraud-infrastructure">
+          <div class="tl-card-wrap">
+            <div class="tl-card">
+              <div class="tl-head">
+                <p class="tl-label">Security · Engineering</p>
+                <h3 class="tl-title">Fintech Anti-Fraud Infrastructure</h3>
+              </div>
+              <div class="tl-media"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
   <linearGradient id="T2bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
@@ -1135,16 +1231,27 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <circle cx="338" cy="234" r="3.5" fill="#2DC653"/>
 <text x="348" y="238" fill="#555" font-size="7.5" font-family="Inter,sans-serif">Score 0.04 — cleared</text>
 </svg></div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">Security</span><span class="project-tag">Engineering</span></div>
-          <div class="project-title">Fintech Anti-Fraud Infrastructure</div>
-          <div class="project-desc">Fintech product built from scratch then hardened with rule-based and behavioural fraud detection: rate limiting, anomaly scoring, and full audit logging for suspicious transactions.</div>
-          <div class="project-impact">Real-time flagging of fraudulent transactions before settlement</div>
-          <div class="project-links"><a href="https://github.com/spectervii/fintech-anti-fraud" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link" onclick="openModal('fraud-cs');return false;">Case Study ↗</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <div class="tl-meta"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg><span>Case study</span></div>
+              <div class="tl-veil" aria-hidden="true"></div>
+            </div>
+            <button type="button" class="tl-hit" tabindex="-1" aria-label="Fintech Anti-Fraud Infrastructure, project 4 of 9"></button>
+          </div>
+          <div class="tl-info">
+            <div class="project-tags"><span class="project-tag">Security</span><span class="project-tag">Engineering</span></div>
+            <div class="project-title">Fintech Anti-Fraud Infrastructure</div>
+            <div class="project-desc">Fintech product built from scratch then hardened with rule-based and behavioural fraud detection: rate limiting, anomaly scoring, and full audit logging for suspicious transactions.</div>
+            <div class="project-impact">Real-time flagging of fraudulent transactions before settlement</div>
+            <div class="project-links"><a href="#" class="project-link" onclick="openModal('fraud-cs');return false;">Case Study ↗</a></div>
+          </div>
+        </li>
+        <li class="tl-item" data-id="sandbox-vm-testing-environment">
+          <div class="tl-card-wrap">
+            <div class="tl-card">
+              <div class="tl-head">
+                <p class="tl-label">Security · DevOps</p>
+                <h3 class="tl-title">Sandbox VM Testing Environment</h3>
+              </div>
+              <div class="tl-media"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
   <linearGradient id="T3bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
@@ -1189,16 +1296,27 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <text x="389" y="227" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="7" font-family="Inter,sans-serif">pre-test-baseline</text>
 <text x="389" y="237" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="6.5" font-family="Inter,sans-serif">VirtualBox · 4GB RAM</text>
 </svg></div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">Security</span><span class="project-tag">DevOps</span></div>
-          <div class="project-title">Sandbox VM Testing Environment</div>
-          <div class="project-desc">Isolated VM environment configured for safe application testing, penetration testing labs, and security research — with snapshotting strategy and adversarial testing workflows documented.</div>
-          <div class="project-impact">Zero production exposure during all security testing work</div>
-          <div class="project-links"><a href="https://github.com/spectervii/sandbox-vm-setup" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link">Docs ↗</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <div class="tl-meta"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg><span>Case study</span></div>
+              <div class="tl-veil" aria-hidden="true"></div>
+            </div>
+            <button type="button" class="tl-hit" tabindex="-1" aria-label="Sandbox VM Testing Environment, project 5 of 9"></button>
+          </div>
+          <div class="tl-info">
+            <div class="project-tags"><span class="project-tag">Security</span><span class="project-tag">DevOps</span></div>
+            <div class="project-title">Sandbox VM Testing Environment</div>
+            <div class="project-desc">Isolated VM environment configured for safe application testing, penetration testing labs, and security research — with snapshotting strategy and adversarial testing workflows documented.</div>
+            <div class="project-impact">Zero production exposure during all security testing work</div>
+            <div class="project-links"><a href="#" class="project-link" onclick="openModal('sandbox-cs');return false;">Case Study ↗</a></div>
+          </div>
+        </li>
+        <li class="tl-item" data-id="api-test-automation-framework">
+          <div class="tl-card-wrap">
+            <div class="tl-card">
+              <div class="tl-head">
+                <p class="tl-label">QA · Automation</p>
+                <h3 class="tl-title">API Test Automation Framework</h3>
+              </div>
+              <div class="tl-media"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
   <linearGradient id="T4bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
@@ -1260,16 +1378,27 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
   <text x="410" y="240" fill="#bbb">118ms</text>
 </g>
 </svg></div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">QA</span><span class="project-tag">Automation</span></div>
-          <div class="project-title">API Test Automation Framework</div>
-          <div class="project-desc">Reusable test framework covering 120+ API endpoints with automated regression suites, Python test runners, and CI-ready configuration via Postman and pytest.</div>
-          <div class="project-impact">Manual QA cycles cut from 3 days to 4 hours per sprint</div>
-          <div class="project-links"><a href="https://github.com/spectervii/api-test-framework" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link" onclick="openModal('sales-cs');return false;">Case Study ↗</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <div class="tl-meta"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg><span>Case study</span></div>
+              <div class="tl-veil" aria-hidden="true"></div>
+            </div>
+            <button type="button" class="tl-hit" tabindex="-1" aria-label="API Test Automation Framework, project 6 of 9"></button>
+          </div>
+          <div class="tl-info">
+            <div class="project-tags"><span class="project-tag">QA</span><span class="project-tag">Automation</span></div>
+            <div class="project-title">API Test Automation Framework</div>
+            <div class="project-desc">Reusable test framework covering 120+ API endpoints with automated regression suites, Python test runners, and CI-ready configuration via Postman and pytest.</div>
+            <div class="project-impact">Manual QA cycles cut from 3 days to 4 hours per sprint</div>
+            <div class="project-links"><a href="#" class="project-link" onclick="openModal('api-cs');return false;">Case Study ↗</a></div>
+          </div>
+        </li>
+        <li class="tl-item" data-id="automated-etl-data-pipeline">
+          <div class="tl-card-wrap">
+            <div class="tl-card">
+              <div class="tl-head">
+                <p class="tl-label">Data Engineering · Python</p>
+                <h3 class="tl-title">Automated ETL Data Pipeline</h3>
+              </div>
+              <div class="tl-media"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
   <linearGradient id="T5bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
@@ -1339,16 +1468,27 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
   </marker>
 </defs>
 </svg></div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">Data Engineering</span><span class="project-tag">Python</span></div>
-          <div class="project-title">Automated ETL Data Pipeline</div>
-          <div class="project-desc">Scheduled ETL pipeline extracting from three disparate sources, standardising schemas, validating data integrity at each stage, and loading clean records into a central warehouse.</div>
-          <div class="project-impact">6 hours of weekly manual data prep eliminated; auto-alerts on failures</div>
-          <div class="project-links"><a href="https://github.com/spectervii/etl-pipeline" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <div class="tl-meta"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg><span>Case study</span></div>
+              <div class="tl-veil" aria-hidden="true"></div>
+            </div>
+            <button type="button" class="tl-hit" tabindex="-1" aria-label="Automated ETL Data Pipeline, project 7 of 9"></button>
+          </div>
+          <div class="tl-info">
+            <div class="project-tags"><span class="project-tag">Data Engineering</span><span class="project-tag">Python</span></div>
+            <div class="project-title">Automated ETL Data Pipeline</div>
+            <div class="project-desc">Scheduled ETL pipeline extracting from three disparate sources, standardising schemas, validating data integrity at each stage, and loading clean records into a central warehouse.</div>
+            <div class="project-impact">6 hours of weekly manual data prep eliminated; auto-alerts on failures</div>
+            <div class="project-links"><a href="#" class="project-link" onclick="openModal('etl-cs');return false;">Case Study ↗</a></div>
+          </div>
+        </li>
+        <li class="tl-item" data-id="web-application-security-audit">
+          <div class="tl-card-wrap">
+            <div class="tl-card">
+              <div class="tl-head">
+                <p class="tl-label">Security · OWASP</p>
+                <h3 class="tl-title">Web Application Security Audit</h3>
+              </div>
+              <div class="tl-media"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
   <linearGradient id="T6bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
@@ -1417,16 +1557,27 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
   <text x="436" y="240" fill="#E63946">Open</text>
 </g>
 </svg></div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">Security</span><span class="project-tag">OWASP</span></div>
-          <div class="project-title">Web Application Security Audit</div>
-          <div class="project-desc">Structured security review using OWASP Top 10 methodology — eight vulnerabilities identified (three high severity), with CVSS scores, reproduction steps, and prioritised remediation report.</div>
-          <div class="project-impact">3 high-severity vulnerabilities documented with full remediation paths</div>
-          <div class="project-links"><a href="https://github.com/spectervii/security-audit" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link">Report ↗</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-thumb" style="padding:0;overflow:hidden;"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <div class="tl-meta"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg><span>Case study</span></div>
+              <div class="tl-veil" aria-hidden="true"></div>
+            </div>
+            <button type="button" class="tl-hit" tabindex="-1" aria-label="Web Application Security Audit, project 8 of 9"></button>
+          </div>
+          <div class="tl-info">
+            <div class="project-tags"><span class="project-tag">Security</span><span class="project-tag">OWASP</span></div>
+            <div class="project-title">Web Application Security Audit</div>
+            <div class="project-desc">Structured security review using OWASP Top 10 methodology — eight vulnerabilities identified (three high severity), with CVSS scores, reproduction steps, and prioritised remediation report.</div>
+            <div class="project-impact">3 high-severity vulnerabilities documented with full remediation paths</div>
+            <div class="project-links"><a href="#" class="project-link" onclick="openModal('security-cs');return false;">Case Study ↗</a></div>
+          </div>
+        </li>
+        <li class="tl-item" data-id="marketing-funnel-analytics">
+          <div class="tl-card-wrap">
+            <div class="tl-card">
+              <div class="tl-head">
+                <p class="tl-label">Data · Marketing</p>
+                <h3 class="tl-title">Marketing Funnel Analytics</h3>
+              </div>
+              <div class="tl-media"><svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 <defs>
   <linearGradient id="T7bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
     <stop offset="0%" stop-color="#4361EE"/>
@@ -1479,13 +1630,29 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <text x="302" y="238" fill="#2DC653" font-size="15" font-weight="700" font-family="Inter,sans-serif">Paid Search</text>
 <text x="302" y="252" fill="#aaa" font-size="7.5" font-family="Inter,sans-serif">3.2x ROI vs organic</text>
 </svg></div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">Data</span><span class="project-tag">Marketing</span></div>
-          <div class="project-title">Marketing Funnel Analytics</div>
-          <div class="project-desc">Rebuilt a broken attribution model by cleaning 18 months of campaign data and constructing a multi-touch attribution pipeline — analysis notebook and written business case included.</div>
-          <div class="project-impact">30% ad spend reallocated to higher-ROI channels</div>
-          <div class="project-links"><a href="https://github.com/spectervii/marketing-funnel-analytics" target="_blank" rel="noopener" class="project-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a><a href="#" class="project-link" onclick="openModal('sandbox-cs');return false;">Case Study ↗</a></div>
+              <div class="tl-meta"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg><span>Case study</span></div>
+              <div class="tl-veil" aria-hidden="true"></div>
+            </div>
+            <button type="button" class="tl-hit" tabindex="-1" aria-label="Marketing Funnel Analytics, project 9 of 9"></button>
+          </div>
+          <div class="tl-info">
+            <div class="project-tags"><span class="project-tag">Data</span><span class="project-tag">Marketing</span></div>
+            <div class="project-title">Marketing Funnel Analytics</div>
+            <div class="project-desc">Rebuilt a broken attribution model by cleaning 18 months of campaign data and constructing a multi-touch attribution pipeline — analysis notebook and written business case included.</div>
+            <div class="project-impact">30% ad spend reallocated to higher-ROI channels</div>
+            <div class="project-links"><a href="#" class="project-link" onclick="openModal('marketing-cs');return false;">Case Study ↗</a></div>
+          </div>
+        </li>
+        </ul>
+      </section>
+      <div class="tl-detail">
+        <div class="tl-nav">
+          <button type="button" class="tl-step" data-step="-1" aria-label="Previous project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <span class="tl-count" aria-hidden="true"><span class="tl-count-now">01</span> / 09</span>
+          <button type="button" class="tl-step" data-step="1" aria-label="Next project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+          <span class="tl-hint-visible">Drag, swipe or use ← →</span>
         </div>
+        <div class="tl-detail-body" aria-live="polite"></div>
       </div>
     </div>
   </div>
@@ -1953,6 +2120,274 @@ document.addEventListener('keydown', e => { if(e.key==='Escape') closeAllModals(
 /* TIMELINE STAGGER */
 document.querySelectorAll('.timeline-item').forEach((item, i) => { item.style.transitionDelay = (i * .08) + 's'; });
 document.querySelectorAll('.cert-card').forEach((card, i) => { card.style.transitionDelay = (i * .06) + 's'; ro.observe(card); });
+</script>
+<script>
+/* PROJECT TIMELINE — vanilla port of beui.dev/components/motion/timeline.
+   Kept in its own <script> so an error elsewhere on the page cannot stop it,
+   and so a failure here leaves the plain grid fallback in place. */
+(function () {
+  const root = document.getElementById('project-timeline');
+  if (!root) return;
+  const stage = root.querySelector('.tl-stage');
+  const items = [...root.querySelectorAll('.tl-item')];
+  const hits = items.map(li => li.querySelector('.tl-hit'));
+  const veils = items.map(li => li.querySelector('.tl-veil'));
+  const cablesSvg = root.querySelector('.tl-cables');
+  const ticksLayer = root.querySelector('.tl-ticks');
+  const detail = root.querySelector('.tl-detail-body');
+  const countNow = root.querySelector('.tl-count-now');
+  const steps = [...root.querySelectorAll('.tl-step')];
+  const count = items.length;
+  const last = count - 1;
+  if (!count) return;
+
+  // Constants as in the original component.
+  const SPRING = { k: 120, c: 24, m: 1 };
+  const FLICK_MOMENTUM = 0.3, MAX_FLICK_EVENTS = 4;
+  const DRAG_THRESHOLD = 4, RUBBER_BAND = 0.3;
+  const SIDE_SCALE = 0.72, SIDE_DIM = 0.45;
+  const GAP_TICKS = 5, GAP_TICK_SPAN = 0.7, TICK_SHORT = 0.13, TICK_TALL = 0.2;
+  const CABLE_REACH = 0.8, CABLE_HOLD = 1, CABLE_FADE = 1.6;
+  const ITEM_WIDTH = 340;
+
+  const reduceMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+  const NS = 'http://www.w3.org/2000/svg';
+
+  let geo = { step: 300, cardWidth: ITEM_WIDTH, near: 330, halfWidth: 400, gap: 56, height: 560 };
+  let scroll = 0, active = -1;
+  let glide = null;           // running spring: { to, v, raf, last }
+  let gliding = false;        // target already committed while a glide runs
+
+  function cardX(o) {
+    const a = Math.abs(o);
+    return Math.sign(o) * (a <= 1 ? a * geo.near : geo.near + (a - 1) * geo.step);
+  }
+  const cardScale = o => 1 - (1 - SIDE_SCALE) * Math.min(Math.abs(o), 1);
+
+  // Static layers: one <g> of four cables per card, one tick group per gap.
+  const cableGroups = items.map(() => {
+    const g = document.createElementNS(NS, 'g');
+    for (let k = 0; k < 4; k++) g.appendChild(document.createElementNS(NS, 'line'));
+    cablesSvg.appendChild(g);
+    return g;
+  });
+  const tickGroups = items.slice(0, -1).map(() => {
+    const g = document.createElement('div');
+    g.className = 'tl-tickgroup';
+    for (let k = 0; k < GAP_TICKS; k++) {
+      const t = document.createElement('span');
+      if (k === (GAP_TICKS - 1) / 2) t.className = 'tl-tick-mid';
+      g.appendChild(t);
+    }
+    ticksLayer.appendChild(g);
+    return g;
+  });
+
+  function measure() {
+    const w = stage.clientWidth || 800;
+    const cardWidth = Math.min(ITEM_WIDTH, w * (w < 640 ? 0.64 : 0.36));
+    const gap = clamp(cardWidth * 0.22, 40, 72);
+    geo = {
+      cardWidth, gap,
+      step: cardWidth * SIDE_SCALE + gap,
+      near: (cardWidth * (1 + SIDE_SCALE)) / 2 + gap,
+      halfWidth: w / 2,
+      height: geo.height,
+    };
+    items.forEach(li => { li.style.width = cardWidth + 'px'; li.style.marginLeft = (-cardWidth / 2) + 'px'; });
+    // Stage height follows the card: a band above and below for the cables.
+    const cardH = items[0].querySelector('.tl-card-wrap').offsetHeight;
+    geo.height = Math.round(cardH * 1.9);
+    stage.style.height = geo.height + 'px';
+    const spacing = (gap * GAP_TICK_SPAN) / (GAP_TICKS - 1);
+    tickGroups.forEach(g => {
+      g.style.gap = Math.max(spacing - 1, 1) + 'px';
+      [...g.children].forEach((t, k) => {
+        t.style.height = (cardWidth * (k === (GAP_TICKS - 1) / 2 ? TICK_TALL : TICK_SHORT)) + 'px';
+      });
+    });
+    render();
+  }
+
+  function render() {
+    const { cardWidth, halfWidth, height } = geo;
+    const y = height / 2;
+    items.forEach((li, i) => {
+      const o = i - scroll;
+      const a = Math.abs(o);
+      const x = cardX(o), sc = cardScale(o);
+      li.style.transform = 'translate3d(' + x.toFixed(2) + 'px,0,0) scale(' + sc.toFixed(4) + ')';
+      li.style.zIndex = String(100 - Math.round(a * 10));
+      veils[i].style.opacity = (SIDE_DIM * Math.min(a, 1)).toFixed(3);
+
+      const g = cableGroups[i];
+      const op = clamp((CABLE_FADE - a) / (CABLE_FADE - CABLE_HOLD), 0, 1);
+      if (op <= 0) { g.style.display = 'none'; return; }
+      g.style.display = '';
+      g.style.opacity = op.toFixed(3);
+      const reach = (cardWidth / 2) * sc * CABLE_REACH;
+      const cx = halfWidth + x, left = cx - reach, right = cx + reach;
+      const L = g.children;
+      setLine(L[0], halfWidth, 0, left, y);
+      setLine(L[1], halfWidth, 0, right, y);
+      setLine(L[2], halfWidth, height, left, y);
+      setLine(L[3], halfWidth, height, right, y);
+    });
+    tickGroups.forEach((g, i) => {
+      const o = i - scroll;
+      const right = cardX(o) + (cardWidth * cardScale(o)) / 2;
+      const left = cardX(o + 1) - (cardWidth * cardScale(o + 1)) / 2;
+      g.style.transform = 'translate(' + ((right + left) / 2).toFixed(2) + 'px,0) translate(-50%,-50%)';
+    });
+  }
+  function setLine(l, x1, y1, x2, y2) {
+    l.setAttribute('x1', x1.toFixed(1)); l.setAttribute('y1', y1.toFixed(1));
+    l.setAttribute('x2', x2.toFixed(1)); l.setAttribute('y2', y2.toFixed(1));
+  }
+
+  function setScroll(v) {
+    scroll = v;
+    render();
+    // Under a drag or wheel, focus follows the card nearest the centre.
+    if (!gliding) commit(clamp(Math.round(v), 0, last));
+  }
+
+  function commit(i) {
+    if (i === active) return;
+    const first = active === -1;
+    active = i;
+    hits.forEach((h, k) => {
+      h.tabIndex = k === i ? 0 : -1;
+      if (k === i) h.setAttribute('aria-current', 'step'); else h.removeAttribute('aria-current');
+    });
+    countNow.textContent = String(i + 1).padStart(2, '0');
+    steps[0].disabled = i === 0;
+    steps[1].disabled = i === last;
+    const info = items[i].querySelector('.tl-info');
+    if (first || reduceMq.matches) { detail.innerHTML = info.innerHTML; return; }
+    detail.classList.add('tl-swap');
+    clearTimeout(commit.t);
+    commit.t = setTimeout(() => {
+      detail.innerHTML = items[active].querySelector('.tl-info').innerHTML;
+      detail.classList.remove('tl-swap');
+    }, 160);
+  }
+
+  function stopGlide() {
+    gliding = false;
+    if (glide) cancelAnimationFrame(glide.raf);
+    glide = null;
+  }
+
+  // Release spring that carries the flick velocity (events/s) into the settle.
+  function glideTo(to, velocity) {
+    stopGlide();
+    commit(to);
+    if (reduceMq.matches) { setScroll(to); return; }
+    gliding = true;
+    glide = { to, v: velocity || 0, last: performance.now(), raf: 0 };
+    const tick = now => {
+      if (!glide) return;
+      let dt = Math.min((now - glide.last) / 1000, 1 / 30);
+      glide.last = now;
+      // A few sub-steps keep the integration stable on slow frames.
+      const n = 4, h = dt / n;
+      for (let s = 0; s < n; s++) {
+        const a = (-SPRING.k * (scroll - glide.to) - SPRING.c * glide.v) / SPRING.m;
+        glide.v += a * h;
+        scroll += glide.v * h;
+      }
+      if (Math.abs(scroll - glide.to) < 0.001 && Math.abs(glide.v) < 0.01) {
+        scroll = glide.to; render(); gliding = false; glide = null; return;
+      }
+      render();
+      glide.raf = requestAnimationFrame(tick);
+    };
+    glide.raf = requestAnimationFrame(tick);
+  }
+
+  function select(i, focus) {
+    const t = clamp(i, 0, last);
+    glideTo(t, glide ? glide.v : 0);
+    if (focus) hits[t].focus({ preventScroll: true });
+  }
+
+  // Pointer: a press under the threshold is a click; past it, a drag.
+  const drag = { id: -1, startX: 0, startScroll: 0, moved: false, lastX: 0, lastT: 0, prevX: 0, prevT: 0, on: false };
+  let suppressClick = false;
+
+  stage.addEventListener('pointerdown', e => {
+    if (e.button !== 0) return;
+    stopGlide();
+    const now = performance.now();
+    Object.assign(drag, { id: e.pointerId, startX: e.clientX, startScroll: scroll, moved: false,
+      lastX: e.clientX, lastT: now, prevX: e.clientX, prevT: now, on: true });
+  });
+  stage.addEventListener('pointermove', e => {
+    if (!drag.on || e.pointerId !== drag.id) return;
+    const dx = e.clientX - drag.startX;
+    if (!drag.moved) {
+      if (Math.abs(dx) < DRAG_THRESHOLD) return;
+      drag.moved = true;
+      stage.classList.add('tl-dragging');
+      try { stage.setPointerCapture(e.pointerId); } catch (_) {}
+    }
+    const raw = drag.startScroll - dx / geo.step;
+    setScroll(raw < 0 ? raw * RUBBER_BAND : raw > last ? last + (raw - last) * RUBBER_BAND : raw);
+    drag.prevX = drag.lastX; drag.prevT = drag.lastT;
+    drag.lastX = e.clientX; drag.lastT = performance.now();
+  });
+  function endDrag(e) {
+    if (!drag.on || e.pointerId !== drag.id) return;
+    drag.on = false;
+    if (!drag.moved) return;
+    stage.classList.remove('tl-dragging');
+    try { stage.releasePointerCapture(e.pointerId); } catch (_) {}
+    // A drag must not also count as a click on whatever card ends up under it.
+    suppressClick = true;
+    setTimeout(() => { suppressClick = false; }, 0);
+    const dt = drag.lastT - drag.prevT;
+    const vpx = dt > 0 ? (drag.lastX - drag.prevX) / dt : 0;        // px per ms
+    const velocity = (-vpx * 1000) / geo.step;                         // events per s
+    const projected = scroll + clamp(velocity * FLICK_MOMENTUM, -MAX_FLICK_EVENTS, MAX_FLICK_EVENTS);
+    glideTo(clamp(Math.round(projected), 0, last), velocity);
+  }
+  stage.addEventListener('pointerup', endDrag);
+  stage.addEventListener('pointercancel', endDrag);
+  stage.addEventListener('click', e => { if (suppressClick) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+  hits.forEach((h, i) => {
+    h.addEventListener('click', () => select(i));
+    h.addEventListener('keydown', e => {
+      const next = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1
+        : e.key === 'Home' ? 0 : e.key === 'End' ? last : null;
+      if (next === null) return;
+      e.preventDefault();
+      select(next, true);
+    });
+  });
+  steps.forEach(b => b.addEventListener('click', () => select(active + Number(b.dataset.step))));
+
+  // Horizontal wheel and trackpad swipes move the track; vertical is left to the page.
+  let wheelTimer;
+  stage.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    stopGlide();
+    setScroll(clamp(scroll + e.deltaX / geo.step, -0.3, last + 0.3));
+    clearTimeout(wheelTimer);
+    wheelTimer = setTimeout(() => glideTo(clamp(Math.round(scroll), 0, last), 0), 140);
+  }, { passive: false });
+
+  root.classList.add('tl-ready');
+  measure();
+  commit(0);
+  if ('ResizeObserver' in window) new ResizeObserver(measure).observe(stage);
+  else window.addEventListener('resize', measure);
+  // Inter loads after first paint and changes the card height.
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+})();
 </script>
 <div id="modal-backdrop" class="modal-overlay" onclick="closeModal(event)">
 <div class="modal-box" id="modal-box">
