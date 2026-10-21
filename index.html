@@ -154,6 +154,41 @@ ul{list-style:none}
 .skill-fill.security{background:var(--purple)}
 .skill-fill.tools{background:var(--blue)}
 
+/* PAGE TABS — port of beui.dev/components/motion/tabs (pill variant, with
+   overflow). Without JS the triggers stay ordinary links to each section. */
+/* Logo and actions hold their size; the tab list is what gives way, and it
+   scrolls with fades and arrows when it has to. */
+.nav-logo,.nav-actions{flex-shrink:0}
+.nav-cta{white-space:nowrap}
+.nav-links.tabs{position:relative;isolation:isolate;display:flex;align-items:center;gap:0;flex:0 1 auto;min-width:0;margin:0 1rem;
+  border-radius:999px;background:var(--bg-card);border:1px solid var(--border)}
+.tabs-viewport{min-width:0;width:100%;overflow-x:auto;scrollbar-width:none;border-radius:inherit}
+.tabs-viewport::-webkit-scrollbar{display:none}
+.tabs-list{position:relative;display:flex;align-items:center;gap:4px;padding:4px;width:max-content}
+.tabs-pill{position:absolute;top:0;left:0;width:0;height:0;border-radius:999px;background:var(--text-primary);pointer-events:none;will-change:transform,width}
+.nav-links .tabs-trigger{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;flex-shrink:0;
+  padding:.4rem .9rem;border-radius:999px;font-size:.8125rem;font-weight:500;color:var(--text-secondary);outline:none;transition:color var(--t)}
+.nav-links .tabs-trigger:hover{color:var(--text-primary)}
+.nav-links .tabs-trigger:focus-visible{box-shadow:0 0 0 2px var(--text-primary)}
+.tabs-label{display:none}
+.tabs-ready .tabs-label{display:inline-flex;position:absolute;inset:0;align-items:center;justify-content:center;padding:inherit;
+  color:var(--bg);pointer-events:none;clip-path:inset(0 100% 0 0)}
+.tabs-arrow{position:absolute;top:0;bottom:0;z-index:20;width:36px;display:inline-flex;align-items:center;justify-content:center;color:var(--text-primary);transition:opacity var(--t)}
+.tabs-arrow[hidden]{display:none}
+.tabs-arrow:hover{opacity:.7}
+.tabs-arrow:disabled{opacity:0;pointer-events:none}
+.tabs-arrow:focus-visible{outline:2px solid var(--text-primary);outline-offset:-4px;border-radius:999px}
+.tabs-arrow-left{left:0;border-radius:999px 0 0 999px}
+.tabs-arrow-right{right:0;border-radius:0 999px 999px 0}
+/* Phones keep the hamburger menu; the base .nav-links hide rule is less
+   specific than .nav-links.tabs, so it is restated here. */
+@media(max-width:768px){.nav-links.tabs{display:none}}
+.page:focus{outline:none}
+.page.page-enter{animation:pageEnter .18s cubic-bezier(.23,1,.32,1)}
+@keyframes pageEnter{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.page.page-enter{animation:pageFade .18s linear}@keyframes pageFade{from{opacity:0}to{opacity:1}}}
+.mobile-link[aria-current="page"]{color:var(--text-primary)}
+
 /* PROJECT TIMELINE — port of beui.dev/components/motion/timeline.
    Without .tl-ready (no JS, or the script failed) it renders as a plain grid. */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
@@ -598,15 +633,21 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 <nav id="nav">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">MS<span style="color:var(--text-muted)">.</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#journey">Journey</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#blog">Insights</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-links tabs" id="page-tabs">
+      <button type="button" class="tabs-arrow tabs-arrow-left" aria-label="Scroll tabs left" aria-controls="page-tabs-viewport" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="tabs-viewport" id="page-tabs-viewport">
+        <div class="tabs-list" role="tablist" aria-label="Pages">
+          <span class="tabs-pill" aria-hidden="true"></span>
+          <a class="tabs-trigger" role="tab" id="tab-home" href="#hero" data-page="home" aria-controls="page-home" aria-selected="true"><span class="tabs-text">Home</span><span class="tabs-label" aria-hidden="true">Home</span></a>
+          <a class="tabs-trigger" role="tab" id="tab-skills" href="#skills" data-page="skills" aria-controls="page-skills" aria-selected="false" tabindex="-1"><span class="tabs-text">Skills</span><span class="tabs-label" aria-hidden="true">Skills</span></a>
+          <a class="tabs-trigger" role="tab" id="tab-projects" href="#projects" data-page="projects" aria-controls="page-projects" aria-selected="false" tabindex="-1"><span class="tabs-text">Projects</span><span class="tabs-label" aria-hidden="true">Projects</span></a>
+          <a class="tabs-trigger" role="tab" id="tab-experience" href="#experience" data-page="experience" aria-controls="page-experience" aria-selected="false" tabindex="-1"><span class="tabs-text">Experience</span><span class="tabs-label" aria-hidden="true">Experience</span></a>
+          <a class="tabs-trigger" role="tab" id="tab-insights" href="#blog" data-page="insights" aria-controls="page-insights" aria-selected="false" tabindex="-1"><span class="tabs-text">Insights</span><span class="tabs-label" aria-hidden="true">Insights</span></a>
+          <a class="tabs-trigger" role="tab" id="tab-contact" href="#contact" data-page="contact" aria-controls="page-contact" aria-selected="false" tabindex="-1"><span class="tabs-text">Contact</span><span class="tabs-label" aria-hidden="true">Contact</span></a>
+        </div>
+      </div>
+      <button type="button" class="tabs-arrow tabs-arrow-right" aria-label="Scroll tabs right" aria-controls="page-tabs-viewport" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+    </div>
     <div class="nav-actions">
       <button id="theme-toggle" title="Toggle theme" aria-label="Toggle light/dark mode">☀</button>
       <a href="#contact" class="nav-cta">Get in touch</a>
@@ -617,16 +658,15 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
 
 <nav class="mobile-nav" id="mobile-nav">
   <button class="mobile-nav-close" id="mobile-close">✕</button>
-  <a href="#about" class="mobile-link">About</a>
-  <a href="#journey" class="mobile-link">Journey</a>
-  <a href="#skills" class="mobile-link">Skills</a>
-  <a href="#projects" class="mobile-link">Projects</a>
-  <a href="#portfolio" class="mobile-link">Portfolio</a>
-  <a href="#experience" class="mobile-link">Experience</a>
-  <a href="#blog" class="mobile-link">Insights</a>
-  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#hero" class="mobile-link" data-page="home">Home</a>
+  <a href="#skills" class="mobile-link" data-page="skills">Skills</a>
+  <a href="#projects" class="mobile-link" data-page="projects">Projects</a>
+  <a href="#experience" class="mobile-link" data-page="experience">Experience</a>
+  <a href="#blog" class="mobile-link" data-page="insights">Insights</a>
+  <a href="#contact" class="mobile-link" data-page="contact">Contact</a>
 </nav>
 
+<div class="page" id="page-home" data-page="home" role="tabpanel" aria-labelledby="tab-home" tabindex="-1">
 <!-- HERO -->
 <section id="hero">
   <canvas class="hero-canvas" id="hero-canvas"></canvas>
@@ -763,7 +803,9 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
     </div>
   </div>
 </section>
+</div>
 
+<div class="page" id="page-skills" data-page="skills" role="tabpanel" aria-labelledby="tab-skills" tabindex="-1">
 <!-- SKILLS -->
 <section id="skills" class="section">
   <div class="container">
@@ -916,7 +958,9 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
     </div>
   </div>
 </section>
+</div>
 
+<div class="page" id="page-projects" data-page="projects" role="tabpanel" aria-labelledby="tab-projects" tabindex="-1">
 <!-- PROJECTS -->
 <section id="projects" class="section">
   <div class="container">
@@ -1657,7 +1701,9 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
     </div>
   </div>
 </section>
+</div>
 
+<div class="page" id="page-experience" data-page="experience" role="tabpanel" aria-labelledby="tab-experience" tabindex="-1">
 <section id="experience" class="section">
   <div class="container">
     <div class="section-header reveal">
@@ -1859,7 +1905,9 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
     </div>
   </div>
 </section>
+</div>
 
+<div class="page" id="page-insights" data-page="insights" role="tabpanel" aria-labelledby="tab-insights" tabindex="-1">
 <!-- BLOG -->
 <section id="blog" class="section">
   <div class="container">
@@ -1922,7 +1970,9 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
     </div>
   </div>
 </section>
+</div>
 
+<div class="page" id="page-contact" data-page="contact" role="tabpanel" aria-labelledby="tab-contact" tabindex="-1">
 <!-- CONTACT -->
 <section id="contact" class="section">
   <div class="container">
@@ -1980,6 +2030,7 @@ footer{border-top:1px solid var(--border);padding:3rem 0}
     </div>
   </div>
 </section>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -2289,10 +2340,11 @@ document.querySelectorAll('.cert-card').forEach((card, i) => { card.style.transi
     glide = { to, v: velocity || 0, last: performance.now(), raf: 0 };
     const tick = now => {
       if (!glide) return;
-      let dt = Math.min((now - glide.last) / 1000, 1 / 30);
+      // Real elapsed time, so the glide lasts as long on a slow device as a
+      // fast one; small sub-steps keep the integration stable on long frames.
+      const dt = Math.min((now - glide.last) / 1000, 0.1);
       glide.last = now;
-      // A few sub-steps keep the integration stable on slow frames.
-      const n = 4, h = dt / n;
+      const n = Math.max(1, Math.ceil(dt * 240)), h = dt / n;
       for (let s = 0; s < n; s++) {
         const a = (-SPRING.k * (scroll - glide.to) - SPRING.c * glide.v) / SPRING.m;
         glide.v += a * h;
@@ -2383,10 +2435,223 @@ document.querySelectorAll('.cert-card').forEach((card, i) => { card.style.transi
   root.classList.add('tl-ready');
   measure();
   commit(0);
-  if ('ResizeObserver' in window) new ResizeObserver(measure).observe(stage);
+  // measure() sets the stage's own height, so it runs on the next frame rather
+  // than inside the observer callback (which would re-trigger it in-frame).
+  if ('ResizeObserver' in window) new ResizeObserver(() => requestAnimationFrame(measure)).observe(stage);
   else window.addEventListener('resize', measure);
   // Inter loads after first paint and changes the card height.
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+})();
+</script>
+<script>
+/* PAGES + TABS — the site as six tabbed pages with their own URLs, and the
+   nav as a port of beui.dev/components/motion/tabs (pill variant).
+   Own <script> block: if it fails, every page stays visible as one scroll and
+   the nav links still jump to their sections. */
+(function () {
+  const PAGES = ['home', 'skills', 'projects', 'experience', 'insights', 'contact'];
+  const pages = PAGES.map(p => document.getElementById('page-' + p));
+  const root = document.getElementById('page-tabs');
+  if (!root || pages.some(p => !p)) return;
+  const viewport = root.querySelector('.tabs-viewport');
+  const list = root.querySelector('.tabs-list');
+  const pill = root.querySelector('.tabs-pill');
+  const tabs = PAGES.map(p => document.getElementById('tab-' + p));
+  const labels = tabs.map(t => t.querySelector('.tabs-label'));
+  const arrowL = root.querySelector('.tabs-arrow-left');
+  const arrowR = root.querySelector('.tabs-arrow-right');
+  const mobileLinks = [...document.querySelectorAll('.mobile-link[data-page]')];
+  const reduceMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+  const BASE_TITLE = document.title;
+  const titleFor = p => p === 'home' ? BASE_TITLE
+    : tabs[PAGES.indexOf(p)].querySelector('.tabs-text').textContent + ' — Michael Shodipo';
+
+  let current = null;
+
+  /* ---- the pill: a spring per axis that settles without overshoot ---- */
+  const SPRING = { k: 245, c: 36, m: 1.2 };
+  const axes = { x: {}, y: {}, w: {}, h: {} };
+  for (const a of Object.values(axes)) { a.p = 0; a.v = 0; a.to = 0; }
+  let raf = 0, last = 0, placed = false;
+
+  function apply() {
+    pill.style.transform = 'translate(' + axes.x.p.toFixed(2) + 'px,' + axes.y.p.toFixed(2) + 'px)';
+    pill.style.width = axes.w.p.toFixed(2) + 'px';
+    pill.style.height = axes.h.p.toFixed(2) + 'px';
+    syncClips();
+  }
+  // Each tab carries a second, inverted copy of its label, clipped to exactly
+  // the part the pill covers, so text changes colour where the pill passes.
+  function syncClips() {
+    const pl = axes.x.p, pr = axes.x.p + axes.w.p;
+    tabs.forEach((t, i) => {
+      const L = t.offsetLeft, W = t.offsetWidth;
+      const left = clamp(pl - L, 0, W), right = clamp(L + W - pr, 0, W);
+      labels[i].style.clipPath = left + right >= W ? 'inset(0 100% 0 0)' : 'inset(0 ' + right.toFixed(2) + 'px 0 ' + left.toFixed(2) + 'px)';
+    });
+  }
+  function step(now) {
+    // Real elapsed time with small sub-steps: same duration at any frame rate.
+    const dt = Math.min((now - last) / 1000, 0.1);
+    last = now;
+    let moving = false;
+    const n = Math.max(1, Math.ceil(dt * 240)), h = dt / n;
+    for (const a of Object.values(axes)) {
+      for (let s = 0; s < n; s++) {
+        a.v += ((-SPRING.k * (a.p - a.to) - SPRING.c * a.v) / SPRING.m) * h;
+        a.p += a.v * h;
+      }
+      if (Math.abs(a.p - a.to) > 0.01 || Math.abs(a.v) > 0.01) moving = true;
+      else { a.p = a.to; a.v = 0; }
+    }
+    apply();
+    raf = moving ? requestAnimationFrame(step) : 0;
+  }
+  function placePill(instant) {
+    const tab = tabs[PAGES.indexOf(current)];
+    // Fractional width: a rounded one leaves the pill a hair off its tab.
+    const box = { x: tab.offsetLeft, y: tab.offsetTop, w: tab.getBoundingClientRect().width, h: tab.offsetHeight };
+    if (!box.w) return;                    // nav hidden (mobile) — place once it shows
+    const jump = instant || !placed || reduceMq.matches;
+    for (const k of Object.keys(axes)) {
+      axes[k].to = box[k];
+      if (jump) { axes[k].p = box[k]; axes[k].v = 0; }
+    }
+    placed = true;
+    if (jump) { if (raf) { cancelAnimationFrame(raf); raf = 0; } apply(); return; }
+    if (!raf) { last = performance.now(); raf = requestAnimationFrame(step); }
+  }
+
+  /* ---- overflow: fades and arrows when the tabs outgrow the nav ---- */
+  function measureEdges() {
+    const overflow = viewport.scrollWidth > root.clientWidth + 1;
+    const max = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+    const s = clamp(viewport.scrollLeft, 0, max);
+    const left = overflow && s > 1, right = overflow && s < max - 1;
+    arrowL.hidden = arrowR.hidden = !overflow;
+    arrowL.disabled = !left;
+    arrowR.disabled = !right;
+    const mask = overflow
+      ? 'linear-gradient(to right, ' + (left ? 'transparent, #000 40px' : '#000, #000 0px') + ', ' + (right ? '#000 calc(100% - 40px), transparent' : '#000 100%') + ')'
+      : '';
+    viewport.style.webkitMaskImage = mask;
+    viewport.style.maskImage = mask;
+  }
+  // Scroll only the tab viewport (scrollIntoView could move the page), keeping
+  // the tab clear of the arrows over the faded edges.
+  function reveal(tab, smooth) {
+    if (!tab) return;
+    const frame = viewport.getBoundingClientRect(), item = tab.getBoundingClientRect();
+    if (!frame.width) return;
+    const max = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+    const s = viewport.scrollLeft;
+    const l = frame.left + (s > 1 ? 36 : 0), r = frame.right - (s < max - 1 ? 36 : 0);
+    const delta = item.left < l ? item.left - l : item.right > r ? item.right - r : 0;
+    if (delta) viewport.scrollBy({ left: delta, behavior: smooth && !reduceMq.matches ? 'smooth' : 'auto' });
+  }
+  viewport.addEventListener('scroll', measureEdges, { passive: true });
+  viewport.addEventListener('focusin', e => { if (e.target.getAttribute('role') === 'tab') reveal(e.target, true); });
+  arrowL.addEventListener('click', () => viewport.scrollBy({ left: -viewport.clientWidth * 0.8, behavior: reduceMq.matches ? 'auto' : 'smooth' }));
+  arrowR.addEventListener('click', () => viewport.scrollBy({ left: viewport.clientWidth * 0.8, behavior: reduceMq.matches ? 'auto' : 'smooth' }));
+
+  /* ---- routing: #projects, #skills … plus every old in-page anchor ---- */
+  function resolve(hash) {
+    const name = decodeURIComponent((hash || '').replace(/^#/, ''));
+    if (!name || name === 'home') return { page: 'home', el: null };
+    if (PAGES.includes(name)) return { page: name, el: null };
+    const el = document.getElementById(name);
+    const pg = el && el.closest('.page');
+    if (!pg) return null;
+    // An anchor to a page's first section is just that page.
+    return { page: pg.dataset.page, el: el === pg.querySelector('section') ? null : el };
+  }
+  function scrollToY(y, smooth) {
+    const h = document.documentElement, prev = h.style.scrollBehavior;
+    h.style.scrollBehavior = smooth && !reduceMq.matches ? 'smooth' : 'auto';
+    window.scrollTo(0, y);
+    h.style.scrollBehavior = prev;
+  }
+
+  function show(page, opts) {
+    opts = opts || {};
+    const changed = page !== current;
+    current = page;
+    pages.forEach(p => { p.hidden = p.dataset.page !== page; });
+    const panel = pages[PAGES.indexOf(page)];
+    if (changed && !opts.initial) {
+      panel.classList.remove('page-enter');
+      void panel.offsetWidth;               // restart the enter animation
+      panel.classList.add('page-enter');
+    }
+    tabs.forEach((t, i) => {
+      const on = PAGES[i] === page;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+    });
+    mobileLinks.forEach(a => {
+      if (a.dataset.page === page) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    document.title = titleFor(page);
+    placePill(opts.initial);
+    reveal(tabs[PAGES.indexOf(page)], !opts.initial);
+    // Code that sized itself while its page was hidden (the hero canvas) re-measures.
+    if (changed) window.dispatchEvent(new Event('resize'));
+    const y = opts.el ? opts.el.getBoundingClientRect().top + window.scrollY : 0;
+    // A jump within the page glides; arriving on a new page starts at its top.
+    scrollToY(y, !changed && !opts.initial);
+    if (opts.focusPanel) panel.focus({ preventScroll: true });
+  }
+
+  function navigate(r, focusPanel) {
+    const hash = r.el ? '#' + r.el.id : r.page === 'home' ? '' : '#' + r.page;
+    const url = location.pathname + location.search + hash;
+    if (url !== location.pathname + location.search + location.hash) history.pushState({ page: r.page }, '', url);
+    show(r.page, { el: r.el, focusPanel: focusPanel });
+  }
+
+  document.addEventListener('click', e => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute('href') === '#') return;
+    const r = a.dataset.page ? { page: a.dataset.page, el: null } : resolve(a.getAttribute('href'));
+    if (!r) return;
+    e.preventDefault();
+    // Tabs keep focus; any other link hands it to the page it opened.
+    navigate(r, a.getAttribute('role') !== 'tab');
+  });
+  window.addEventListener('popstate', () => {
+    const r = resolve(location.hash) || { page: 'home', el: null };
+    show(r.page, { el: r.el });
+  });
+
+  // Arrow keys move along the tabs and select as focus arrives, wrapping at
+  // the ends; Home and End jump to the first and last.
+  list.addEventListener('keydown', e => {
+    const i = tabs.indexOf(document.activeElement);
+    if (i < 0) return;
+    const n = e.key === 'ArrowRight' ? (i + 1) % tabs.length : e.key === 'ArrowLeft' ? (i - 1 + tabs.length) % tabs.length
+      : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : null;
+    if (n === null) return;
+    e.preventDefault();
+    tabs[n].focus();
+    tabs[n].click();
+  });
+
+  root.classList.add('tabs-ready');
+  const start = resolve(location.hash) || { page: 'home', el: null };
+  show(start.page, { initial: true });
+  if (start.el) requestAnimationFrame(() => scrollToY(start.el.getBoundingClientRect().top + window.scrollY, false));
+  measureEdges();
+
+  const relayout = () => { measureEdges(); placePill(true); };
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver(() => requestAnimationFrame(relayout));
+    ro.observe(root); ro.observe(list);
+  } else window.addEventListener('resize', relayout);
+  // Inter arrives after first paint and changes every tab's width.
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
 })();
 </script>
 <div id="modal-backdrop" class="modal-overlay" onclick="closeModal(event)">
